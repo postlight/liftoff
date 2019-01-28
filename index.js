@@ -1,0 +1,3 @@
+function hey() {
+  return wow;
+}
