@@ -1,3 +1,6 @@
 {
-  "extends": ["airbnb", "prettier"]
+  "extends": ["airbnb", "prettier"],
+  "rules": {
+    "no-underscore-dangle": 0
+  }
 }
