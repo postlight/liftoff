@@ -44,11 +44,11 @@ https
     res.on("end", () => {
       try {
         const parsedData = JSON.parse(rawData);
-        parsedData.records.forEach((row, i) => {
-          const filename = `dist/html/page${i}.html`;
-          console.dir(row);
-          fs.writeFile(`dist/html/page${i}.html`, renderRow(row), () => {
-            console.log(`${filename} written`);
+        parsedData.records.forEach(row => {
+          const slug = row.fields.Slug || row.id;
+          const filepath = `dist/html/${slug}.html`;
+          fs.writeFile(filepath, renderRow(row), () => {
+            console.log(`${filepath} written`);
           });
         });
       } catch (e) {
