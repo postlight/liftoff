@@ -45,7 +45,7 @@ https
       try {
         const parsedData = JSON.parse(rawData);
         parsedData.records.forEach(row => {
-          const slug = row.fields.Slug || row.id;
+          const slug = row.fields._Slug || row.id;
           const filepath = `dist/html/${slug}.html`;
           fs.writeFile(filepath, renderRow(row), () => {
             console.log(`${filepath} written`);

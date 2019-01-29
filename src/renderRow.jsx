@@ -14,7 +14,11 @@ const getRenderer = row => {
 const renderRow = rowData => {
   const row = (
     <div className="row">
-      {_.map(rowData.fields, (data, key) => getRenderer({ name: key, data }))}
+      {_.chain(rowData.fields)
+        // fields with names starting with "_" are not meant to be displayed
+        .filter((value, key) => !key.startsWith("_"))
+        .map((data, key) => getRenderer({ name: key, data }))
+        .value()}
     </div>
   );
 
