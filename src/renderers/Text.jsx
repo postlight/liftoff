@@ -2,7 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Textbox = ({ name, data }) => {
-  return <p className={name}>{data}</p>;
+  return (
+    <div className={`${name.replace(/\s/g, "")} field`}>
+      <p className="field-name">{name}</p>
+      <p className="field-value">{data}</p>
+    </div>
+  );
 };
 
 Textbox.propTypes = {
