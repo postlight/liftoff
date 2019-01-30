@@ -57,3 +57,7 @@ base(TABLE_NAME)
       }
     }
   );
+
+fs.copyFile("custom/index.css", "dist/index.css", () =>
+  console.log("CSS has been copied")
+);
