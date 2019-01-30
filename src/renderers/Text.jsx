@@ -7,7 +7,7 @@ const Textbox = ({ name, data }) => {
 
 Textbox.propTypes = {
   name: PropTypes.string.isRequired,
-  data: PropTypes.string.isRequired
+  data: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
 };
 
 export default Textbox;
