@@ -1,15 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Textbox = field => {
-  return <p className={field.name}>{field.data}</p>;
+const Textbox = ({ name, data }) => {
+  return <p className={name}>{data}</p>;
 };
 
 Textbox.propTypes = {
-  field: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    data: PropTypes.string.isRequired
-  }).isRequired
+  name: PropTypes.string.isRequired,
+  data: PropTypes.string.isRequired
 };
 
 export default Textbox;

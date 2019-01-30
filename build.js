@@ -2,6 +2,7 @@ require("dotenv").config();
 const fs = require("fs");
 const path = require("path");
 const Airtable = require("airtable");
+const _ = require("underscore");
 
 const renderRow = require(`./src/renderRow`).default;
 
@@ -13,6 +14,11 @@ fs.mkdir(`${currentPath}/html`, () => console.log("/html directory created."));
 
 const base = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(BASE_ID);
 
+// expects an argument such as --field-order Field1,Field2
+const fieldOrderIdx =
+  process.argv.findIndex(arg => arg === "--field-order") + 1;
+const fieldOrder = fieldOrderIdx ? process.argv[fieldOrderIdx] : null;
+
 base(TABLE_NAME)
   .select({
     maxRecords: 100,
@@ -20,11 +26,24 @@ base(TABLE_NAME)
   })
   .eachPage(
     function page(records, fetchNextPage) {
-      // This function (`page`) will get called for each page of records.
       records.forEach(row => {
-        const slug = row.fields._Slug || row.id;
+        const fieldsArray = _.map(row.fields, (value, name) => ({
+          name,
+          value
+        }));
+
+        const fieldOrderMapped = fieldOrder
+          ? _.object(fieldOrder.split(",").map((field, idx) => [field, idx]))
+          : null;
+        const fields = fieldOrder
+          ? _.sortBy(fieldsArray, field => fieldOrderMapped[field.name])
+          : fieldsArray;
+
+        const slugField = fields.find(field => field.name === "_Slug");
+        const slug = (slugField && slugField.value) || row.id;
         const filepath = `dist/html/${slug}.html`;
-        fs.writeFile(filepath, renderRow(row), () => {
+
+        fs.writeFile(filepath, renderRow({ ...row, fields }), () => {
           console.log(`${filepath} written`);
         });
       });
