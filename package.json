@@ -38,6 +38,6 @@
   },
   "scripts": {
     "webpack-build": "webpack --config webpack.config.js",
-    "build": "babel src -d dist/src && babel build.js -d dist && node dist/build.js $0"
+    "build": "babel src -d dist/src && babel build.js -d dist && node dist/build.js"
   }
 }
