@@ -29,6 +29,7 @@
     }
   },
   "dependencies": {
+    "airtable": "^0.5.8",
     "dotenv": "^6.2.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
