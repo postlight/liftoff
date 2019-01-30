@@ -2,11 +2,11 @@ import React from "react";
 import _ from "underscore";
 import { renderToStaticMarkup } from "react-dom/server";
 
-import Text from "./renderers/Text";
+import TextField from "./renderers/TextField";
 
 const getRenderer = field => {
   if (typeof field.value === "string" || typeof field.value === "number") {
-    return <Text key={field.name} name={field.name} data={field.value} />;
+    return <TextField key={field.name} name={field.name} data={field.value} />;
   }
   return <div />;
 };
