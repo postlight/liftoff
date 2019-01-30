@@ -8,16 +8,17 @@ const renderRow = require(`./src/renderRow`).default;
 
 const currentPath = path.basename(__dirname);
 
-const { AIRTABLE_API_KEY, BASE_ID, TABLE_NAME, VIEW } = process.env;
+const {
+  AIRTABLE_API_KEY,
+  BASE_ID,
+  TABLE_NAME,
+  VIEW,
+  FIELD_ORDER
+} = process.env;
 
 fs.mkdir(`${currentPath}/html`, () => console.log("/html directory created."));
 
 const base = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(BASE_ID);
-
-// expects an argument such as --field-order Field1,Field2
-const fieldOrderIdx =
-  process.argv.findIndex(arg => arg === "--field-order") + 1;
-const fieldOrder = fieldOrderIdx ? process.argv[fieldOrderIdx] : null;
 
 base(TABLE_NAME)
   .select({
@@ -32,10 +33,10 @@ base(TABLE_NAME)
           value
         }));
 
-        const fieldOrderMapped = fieldOrder
-          ? _.object(fieldOrder.split(",").map((field, idx) => [field, idx]))
+        const fieldOrderMapped = FIELD_ORDER
+          ? _.object(FIELD_ORDER.split(",").map((field, idx) => [field, idx]))
           : null;
-        const fields = fieldOrder
+        const fields = fieldOrderMapped
           ? _.sortBy(fieldsArray, field => fieldOrderMapped[field.name])
           : fieldsArray;
 
