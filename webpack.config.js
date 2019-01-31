@@ -10,6 +10,7 @@ module.exports = {
     filename: "bundle.js"
   },
   entry: "./src/index.js",
+  mode: "development",
   module: {
     rules: [
       { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader" },
