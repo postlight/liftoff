@@ -4,7 +4,7 @@ const path = require("path");
 const Airtable = require("airtable");
 const _ = require("underscore");
 
-const renderRow = require(`./src/renderRow`).default;
+const renderRow = require(`./src/renderRowAsPage`).default;
 
 const currentPath = path.basename(__dirname);
 
@@ -59,6 +59,6 @@ base(TABLE_NAME)
     }
   );
 
-fs.copyFile("custom/index.css", "dist/index.css", () =>
+fs.copyFile("custom/main.css", "dist/main.css", () =>
   console.log("CSS has been copied")
 );
