@@ -62,7 +62,7 @@ export default class App extends React.Component {
     return (
       <div>
         {rows.map(row => (
-          <Row rowData={row} />
+          <Row key={row.id} rowData={row} />
         ))}
       </div>
     );
