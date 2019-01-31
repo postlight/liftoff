@@ -5,7 +5,7 @@ const TextField = ({ name, data }) => {
   return (
     <div className={`${name.replace(/\s/g, "")} field`}>
       <h2 className="field-name">{name}</h2>
-      <p className="field-value">{data}</p>
+      <span className="field-value">{data}</span>
     </div>
   );
 };
