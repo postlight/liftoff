@@ -1,10 +1,14 @@
 require("dotenv").config();
+const React = require("react");
 const fs = require("fs");
 const path = require("path");
 const Airtable = require("airtable");
 const _ = require("underscore");
 
-const renderRow = require(`./src/renderRowAsPage`).default;
+const App = require("./src/App").default;
+const Row = require("./src/Row").default;
+
+const renderAsHTMLPage = require(`./src/renderAsHTMLPage`).default;
 
 const currentPath = path.basename(__dirname);
 
@@ -19,6 +23,8 @@ const {
 fs.mkdir(`${currentPath}/html`, () => console.log("/html directory created."));
 
 const base = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(BASE_ID);
+
+const allRows = [];
 
 base(TABLE_NAME)
   .select({
@@ -44,15 +50,28 @@ base(TABLE_NAME)
         const slug = (slugField && slugField.value) || row.id;
         const filepath = `dist/html/${slug}.html`;
 
-        fs.writeFile(filepath, renderRow({ ...row, fields }), () => {
-          console.log(`${filepath} written`);
-        });
+        const formattedRow = { ...row, fields };
+        allRows.push(formattedRow);
+        fs.writeFile(
+          filepath,
+          renderAsHTMLPage(<Row rowData={formattedRow} />),
+          () => {
+            console.log(`${filepath} written`);
+          }
+        );
       });
 
       // calls page function again while there are still pages left
       fetchNextPage();
     },
     function done(err) {
+      fs.writeFile(
+        "dist/html/index.html",
+        renderAsHTMLPage(<App rows={allRows} />),
+        () => {
+          console.log(`${"dist/html/index.html"} written`);
+        }
+      );
       if (err) {
         console.error(err);
       }

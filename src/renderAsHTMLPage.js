@@ -1,9 +1,6 @@
-import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
-import Row from "./Row";
-
-const renderRowAsPage = rowData => `
+const renderAsHTMLPage = component => `
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,9 +11,9 @@ const renderRowAsPage = rowData => `
   <link rel="stylesheet" type="text/css" media="screen" href="../main.css" />
 </head>
 <body>
-  ${renderToStaticMarkup(<Row rowData={rowData} />)}
+  ${renderToStaticMarkup(component)}
 </body>
 </html>
 `;
 
-export default renderRowAsPage;
+export default renderAsHTMLPage;

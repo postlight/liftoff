@@ -1,3 +1,8 @@
 body {
   padding: 25px;
 }
+
+.row-link {
+  text-decoration: none;
+  color: black;
+}
