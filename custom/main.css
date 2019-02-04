@@ -15,3 +15,67 @@ ul {
   list-style: none;
   padding: 0;
 }
+
+body {
+  max-width: 600px;
+  margin: auto;
+}
+
+.field-name {
+  display: none;
+  visibility: hidden;
+}
+
+.Category {
+  color: #13b49d;
+  text-decoration: none;
+  font-family: Flama Condensed, Roboto Condensed, Trebuchet MS, Lucida Grande,
+    Tahoma, sans-serif;
+  font-weight: 500;
+  display: inline-block;
+  font-size: 1.1875rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.Name {
+  font-family: Flama Condensed, Roboto Condensed, Trebuchet MS, Lucida Grande,
+    Tahoma, sans-serif;
+  font-weight: 500;
+  font-size: 2rem;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.Dek {
+  color: #75757d;
+  font-size: 1rem;
+  letter-spacing: -0.15px;
+  line-height: 1.6;
+  margin: 0.9rem 0 1rem;
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
+.Author {
+  color: #13b49d;
+  text-decoration: none;
+  font-size: 1.0625rem;
+}
+
+.Author::before {
+  content: "By ";
+  display: inline;
+  color: black;
+}
+
+.Body {
+  white-space: pre-line;
+  font-size: 1.0625rem;
+  line-height: 1.88;
+  margin: 0;
+}
