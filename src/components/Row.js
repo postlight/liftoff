@@ -3,11 +3,21 @@ import PropTypes from "prop-types";
 import _ from "underscore";
 
 import TextField from "./TextField";
+import Attachments from "./Attachments";
 
 const getRenderer = field => {
-  if (typeof field.value === "string" || typeof field.value === "number") {
-    return <TextField key={field.name} name={field.name} data={field.value} />;
+  const { value, name } = field;
+  if (typeof value === "string" || typeof value === "number") {
+    return <TextField key={name} name={name} data={value} />;
   }
+
+  if (Array.isArray(value)) {
+    // is attachment
+    if (value.length && value[0].size) {
+      return <Attachments key={name} fieldName={name} attachments={value} />;
+    }
+  }
+
   return <div />;
 };
 
