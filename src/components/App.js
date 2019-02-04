@@ -19,6 +19,7 @@ export default class App extends React.Component {
 
     const that = this;
 
+    // use env variables
     const base = new Airtable({ apiKey: "keytiww9JX4VrEZXr" }).base(
       "app0iDXjSahHmCjKK"
     );

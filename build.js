@@ -4,10 +4,10 @@ const fs = require("fs");
 const Airtable = require("airtable");
 const _ = require("underscore");
 
-const App = require("./src/App").default;
-const Row = require("./src/Row").default;
+const App = require("./src/components/App").default;
+const Row = require("./src/components/Row").default;
 
-const renderAsHTMLPage = require(`./src/renderAsHTMLPage`).default;
+const renderAsHTMLPage = require(`./src/utils/renderAsHTMLPage`).default;
 
 const {
   AIRTABLE_API_KEY,

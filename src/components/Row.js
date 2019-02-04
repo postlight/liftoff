@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import _ from "underscore";
 
-import TextField from "./renderers/TextField";
+import TextField from "./TextField";
 
 const getRenderer = field => {
   if (typeof field.value === "string" || typeof field.value === "number") {
