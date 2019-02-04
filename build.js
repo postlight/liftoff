@@ -1,7 +1,6 @@
 require("dotenv").config();
 const React = require("react");
 const fs = require("fs");
-const path = require("path");
 const Airtable = require("airtable");
 const _ = require("underscore");
 
@@ -9,8 +8,6 @@ const App = require("./src/App").default;
 const Row = require("./src/Row").default;
 
 const renderAsHTMLPage = require(`./src/renderAsHTMLPage`).default;
-
-const currentPath = path.basename(__dirname);
 
 const {
   AIRTABLE_API_KEY,

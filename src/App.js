@@ -12,13 +12,12 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    let { rows } = this.props;
-    if (rows) {
+    const { rows } = this.props;
+    if (rows.length) {
       return;
     }
-    // const slug = window.location.pathname.split("/")[1];
+
     const that = this;
-    rows = [];
 
     const base = new Airtable({ apiKey: "keytiww9JX4VrEZXr" }).base(
       "app0iDXjSahHmCjKK"
