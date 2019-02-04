@@ -18,12 +18,12 @@ export default class RowPage extends React.Component {
     } = this.props;
     // TODO: use env variables
     const base = new Airtable({
-      apiKey: "keytiww9JX4VrEZXr"
-    }).base("app0iDXjSahHmCjKK");
+      apiKey: process.env.AIRTABLE_API_KEY
+    }).base(process.env.BASE_ID);
 
     const that = this;
     // TODO: use env variables
-    base("Blog site").find(slugOrId, (err, record) => {
+    base(process.env.TABLE_NAME).find(slugOrId, (err, record) => {
       that.setState({
         row: formatAirtableRowData(record)
       });

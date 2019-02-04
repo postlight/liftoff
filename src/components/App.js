@@ -31,17 +31,14 @@ export default class App extends React.Component {
 
     const that = this;
 
-    // TODO: use env variables
     const base = new Airtable({
-      apiKey: "keytiww9JX4VrEZXr"
-    }).base("app0iDXjSahHmCjKK");
+      apiKey: process.env.AIRTABLE_API_KEY
+    }).base(process.env.BASE_ID);
 
-    // TODO: use env variables
-    base("Blog site")
+    base(process.env.TABLE_NAME)
       .select({
         maxRecords: 100,
-        // TODO: use env variables
-        view: "Grid view"
+        view: process.env.VIEW
       })
       .eachPage(
         function page(records, fetchNextPage) {
@@ -51,10 +48,12 @@ export default class App extends React.Component {
               value
             }));
 
-            // TODO: use env variables
-            const fieldOrderMapped = "Name,Body"
+            const fieldOrderMapped = process.env.FIELD_ORDER
               ? _.object(
-                  "Name,Body".split(",").map((field, idx) => [field, idx])
+                  process.env.FIELD_ORDER.split(",").map((field, idx) => [
+                    field,
+                    idx
+                  ])
                 )
               : null;
             const fields = fieldOrderMapped

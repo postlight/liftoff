@@ -1,4 +1,16 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
+const dotenv = require("dotenv");
+
+dotenv.config();
+
+const {
+  AIRTABLE_API_KEY,
+  BASE_ID,
+  TABLE_NAME,
+  VIEW,
+  FIELD_ORDER
+} = process.env;
 
 const htmlPlugin = new HtmlWebPackPlugin({
   template: "./public/index.html",
@@ -7,7 +19,8 @@ const htmlPlugin = new HtmlWebPackPlugin({
 
 module.exports = {
   output: {
-    filename: "bundle.js"
+    filename: "bundle.js",
+    library: ["env"]
   },
   entry: "./src/index.js",
   mode: "development",
@@ -20,5 +33,14 @@ module.exports = {
       }
     ]
   },
-  plugins: [htmlPlugin]
+  plugins: [
+    htmlPlugin,
+    new webpack.EnvironmentPlugin([
+      "AIRTABLE_API_KEY",
+      "BASE_ID",
+      "TABLE_NAME",
+      "VIEW",
+      "FIELD_ORDER"
+    ])
+  ]
 };
