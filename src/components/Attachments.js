@@ -23,10 +23,19 @@ const Attachments = ({ attachments, fieldName }) => (
     <h2 className="field-name">{fieldName}</h2>
     <ul className="field-value">
       {attachments.map(attachment => (
-        <li>{mapAttachmentToComponent(attachment)}</li>
+        <li key={attachment.id}>{mapAttachmentToComponent(attachment)}</li>
       ))}
     </ul>
   </div>
 );
+
+Attachments.propTypes = {
+  fieldName: PropTypes.string.isRequired,
+  attachments: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired
+    })
+  ).isRequired
+};
 
 export default Attachments;
