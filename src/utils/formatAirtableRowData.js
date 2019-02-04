@@ -1,6 +1,7 @@
 import _ from "underscore";
 
 const formatAirtableRowData = row => {
+  debugger;
   const fieldsArray = _.map(row.fields, (value, name) => ({
     name,
     value
@@ -13,6 +14,7 @@ const formatAirtableRowData = row => {
   const fields = fieldOrderMapped
     ? _.sortBy(fieldsArray, field => fieldOrderMapped[field.name])
     : fieldsArray;
+  console.log(fields);
   return { ...row, fields };
 };
 
