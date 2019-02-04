@@ -1,8 +1,9 @@
+import formatAirtableRowData from "./src/utils/formatAirtableRowData";
+
 require("dotenv").config();
 const React = require("react");
 const fs = require("fs");
 const Airtable = require("airtable");
-const _ = require("underscore");
 
 const App = require("./src/components/App").default;
 const Row = require("./src/components/Row").default;
@@ -29,23 +30,14 @@ base(TABLE_NAME)
   .eachPage(
     function page(records, fetchNextPage) {
       records.forEach(row => {
-        const fieldsArray = _.map(row.fields, (value, name) => ({
-          name,
-          value
-        }));
+        const formattedRow = formatAirtableRowData(row, FIELD_ORDER);
 
-        const fieldOrderMapped = FIELD_ORDER
-          ? _.object(FIELD_ORDER.split(",").map((field, idx) => [field, idx]))
-          : null;
-        const fields = fieldOrderMapped
-          ? _.sortBy(fieldsArray, field => fieldOrderMapped[field.name])
-          : fieldsArray;
-
-        const slugField = fields.find(field => field.name === "_Slug");
-        const slug = (slugField && slugField.value) || row.id;
+        const slugField = formattedRow.fields.find(
+          field => field.name === "_Slug"
+        );
+        const slug = (slugField && slugField.value) || formattedRow.id;
         const filepath = `dist/${slug}.html`;
 
-        const formattedRow = { ...row, fields };
         allRows.push(formattedRow);
         fs.writeFile(
           filepath,
