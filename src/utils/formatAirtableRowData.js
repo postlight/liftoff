@@ -5,6 +5,7 @@ const formatAirtableRowData = row => {
     name,
     value
   }));
+  console.log(process.env.FIELD_ORDER);
   const fieldOrderMapped = process.env.FIELD_ORDER
     ? _.object(
         process.env.FIELD_ORDER.split(",").map((field, idx) => [field, idx])
