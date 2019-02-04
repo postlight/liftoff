@@ -30,7 +30,7 @@ base(TABLE_NAME)
   .eachPage(
     function page(records, fetchNextPage) {
       records.forEach(row => {
-        const formattedRow = formatAirtableRowData(row, FIELD_ORDER);
+        const formattedRow = formatAirtableRowData(row);
 
         const slugField = formattedRow.fields.find(
           field => field.name === "_Slug"
