@@ -1,7 +1,6 @@
 import _ from "underscore";
 
 const formatAirtableRowData = row => {
-  debugger;
   const fieldsArray = _.map(row.fields, (value, name) => ({
     name,
     value
