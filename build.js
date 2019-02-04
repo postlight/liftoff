@@ -20,8 +20,6 @@ const {
   FIELD_ORDER
 } = process.env;
 
-fs.mkdir(`${currentPath}/html`, () => console.log("/html directory created."));
-
 const base = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(BASE_ID);
 
 const allRows = [];
@@ -48,7 +46,7 @@ base(TABLE_NAME)
 
         const slugField = fields.find(field => field.name === "_Slug");
         const slug = (slugField && slugField.value) || row.id;
-        const filepath = `dist/html/${slug}.html`;
+        const filepath = `dist/${slug}.html`;
 
         const formattedRow = { ...row, fields };
         allRows.push(formattedRow);
@@ -66,10 +64,10 @@ base(TABLE_NAME)
     },
     function done(err) {
       fs.writeFile(
-        "dist/html/index.html",
+        "dist/index.html",
         renderAsHTMLPage(<App rows={allRows} />),
         () => {
-          console.log(`${"dist/html/index.html"} written`);
+          console.log(`${"dist/index.html"} written`);
         }
       );
       if (err) {
