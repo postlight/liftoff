@@ -47,7 +47,7 @@ export default class RowPage extends React.Component {
         {metadata && metadata.HeaderTitle && (
           <Header title={metadata.HeaderTitle} />
         )}
-        <Row rowData={row} />{" "}
+        <Row rowData={row} />
       </div>
     ) : (
       <div />

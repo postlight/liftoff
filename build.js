@@ -51,7 +51,8 @@ const allRows = [];
             filepath,
             renderAsHTMLPage(
               <Row metadata={metadata} rowData={formattedRow} />,
-              metadata.HeaderTitle && <Header title={metadata.HeaderTitle} />
+              metadata.HeaderTitle && <Header title={metadata.HeaderTitle} />,
+              metadata
             ),
             () => {
               console.log(`${filepath} written`);
@@ -70,7 +71,8 @@ const allRows = [];
           "dist/index.html",
           renderAsHTMLPage(
             <App metadata={metadata} rows={allRows} />,
-            metadata.HeaderTitle && <Header title={metadata.HeaderTitle} />
+            metadata.HeaderTitle && <Header title={metadata.HeaderTitle} />,
+            metadata
           ),
           () => {
             console.log(`${"dist/index.html"} written`);
