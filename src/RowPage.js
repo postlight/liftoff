@@ -3,6 +3,7 @@ import Airtable from "airtable";
 import PropTypes from "prop-types";
 
 import Row from "./components/Row";
+import Header from "./components/Header";
 import formatAirtableRowData from "./utils/formatAirtableRowData";
 
 export default class RowPage extends React.Component {
@@ -29,11 +30,28 @@ export default class RowPage extends React.Component {
         row: formatAirtableRowData(record)
       });
     });
+
+    base(process.env.METATABLE_NAME)
+      .select()
+      .firstPage((err, record) => {
+        that.setState({
+          metadata: record && record[0] && record[0].fields
+        });
+      });
   }
 
   render() {
-    const { row } = this.state;
-    return row ? <Row rowData={row} /> : <div />;
+    const { row, metadata } = this.state;
+    return row ? (
+      <div>
+        {metadata && metadata.HeaderTitle && (
+          <Header title={metadata.HeaderTitle} />
+        )}
+        <Row rowData={row} />{" "}
+      </div>
+    ) : (
+      <div />
+    );
   }
 }
 

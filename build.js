@@ -7,6 +7,7 @@ const Airtable = require("airtable");
 
 const App = require("./src/components/App").default;
 const Row = require("./src/components/Row").default;
+const Header = require("./src/components/Header").default;
 
 const renderAsHTMLPage = require(`./src/utils/renderAsHTMLPage`).default;
 
@@ -49,7 +50,8 @@ const allRows = [];
           fs.writeFile(
             filepath,
             renderAsHTMLPage(
-              <Row metadata={metadata} rowData={formattedRow} />
+              <Row metadata={metadata} rowData={formattedRow} />,
+              metadata.HeaderTitle && <Header title={metadata.HeaderTitle} />
             ),
             () => {
               console.log(`${filepath} written`);
@@ -66,7 +68,10 @@ const allRows = [];
         }
         fs.writeFile(
           "dist/index.html",
-          renderAsHTMLPage(<App metadata={metadata} rows={allRows} />),
+          renderAsHTMLPage(
+            <App metadata={metadata} rows={allRows} />,
+            metadata.HeaderTitle && <Header title={metadata.HeaderTitle} />
+          ),
           () => {
             console.log(`${"dist/index.html"} written`);
           }

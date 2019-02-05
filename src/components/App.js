@@ -117,7 +117,8 @@ export default class App extends React.Component {
 
     return (
       <div className="index-page">
-        {metadata && metadata.HeaderTitle && (
+        {/* this needs to be refactored, shouldn't have check for window here */}
+        {typeof window !== "undefined" && metadata && metadata.HeaderTitle && (
           <Header title={metadata.HeaderTitle} />
         )}
         {rows.map(row => {

@@ -1,6 +1,6 @@
 import { renderToStaticMarkup } from "react-dom/server";
 
-const renderAsHTMLPage = component => `
+const renderAsHTMLPage = (component, header) => `
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +11,7 @@ const renderAsHTMLPage = component => `
   <link rel="stylesheet" type="text/css" media="screen" href="./main.css" />
 </head>
 <body>
+  ${header && renderToStaticMarkup(header)}
   ${renderToStaticMarkup(component)}
 </body>
 </html>
