@@ -21,18 +21,23 @@ const getRenderer = field => {
   return <div />;
 };
 
-const Row = ({ rowData }) => (
+const Row = ({ rowData, fieldsToHide }) => (
   <div className="row">
     {_.chain(rowData.fields)
       // fields with names starting with "_" are not meant to be displayed
-      .map(field => (!field.name.startsWith("_") ? getRenderer(field) : null))
+      .map(field =>
+        !field.name.startsWith("_") && !fieldsToHide.includes(field.name)
+          ? getRenderer(field)
+          : null
+      )
       .filter(renderer => !!renderer)
       .value()}
   </div>
 );
 
 Row.defaultProps = {
-  rowData: {}
+  rowData: {},
+  fieldsToHide: []
 };
 
 Row.propTypes = {
@@ -42,7 +47,8 @@ Row.propTypes = {
         name: PropTypes.string.isRequired
       })
     )
-  })
+  }),
+  fieldsToHide: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default Row;

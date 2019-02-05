@@ -15,55 +15,65 @@ const {
   BASE_ID,
   TABLE_NAME,
   VIEW,
-  FIELD_ORDER
+  METATABLE_NAME
 } = process.env;
 
 const base = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(BASE_ID);
 
 const allRows = [];
 
-base(TABLE_NAME)
-  .select({
-    maxRecords: 100,
-    view: VIEW
-  })
-  .eachPage(
-    function page(records, fetchNextPage) {
-      records.forEach(row => {
-        const formattedRow = formatAirtableRowData(row);
+(METATABLE_NAME
+  ? base(METATABLE_NAME)
+      .select()
+      .firstPage()
+  : Promise.resolve()
+).then(result => {
+  const metadata = result && result[0] && result[0].fields;
+  base(TABLE_NAME)
+    .select({
+      maxRecords: 100,
+      view: VIEW
+    })
+    .eachPage(
+      function page(records, fetchNextPage) {
+        records.forEach(row => {
+          const formattedRow = formatAirtableRowData(row);
 
-        const slugField = formattedRow.fields.find(
-          field => field.name === "_Slug"
-        );
-        const slug = (slugField && slugField.value) || formattedRow.id;
-        const filepath = `dist/${slug}.html`;
+          const slugField = formattedRow.fields.find(
+            field => field.name === "_Slug"
+          );
+          const slug = (slugField && slugField.value) || formattedRow.id;
+          const filepath = `dist/${slug}.html`;
 
-        allRows.push(formattedRow);
+          allRows.push(formattedRow);
+          fs.writeFile(
+            filepath,
+            renderAsHTMLPage(
+              <Row metadata={metadata} rowData={formattedRow} />
+            ),
+            () => {
+              console.log(`${filepath} written`);
+            }
+          );
+        });
+
+        // calls page function again while there are still pages left
+        fetchNextPage();
+      },
+      err => {
+        if (err) {
+          console.log(err);
+        }
         fs.writeFile(
-          filepath,
-          renderAsHTMLPage(<Row rowData={formattedRow} />),
+          "dist/index.html",
+          renderAsHTMLPage(<App metadata={metadata} rows={allRows} />),
           () => {
-            console.log(`${filepath} written`);
+            console.log(`${"dist/index.html"} written`);
           }
         );
-      });
-
-      // calls page function again while there are still pages left
-      fetchNextPage();
-    },
-    function done(err) {
-      fs.writeFile(
-        "dist/index.html",
-        renderAsHTMLPage(<App rows={allRows} />),
-        () => {
-          console.log(`${"dist/index.html"} written`);
-        }
-      );
-      if (err) {
-        console.error(err);
       }
-    }
-  );
+    );
+});
 
 fs.copyFile("custom/main.css", "dist/main.css", () =>
   console.log("CSS has been copied")

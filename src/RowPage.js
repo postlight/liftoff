@@ -1,5 +1,6 @@
 import React from "react";
 import Airtable from "airtable";
+import PropTypes from "prop-types";
 
 import Row from "./components/Row";
 import formatAirtableRowData from "./utils/formatAirtableRowData";
@@ -24,7 +25,6 @@ export default class RowPage extends React.Component {
     const that = this;
     // TODO: use env variables
     base(process.env.TABLE_NAME).find(slugOrId, (err, record) => {
-      console.log(formatAirtableRowData(record));
       that.setState({
         row: formatAirtableRowData(record)
       });
@@ -36,3 +36,11 @@ export default class RowPage extends React.Component {
     return row ? <Row rowData={row} /> : <div />;
   }
 }
+
+RowPage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      slugOrId: PropTypes.string
+    })
+  }).isRequired
+};

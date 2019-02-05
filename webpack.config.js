@@ -4,14 +4,6 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-const {
-  AIRTABLE_API_KEY,
-  BASE_ID,
-  TABLE_NAME,
-  VIEW,
-  FIELD_ORDER
-} = process.env;
-
 const htmlPlugin = new HtmlWebPackPlugin({
   template: "./public/index.html",
   filename: "./index.html"
@@ -40,7 +32,8 @@ module.exports = {
       "BASE_ID",
       "TABLE_NAME",
       "VIEW",
-      "FIELD_ORDER"
+      "FIELD_ORDER",
+      "METATABLE_NAME"
     ])
   ]
 };
