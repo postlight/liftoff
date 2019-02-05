@@ -4,6 +4,7 @@ require("dotenv").config();
 const React = require("react");
 const fs = require("fs");
 const Airtable = require("airtable");
+const https = require("https");
 
 const App = require("./src/components/App").default;
 const Row = require("./src/components/Row").default;
@@ -23,6 +24,7 @@ const base = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(BASE_ID);
 
 const allRows = [];
 
+// if there's a metatable, it needs to be requested prior to the main table
 (METATABLE_NAME
   ? base(METATABLE_NAME)
       .select()
@@ -78,6 +80,22 @@ const allRows = [];
             console.log(`${"dist/index.html"} written`);
           }
         );
+
+        if (metadata.Favicon) {
+          const file = fs.createWriteStream("dist/favicon.ico");
+          https
+            .get(metadata.Favicon[0].url, response => {
+              response.pipe(file);
+              file.on("finish", () => {
+                file.close();
+                console.log("favicon downloaded + copied to /dist");
+              });
+            })
+            .on("error", fileErr => {
+              console.log(fileErr);
+              fs.unlink("dist/favicon.ico"); // Delete the file async. (But we don't check the result)
+            });
+        }
       }
     );
 });
