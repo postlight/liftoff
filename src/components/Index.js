@@ -164,10 +164,15 @@ Index.propTypes = {
   ),
   metadata: PropTypes.shape({
     HomepageHiddenFields: PropTypes.string
+  }),
+  pagination: PropTypes.shape({
+    back: PropTypes.string,
+    next: PropTypes.string
   })
 };
 
 Index.defaultProps = {
   rows: [],
-  metadata: {}
+  metadata: {},
+  pagination: null
 };
