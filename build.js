@@ -86,11 +86,15 @@ fs.mkdir(`${currentPath}/page`, () => {
           console.log(err);
         }
 
-        const writeFile = (idx, filepath) =>
+        const writeFile = (idx, filepath, pagination) =>
           fs.writeFile(
             filepath,
             renderAsHTMLPage(
-              <Index metadata={metadata} rows={allRows[idx]} />,
+              <Index
+                metadata={metadata}
+                rows={allRows[idx]}
+                pagination={pagination}
+              />,
               metadata.HeaderTitle && <Header title={metadata.HeaderTitle} />,
               metadata
             ),
@@ -102,12 +106,16 @@ fs.mkdir(`${currentPath}/page`, () => {
         allRows.forEach((row, idx) => {
           const pageFilepath = `dist/page/${idx + 1}.html`;
           const indexFilepath = `dist/index.html`;
+          const pagination = {
+            back: idx > 0 ? `/dist/page/${idx}.html` : null,
+            next: idx < allRows.length - 1 ? `/dist/page/${idx + 2}.html` : null
+          };
           if (idx === 0) {
             // write index page at /
-            writeFile(idx, indexFilepath);
+            writeFile(idx, indexFilepath, pagination);
           }
           // write page files for pagination
-          writeFile(idx, pageFilepath);
+          writeFile(idx, pageFilepath, pagination);
         });
 
         // download favicon if available

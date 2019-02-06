@@ -7,14 +7,14 @@ import { Link } from "react-router-dom";
 import Header from "./Header";
 import Row from "./Row";
 
-const LinkOrAnchor = ({ row, slug, fieldsToHide }) =>
+const LinkOrAnchor = ({ to, children }) =>
   typeof window === "undefined" ? (
-    <a key={row.id} className="row-link" href={`/dist/${slug}.html`}>
-      <Row fieldsToHide={fieldsToHide} key={row.id} rowData={row} />
+    <a className="row-link" href={to}>
+      {children}
     </a>
   ) : (
-    <Link key={row.id} className="row-link" to={`/dist/${row.id}.html`}>
-      <Row fieldsToHide={fieldsToHide} key={row.id} rowData={row} />
+    <Link className="row-link" to={to}>
+      {children}
     </Link>
   );
 
@@ -36,7 +36,7 @@ LinkOrAnchor.defaultProps = {
   slug: "",
   fieldsToHide: null
 };
-export default class App extends React.Component {
+export default class Index extends React.Component {
   constructor(props) {
     super(props);
     this.state = { rows: props.rows, metadata: props.metadata };
@@ -110,6 +110,7 @@ export default class App extends React.Component {
 
   render() {
     const { rows, metadata } = this.state;
+    const { pagination } = this.props;
 
     const fieldsToHide = metadata.HomepageHiddenFields
       ? metadata.HomepageHiddenFields.split(", ")
@@ -124,21 +125,33 @@ export default class App extends React.Component {
         {rows.map(row => {
           const slugField = _.find(row.fields, field => field.name === "_Slug");
           const slug = (slugField && slugField.value) || row.id;
+
           return (
-            <LinkOrAnchor
-              fieldsToHide={fieldsToHide}
-              key={row.id}
-              row={row}
-              slug={slug}
-            />
+            <LinkOrAnchor to={`/dist/${slug}.html`}>
+              <Row fieldsToHide={fieldsToHide} key={row.id} rowData={row} />
+            </LinkOrAnchor>
           );
         })}
+        {pagination && (
+          <div>
+            {pagination.back && (
+              <LinkOrAnchor to={pagination.back}>
+                <span>Back</span>
+              </LinkOrAnchor>
+            )}
+            {pagination.next && (
+              <LinkOrAnchor to={pagination.next}>
+                <span>Next</span>
+              </LinkOrAnchor>
+            )}
+          </div>
+        )}
       </div>
     );
   }
 }
 
-App.propTypes = {
+Index.propTypes = {
   rows: PropTypes.arrayOf(
     PropTypes.shape({
       fields: PropTypes.arrayOf(
@@ -154,7 +167,7 @@ App.propTypes = {
   })
 };
 
-App.defaultProps = {
+Index.defaultProps = {
   rows: [],
   metadata: {}
 };
