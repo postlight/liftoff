@@ -29,11 +29,14 @@ LinkOrAnchor.propTypes = {
 export default class Index extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { rows: props.rows, metadata: props.metadata };
+    this.state = {
+      rows: [...props.rows],
+      metadata: Object.assign({}, props.metadata)
+    };
   }
 
   componentDidMount() {
-    const { rows } = this.props;
+    const { rows } = this.state;
     // if there are already rows, don't need to refetch
     if (rows.length) {
       return;
