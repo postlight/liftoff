@@ -63,6 +63,8 @@ fs.mkdir(`${currentPath}/page`, () => {
             recordsOnCurrentPage = 0;
             currentPage += 1;
           }
+
+          // write individual resource page files
           fs.writeFile(
             filepath,
             renderAsHTMLPage(
@@ -101,11 +103,14 @@ fs.mkdir(`${currentPath}/page`, () => {
           const pageFilepath = `dist/page/${idx + 1}.html`;
           const indexFilepath = `dist/index.html`;
           if (idx === 0) {
+            // write index page at /
             writeFile(idx, indexFilepath);
           }
+          // write page files for pagination
           writeFile(idx, pageFilepath);
         });
 
+        // download favicon if available
         if (metadata.Favicon) {
           const file = fs.createWriteStream("dist/favicon.ico");
           https
