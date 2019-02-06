@@ -1,6 +1,7 @@
 import { renderToStaticMarkup } from "react-dom/server";
 
-const renderAsHTMLPage = (component, header, metadata) => `
+const renderAsHTMLPage = (component, header, metadata, filepathDepth = 0) =>
+  `
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,11 @@ const renderAsHTMLPage = (component, header, metadata) => `
     (metadata && metadata.HeaderTitle) ||
     "Homepage"}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="./main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="${
+    console.log(filepathDepth === 0 ? "." : "..") || filepathDepth === 0
+      ? "."
+      : ".."
+  }/main.css" />
   ${metadata.Favicon && '<link rel="shortcut icon" href="./favicon.ico" />'}
 </head>
 <body>

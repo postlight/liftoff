@@ -9,11 +9,11 @@ import Row from "./Row";
 
 const LinkOrAnchor = ({ row, slug, fieldsToHide }) =>
   typeof window === "undefined" ? (
-    <a key={row.id} className="row-link" href={`./${slug}.html`}>
+    <a key={row.id} className="row-link" href={`/dist/${slug}.html`}>
       <Row fieldsToHide={fieldsToHide} key={row.id} rowData={row} />
     </a>
   ) : (
-    <Link key={row.id} className="row-link" to={`./${row.id}`}>
+    <Link key={row.id} className="row-link" to={`./dist/${row.id}`}>
       <Row fieldsToHide={fieldsToHide} key={row.id} rowData={row} />
     </Link>
   );

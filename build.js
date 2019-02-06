@@ -5,6 +5,7 @@ const React = require("react");
 const fs = require("fs");
 const Airtable = require("airtable");
 const https = require("https");
+const path = require("path");
 
 const App = require("./src/components/App").default;
 const Row = require("./src/components/Row").default;
@@ -22,7 +23,12 @@ const {
 
 const base = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(BASE_ID);
 
-const allRows = [];
+const allRows = [[]];
+
+const currentPath = path.basename(__dirname);
+fs.mkdir(`${currentPath}/page`, () => {
+  console.log("/page directory created.");
+});
 
 // if there's a metatable, it needs to be requested prior to the main table
 (METATABLE_NAME
@@ -32,14 +38,18 @@ const allRows = [];
   : Promise.resolve()
 ).then(result => {
   const metadata = result && result[0] && result[0].fields;
+  let currentPage = 0;
+  let recordsOnCurrentPage = 0;
   base(TABLE_NAME)
     .select({
-      maxRecords: 100,
       view: VIEW
     })
     .eachPage(
       function page(records, fetchNextPage) {
         records.forEach(row => {
+          if (!allRows[currentPage]) {
+            allRows.push([]);
+          }
           const formattedRow = formatAirtableRowData(row);
 
           const slugField = formattedRow.fields.find(
@@ -47,8 +57,12 @@ const allRows = [];
           );
           const slug = (slugField && slugField.value) || formattedRow.id;
           const filepath = `dist/${slug}.html`;
-
-          allRows.push(formattedRow);
+          allRows[currentPage].push(formattedRow);
+          recordsOnCurrentPage += 1;
+          if (recordsOnCurrentPage >= 10) {
+            recordsOnCurrentPage = 0;
+            currentPage += 1;
+          }
           fs.writeFile(
             filepath,
             renderAsHTMLPage(
@@ -69,17 +83,29 @@ const allRows = [];
         if (err) {
           console.log(err);
         }
-        fs.writeFile(
-          "dist/index.html",
-          renderAsHTMLPage(
-            <App metadata={metadata} rows={allRows} />,
-            metadata.HeaderTitle && <Header title={metadata.HeaderTitle} />,
-            metadata
-          ),
-          () => {
-            console.log(`${"dist/index.html"} written`);
+
+        const writeFile = (idx, filepath, filepathDepth) =>
+          fs.writeFile(
+            filepath,
+            renderAsHTMLPage(
+              <App metadata={metadata} rows={allRows[idx]} />,
+              metadata.HeaderTitle && <Header title={metadata.HeaderTitle} />,
+              metadata,
+              filepathDepth
+            ),
+            () => {
+              console.log(`${filepath} written`);
+            }
+          );
+
+        allRows.forEach((row, idx) => {
+          const pageFilepath = `dist/page/${idx + 1}.html`;
+          const indexFilepath = `dist/index.html`;
+          if (idx === 0) {
+            writeFile(idx, indexFilepath);
           }
-        );
+          writeFile(idx, pageFilepath, 1);
+        });
 
         if (metadata.Favicon) {
           const file = fs.createWriteStream("dist/favicon.ico");
