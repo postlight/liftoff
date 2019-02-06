@@ -13,7 +13,7 @@ const LinkOrAnchor = ({ row, slug, fieldsToHide }) =>
       <Row fieldsToHide={fieldsToHide} key={row.id} rowData={row} />
     </a>
   ) : (
-    <Link key={row.id} className="row-link" to={`/dist/${row.id}`}>
+    <Link key={row.id} className="row-link" to={`/dist/${row.id}.html`}>
       <Row fieldsToHide={fieldsToHide} key={row.id} rowData={row} />
     </Link>
   );
