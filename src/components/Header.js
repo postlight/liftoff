@@ -1,20 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Header = ({ title, links }) => (
+const Header = ({ title }) => (
   <div className="header">
     <h1>{title}</h1>
   </div>
 );
 
 Header.propTypes = {
-  title: PropTypes.string,
-  links: PropTypes.arrayOf(PropTypes.shape({}))
+  title: PropTypes.string
 };
 
 Header.defaultProps = {
-  title: "",
-  links: []
+  title: ""
 };
 
 export default Header;
