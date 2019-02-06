@@ -7,7 +7,7 @@ const Airtable = require("airtable");
 const https = require("https");
 const path = require("path");
 
-const App = require("./src/components/App").default;
+const Index = require("./src/components/Index").default;
 const Row = require("./src/components/Row").default;
 const Header = require("./src/components/Header").default;
 
@@ -88,7 +88,7 @@ fs.mkdir(`${currentPath}/page`, () => {
           fs.writeFile(
             filepath,
             renderAsHTMLPage(
-              <App metadata={metadata} rows={allRows[idx]} />,
+              <Index metadata={metadata} rows={allRows[idx]} />,
               metadata.HeaderTitle && <Header title={metadata.HeaderTitle} />,
               metadata
             ),
