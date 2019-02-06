@@ -55,7 +55,6 @@ export default class Index extends React.Component {
 
       base(process.env.TABLE_NAME)
         .select({
-          maxRecords: 100,
           view: process.env.VIEW
         })
         .eachPage(
@@ -114,10 +113,12 @@ export default class Index extends React.Component {
         )}
         {rows.map(row => {
           const slugField = _.find(row.fields, field => field.name === "_Slug");
-          const slug = (slugField && slugField.value) || row.id;
-
+          const slug =
+            (typeof window === "undefined" && slugField && slugField.value) ||
+            row.id;
+          const extension = typeof window !== "undefined" ? "" : ".html";
           return (
-            <LinkOrAnchor to={`/dist/${slug}.html`}>
+            <LinkOrAnchor to={`/dist/${slug}${extension}`}>
               <Row fieldsToHide={fieldsToHide} key={row.id} rowData={row} />
             </LinkOrAnchor>
           );

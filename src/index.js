@@ -10,7 +10,7 @@ ReactDOM.render(
   <Router>
     <div>
       <Route path="/" exact component={Index} />
-      <Route path="/:slugOrId" component={RowPage} />
+      <Route path="/dist/:slugOrId" component={RowPage} />
     </div>
   </Router>,
   document.getElementById("root")
