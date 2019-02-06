@@ -84,14 +84,13 @@ fs.mkdir(`${currentPath}/page`, () => {
           console.log(err);
         }
 
-        const writeFile = (idx, filepath, filepathDepth) =>
+        const writeFile = (idx, filepath) =>
           fs.writeFile(
             filepath,
             renderAsHTMLPage(
               <App metadata={metadata} rows={allRows[idx]} />,
               metadata.HeaderTitle && <Header title={metadata.HeaderTitle} />,
-              metadata,
-              filepathDepth
+              metadata
             ),
             () => {
               console.log(`${filepath} written`);
@@ -104,7 +103,7 @@ fs.mkdir(`${currentPath}/page`, () => {
           if (idx === 0) {
             writeFile(idx, indexFilepath);
           }
-          writeFile(idx, pageFilepath, 1);
+          writeFile(idx, pageFilepath);
         });
 
         if (metadata.Favicon) {
