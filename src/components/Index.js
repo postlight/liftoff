@@ -118,7 +118,7 @@ export default class Index extends React.Component {
             row.id;
           const extension = typeof window !== "undefined" ? "" : ".html";
           return (
-            <LinkOrAnchor to={`/dist/${slug}${extension}`}>
+            <LinkOrAnchor key={row.id} to={`/dist/${slug}${extension}`}>
               <Row fieldsToHide={fieldsToHide} key={row.id} rowData={row} />
             </LinkOrAnchor>
           );
