@@ -19,23 +19,13 @@ const LinkOrAnchor = ({ to, children }) =>
   );
 
 LinkOrAnchor.propTypes = {
-  row: PropTypes.shape({
-    fields: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string
-      })
-    ),
-    name: PropTypes.string
-  }),
-  slug: PropTypes.string,
-  fieldsToHide: PropTypes.arrayOf(PropTypes.string)
+  to: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 };
 
-LinkOrAnchor.defaultProps = {
-  row: {},
-  slug: "",
-  fieldsToHide: null
-};
 export default class Index extends React.Component {
   constructor(props) {
     super(props);
