@@ -145,7 +145,7 @@ const alreadySeenSlugs = {};
             })
             .on("error", fileErr => {
               console.log(fileErr);
-              fs.unlink("dist/favicon.ico"); // Delete the file async. (But we don't check the result)
+              fs.unlink("dist/favicon.ico", error => console.log(error));
             });
         }
       }
