@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { HashRouter as Router, Route } from "react-router-dom";
 
-import IndexPage from "./IndexPage";
-import RowPage from "./RowPage";
+import IndexPage from "./dev-components/IndexPage";
+import RowPage from "./dev-components/RowPage";
 import "../custom/main.css";
 
 ReactDOM.render(
@@ -14,9 +14,9 @@ ReactDOM.render(
         exact
         component={props => <IndexPage {...props} currentPage={1} />}
       />
-      <Route path="/dist/:slugOrId" exact component={RowPage} />
+      <Route path="/:slugOrId" exact component={RowPage} />
       <Route
-        path="/dist/page/:page"
+        path="/page/:page"
         render={props => (
           <IndexPage
             {...props}

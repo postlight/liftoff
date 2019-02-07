@@ -8,8 +8,7 @@ const https = require("https");
 const path = require("path");
 
 const Index = require("./src/components/Index").default;
-const Row = require("./src/components/Row").default;
-const Header = require("./src/components/Header").default;
+const RowPage = require("./src/components/RowPage").default;
 
 const renderAsHTMLPage = require(`./src/utils/renderAsHTMLPage`).default;
 
@@ -65,11 +64,16 @@ fs.mkdir(`${currentPath}/page`, () => {
           }
 
           // write individual resource page files
+          console.log(
+            renderAsHTMLPage(
+              <RowPage metadata={metadata} rowData={formattedRow} />,
+              metadata
+            )
+          );
           fs.writeFile(
             filepath,
             renderAsHTMLPage(
-              <Row metadata={metadata} rowData={formattedRow} />,
-              metadata.HeaderTitle && <Header title={metadata.HeaderTitle} />,
+              <RowPage metadata={metadata} rowData={formattedRow} />,
               metadata
             ),
             () => {
@@ -95,7 +99,6 @@ fs.mkdir(`${currentPath}/page`, () => {
                 rows={allRows[idx]}
                 pagination={pagination}
               />,
-              metadata.HeaderTitle && <Header title={metadata.HeaderTitle} />,
               metadata
             ),
             () => {
@@ -107,8 +110,8 @@ fs.mkdir(`${currentPath}/page`, () => {
           const pageFilepath = `dist/page/${idx + 1}.html`;
           const indexFilepath = `dist/index.html`;
           const pagination = {
-            back: idx > 0 ? `/dist/page/${idx}.html` : null,
-            next: idx < allRows.length - 1 ? `/dist/page/${idx + 2}.html` : null
+            back: idx > 0 ? `/page/${idx}.html` : null,
+            next: idx < allRows.length - 1 ? `/page/${idx + 2}.html` : null
           };
           if (idx === 0) {
             // write index page at /

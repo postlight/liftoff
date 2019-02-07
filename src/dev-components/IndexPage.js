@@ -3,7 +3,7 @@ import Airtable from "airtable";
 import PropTypes from "prop-types";
 import _ from "underscore";
 
-import Index from "./components/Index";
+import Index from "../components/Index";
 
 export default class IndexPage extends React.Component {
   constructor(props) {
@@ -80,8 +80,8 @@ export default class IndexPage extends React.Component {
             that.setState({
               rows: allRows,
               pagination: {
-                back: backPage ? `/dist/page/${backPage}` : null,
-                next: nextPage ? `/dist/page/${nextPage}` : null
+                back: backPage ? `/page/${backPage}` : null,
+                next: nextPage ? `/page/${nextPage}` : null
               }
             });
           }
@@ -99,8 +99,8 @@ export default class IndexPage extends React.Component {
 
       this.setState({
         pagination: {
-          back: backPage ? `/dist/page/${backPage}` : null,
-          next: nextPage ? `/dist/page/${nextPage}` : null
+          back: backPage ? `/page/${backPage}` : null,
+          next: nextPage ? `/page/${nextPage}` : null
         }
       });
     }

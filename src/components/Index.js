@@ -1,29 +1,10 @@
 import React from "react";
 import _ from "underscore";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 
+import LinkOrAnchor from "./LinkOrAnchor";
 import Header from "./Header";
 import Row from "./Row";
-
-const LinkOrAnchor = ({ to, children }) =>
-  typeof window === "undefined" ? (
-    <a className="row-link" href={to}>
-      {children}
-    </a>
-  ) : (
-    <Link className="row-link" to={to}>
-      {children}
-    </Link>
-  );
-
-LinkOrAnchor.propTypes = {
-  to: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired
-};
 
 const getFieldsToHide = hiddenFields =>
   hiddenFields ? hiddenFields.split(", ") : [];
@@ -41,7 +22,7 @@ const Index = ({ rows, metadata, pagination }) => (
         row.id;
       const extension = typeof window !== "undefined" ? "" : ".html";
       return (
-        <LinkOrAnchor key={row.id} to={`/dist/${slug}${extension}`}>
+        <LinkOrAnchor key={row.id} to={`/${slug}${extension}`}>
           <Row
             fieldsToHide={getFieldsToHide(metadata.HomepageHiddenFields)}
             key={row.id}

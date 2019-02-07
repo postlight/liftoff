@@ -14,7 +14,7 @@ module.exports = {
     filename: "bundle.js",
     library: ["env"]
   },
-  entry: "./src/index.js",
+  entry: "./src/index.dev.js",
   mode: "development",
   module: {
     rules: [

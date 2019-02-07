@@ -2,9 +2,8 @@ import React from "react";
 import Airtable from "airtable";
 import PropTypes from "prop-types";
 
-import Row from "./components/Row";
-import Header from "./components/Header";
-import formatAirtableRowData from "./utils/formatAirtableRowData";
+import Row from "../components/RowPage";
+import formatAirtableRowData from "../utils/formatAirtableRowData";
 
 export default class RowPage extends React.Component {
   constructor(props) {
@@ -42,16 +41,7 @@ export default class RowPage extends React.Component {
 
   render() {
     const { row, metadata } = this.state;
-    return row ? (
-      <div>
-        {metadata && metadata.HeaderTitle && (
-          <Header title={metadata.HeaderTitle} />
-        )}
-        <Row rowData={row} />
-      </div>
-    ) : (
-      <div />
-    );
+    return row ? <Row rowData={row} metadata={metadata} /> : <div />;
   }
 }
 
