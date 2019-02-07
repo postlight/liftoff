@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import formatAirtableRowData from "./src/utils/formatAirtableRowData";
 
 require("dotenv").config();
@@ -29,6 +31,9 @@ fs.mkdir(`${currentPath}/page`, () => {
   console.log("/page directory created.");
 });
 
+// used to make sure multiple pages aren't created for same slug
+const alreadySeenSlugs = {};
+
 // if there's a metatable, it needs to be requested prior to the main table
 (METATABLE_NAME
   ? base(METATABLE_NAME)
@@ -54,7 +59,13 @@ fs.mkdir(`${currentPath}/page`, () => {
           const slugField = formattedRow.fields.find(
             field => field.name === "_Slug"
           );
-          const slug = (slugField && slugField.value) || formattedRow.id;
+          const slug =
+            (slugField &&
+              !alreadySeenSlugs[slugField.value] &&
+              slugField.value) ||
+            formattedRow.id;
+          alreadySeenSlugs[slug] = true;
+
           const filepath = `dist/${slug}.html`;
           allRows[currentPage].push(formattedRow);
           recordsOnCurrentPage += 1;
