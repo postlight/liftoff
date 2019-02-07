@@ -26,9 +26,28 @@ const base = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(BASE_ID);
 
 const allRows = [[]];
 
+const downloadFile = (url, filepath, onSuccess, onError) => {
+  const file = fs.createWriteStream(filepath);
+  https
+    .get(url, response => {
+      response.pipe(file);
+      file.on("finish", () => {
+        file.close();
+        onSuccess && onSuccess();
+      });
+    })
+    .on("error", fileErr => {
+      console.log(fileErr);
+      fs.unlink(filepath, error => onError && onError(error));
+    });
+};
+
 const currentPath = path.basename(__dirname);
 fs.mkdir(`${currentPath}/page`, () => {
   console.log("/page directory created.");
+});
+fs.mkdir(`${currentPath}/assets`, () => {
+  console.log("/assets directory created.");
 });
 
 // used to make sure multiple pages aren't created for same slug
@@ -56,6 +75,21 @@ const alreadySeenSlugs = {};
           }
           const formattedRow = formatAirtableRowData(row);
 
+          const attachmentFields = formattedRow.fields.filter(
+            field =>
+              Array.isArray(field.value) &&
+              field.value[0] &&
+              field.value[0].size
+          );
+
+          attachmentFields.forEach(attachmentField => {
+            attachmentField.value.forEach(attachment => {
+              const newUrl = `/assets/${attachment.id}-${attachment.filename}`;
+              downloadFile(attachment.url, `dist${newUrl}`);
+              attachment.url = newUrl;
+            });
+          });
+
           const slugField = formattedRow.fields.find(
             field => field.name === "_Slug"
           );
@@ -75,12 +109,6 @@ const alreadySeenSlugs = {};
           }
 
           // write individual resource page files
-          console.log(
-            renderAsHTMLPage(
-              <RowPage metadata={metadata} rowData={formattedRow} />,
-              metadata
-            )
-          );
           fs.writeFile(
             filepath,
             renderAsHTMLPage(
@@ -134,19 +162,7 @@ const alreadySeenSlugs = {};
 
         // download favicon if available
         if (metadata.Favicon) {
-          const file = fs.createWriteStream("dist/favicon.ico");
-          https
-            .get(metadata.Favicon[0].url, response => {
-              response.pipe(file);
-              file.on("finish", () => {
-                file.close();
-                console.log("favicon downloaded + copied to /dist");
-              });
-            })
-            .on("error", fileErr => {
-              console.log(fileErr);
-              fs.unlink("dist/favicon.ico", error => console.log(error));
-            });
+          downloadFile(metadata.Favicon[0].url, "dist/favicon.ico");
         }
       }
     );

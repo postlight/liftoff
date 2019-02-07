@@ -43,7 +43,7 @@
   },
   "scripts": {
     "webpack-build": "webpack --config webpack.config.js",
-    "build": "babel src -d dist/src && babel build.js -d dist && node dist/build.js",
+    "build": "babel custom/renderers -d dist/custom/renderers && babel src -d dist/src && babel build.js -d dist && node dist/build.js",
     "start:dev": "webpack-dev-server"
   }
 }
