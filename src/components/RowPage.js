@@ -15,4 +15,21 @@ const RowPage = ({ rowData, metadata }) => (
   </div>
 );
 
+RowPage.propTypes = {
+  rowData: PropTypes.shape({
+    fields: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired
+      })
+    )
+  }).isRequired,
+  metadata: PropTypes.shape({
+    HeaderTitle: PropTypes.string
+  })
+};
+
+RowPage.defaultProps = {
+  metadata: {}
+};
+
 export default RowPage;

@@ -71,6 +71,7 @@ export default class IndexPage extends React.Component {
           },
           err => {
             if (err) {
+              // eslint-disable-next-line no-console
               console.error(err);
             }
             const backPage = currentPage > 1 ? currentPage - 1 : null;
