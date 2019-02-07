@@ -4,9 +4,16 @@ import _ from "underscore";
 
 import TextField from "./TextField";
 import Attachments from "./Attachments";
+import * as customRenderers from "../../custom/renderers";
 
 const getRenderer = field => {
   const { value, name } = field;
+  const customRendererName = name.replace(/\s/g, "");
+  if (customRenderers[customRendererName]) {
+    const Component = customRenderers[customRendererName];
+    return <Component name={name} value={value} />;
+  }
+
   if (typeof value === "string" || typeof value === "number") {
     return <TextField key={name} name={name} data={value} />;
   }
@@ -19,8 +26,9 @@ const getRenderer = field => {
 
     return (
       <div>
-        {value.map(string => (
-          <TextField key={name} name={name} data={string} />
+        {value.map((string, idx) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <TextField key={idx} name={name} data={string} />
         ))}
       </div>
     );
