@@ -16,6 +16,14 @@ const getRenderer = field => {
     if (value.length && value[0].size) {
       return <Attachments key={name} fieldName={name} attachments={value} />;
     }
+
+    return (
+      <div>
+        {value.map(string => (
+          <TextField key={name} name={name} data={string} />
+        ))}
+      </div>
+    );
   }
 
   return <div />;
