@@ -15,6 +15,7 @@ Airtable-as-CMS is TKTKTK
 3. [Development](#development)
 4. [Build](#build)
 5. [Styling](#styling)
+   - [Default classes](#default-classes)
 6. [Custom renderers](#custom-renderers)
 
 ## Getting Started
@@ -97,4 +98,20 @@ Running `yarn build` in a terminal window will execute a build script that will 
 
 ## Styling
 
+Any CSS put in the `main.css` file at `/custom/main.css` will be injected into your site for styling purposes.
+
+Your field names will always be added as classes in the corresponding HTML. So for example, a field called "Title" will generate an HTML element with the class `.Title`. There are other classes that are put in by default detailed below. You can make use of these classes to style the site to your liking.
+
+### Default classes
+
+`.attachments`: placed on attachment-type fields
+`.field-name`: placed on the element containing the name of each field
+`.field-value`: placed on the element containing the value of each field
+`.row-link`: placed on each row on the homepage
+`.row`: placed on each row
+`.header`: placed on the header
+`.index-page` placed on an element that wraps the homepage
+
 ## Custom renderers
+
+To add a custom renderer for one of your fields, create a React component that accepts `name` and `value` as props in the `/custom/renderers` folder, then import and export it in `custom/renderers/index.js`. The name of the file and component must match the name of the column you would like it to serve as renderer for. If the name of your column includes spaces, do not include the spaces in the name of the corresponding file and component. So a custom renderer for a column called "Body Text" should be a React component called `BodyText` in a file called `custom/renderers/BodyText.js` and exported from `custom/renderers/index.js` as such.
