@@ -2,9 +2,24 @@
 
 Airtable-as-CMS is TKTKTK
 
+## Table of Contents
+
+1. [Getting Started](#getting-started)
+   - [Installing Yarn](#installing-yarn)
+   - [Environment setup](#environment-setup)
+   - [How to find your environment variables](#how-to-find-your-environment-variables)
+2. [Setting up your Airtable base](#setting-up-your-airtable-base)
+   - [Metadata table](#metadata-table)
+   - [Hiding fields](#hiding-fields)
+   - [Supported field types](#supported-field-types)
+3. [Development](#development)
+4. [Build](#build)
+5. [Styling](#styling)
+6. [Custom renderers](#custom-renderers)
+
 ## Getting Started
 
-### Install yarn
+### Installing Yarn
 
 This project uses [Yarn](https://yarnpkg.com) to download and manage copies of the third party code we used to build it. If you already have Yarn installed, you can skip to the next section. Otherwise, you can follow the instructions [here](https://yarnpkg.com/lang/en/docs/install/#mac-stable) to install it for macOS or [here](https://yarnpkg.com/lang/en/docs/install/#windows-stable) to install it for Windows.
 
@@ -82,4 +97,4 @@ Running `yarn build` in a terminal window will execute a build script that will 
 
 ## Styling
 
-## Custom Renderers
+## Custom renderers
