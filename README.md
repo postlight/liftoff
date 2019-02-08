@@ -29,22 +29,22 @@ This project uses environment variables to store credentials such as your Airtab
 
 Here, we'll talk about where you need to go to find the environment variables this project needs to run. All of them can be found by going to the right place on the Airtable website.
 
-`AIRTABLE_API_KEY`:
+**AIRTABLE_API_KEY**:
 
 For this one, head to [your Airtable account page](https://www.airtable.com/account). From there, find the `API` section and click the `Generate API key` button if you haven't previously generated a key. Copy and paste the key as-is into your `.env` file so that it looks something like `AIRTABLE_API_KEY=keyBKHVUZpvdE25DY`, with your own key replacing that fake one.
 
 If you don't know what an API key is, it's basically a way to let Airtable know that _you_ know this project is going to use data from your Airtable base to create a website. This is a way to keep your data safe from being accessed by unauthorized users.
 
-`BASE_ID`: To find this one, let's first go to your Airtable base on the Airtable site. Look at the URL in your browser—it should look something like `https://airtable.com/tblUqMOHEpQeIZ6w/viwmobeZBQeAIcQK`. You can see two blobs of letters and numbers. The _first_ blob is your `BASE_ID`. Here's a gif to help you out:
+**BASE_ID**: To find this one, let's first go to your Airtable base on the Airtable site. Look at the URL in your browser—it should look something like `https://airtable.com/tblUqMOHEpQeIZ6w/viwmobeZBQeAIcQK`. You can see two blobs of letters and numbers. The _first_ blob is your `BASE_ID`. Here's a gif to help you out:
 
 ![alt text](./readme-assets/base-id.gif "Finding BASE_ID")
 
-`TABLE_NAME`: This is just the name of the table in your Airtable base that you want to turn into a website. If the name contains multiple words, be sure to surround it in quotation marks (" ") in the `.env` file, so the entry looks like
+**TABLE_NAME**: This is just the name of the table in your Airtable base that you want to turn into a website. If the name contains multiple words, be sure to surround it in quotation marks (" ") in the `.env` file, so the entry looks like
 `TABLE_NAME="your table name"`
 
-`VIEW`: This is just the name of the view in your table that you want to turn into a website. If the name contains multiple words, be sure to surround it in quotation marks (" ") in the `.env` file, so the entry looks like `VIEW="your view name"`. This one's optional! The default view will be used if you don't specify a different one here.
+**VIEW**: This is just the name of the view in your table that you want to turn into a website. If the name contains multiple words, be sure to surround it in quotation marks (" ") in the `.env` file, so the entry looks like `VIEW="your view name"`. This one's optional! The default view will be used if you don't specify a different one here.
 
-`FIELD_ORDER`: This one's up to you! Put your base's column names in the order you would like for them to appear on the page. This should be a comma-separated list like `FIELD_ORDER="Field 1, Field 2, Field 3"`. (The commas are important!)
+**FIELD_ORDER**: This one's up to you! Put your base's column names in the order you would like for them to appear on the page. This should be a comma-separated list like `FIELD_ORDER="Field 1, Field 2, Field 3"`. (The commas are important!)
 
 ## Setting up your Airtable base
 
@@ -52,13 +52,13 @@ If you don't know what an API key is, it's basically a way to let Airtable know 
 
 Some features of this project will only work if you add a metadata table to your base. This required table must be named `_Metadata`. It consists of a single row with specifically named columns and uses the values of these columns to add an extra layer of customization to your site. The supported fields are the following:
 
-`SiteTitle`: This field allows you to set the site title, which will appear in the `<head>` tag of the site's HTML and will be visible in the browser tab that the site is open in.
+**SiteTitle**: This field allows you to set the site title, which will appear in the `<head>` tag of the site's HTML and will be visible in the browser tab that the site is open in.
 
-`Favicon`: This attachment field allows you to add a [favicon](https://en.wikipedia.org/wiki/Favicon) for your site. To make use of it, upload a PNG, JPG or GIF file that is 16x16 or 32x32 pixels in size.
+**Favicon**: This attachment field allows you to add a [favicon](https://en.wikipedia.org/wiki/Favicon) for your site. To make use of it, upload a PNG, JPG or GIF file that is 16x16 or 32x32 pixels in size.
 
-`HomepageHiddenFields`: This field allows you to designate fields to be hidden in the homepage view. For example, you may want to keep the `Body` field of a blog post from showing up on the homepage because it would make the homepage quite long. The value of this field should be a comma-seperated list of the fields you wish to hide, e.g. "Body, Description, Author".
+**HomepageHiddenFields**: This field allows you to designate fields to be hidden in the homepage view. For example, you may want to keep the `Body` field of a blog post from showing up on the homepage because it would make the homepage quite long. The value of this field should be a comma-seperated list of the fields you wish to hide, e.g. "Body, Description, Author".
 
-`HeaderTitle`: This field allows you to add a title that will be added to your site as a header. This will most likely be the name of your site, but can be whatever you want.
+**HeaderTitle**: This field allows you to add a title that will be added to your site as a header. This will most likely be the name of your site, but can be whatever you want.
 
 Head to [this site](https://airtable.com/shr7AykJUZ0qgkt1l/tblhTiXpKbVacXpbQ) if you'd like to see an example of how this table should look.
 
