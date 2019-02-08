@@ -1,6 +1,6 @@
 # Airtable-as-CMS
 
-Airtable-as-CMS is TKTKTK
+Airtable-as-CMS is a nifty tool that lets you create a static website from an Airtable table and style it with custom CSS.
 
 ## Table of Contents
 
