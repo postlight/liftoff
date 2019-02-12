@@ -29,19 +29,11 @@ export default class RowPage extends React.Component {
         row: formatAirtableRowData(record)
       });
     });
-
-    base(process.env.METATABLE_NAME)
-      .select()
-      .firstPage((err, record) => {
-        that.setState({
-          metadata: record && record[0] && record[0].fields
-        });
-      });
   }
 
   render() {
-    const { row, metadata } = this.state;
-    return row ? <Row rowData={row} metadata={metadata} /> : <div />;
+    const { row } = this.state;
+    return row ? <Row rowData={row} /> : <div />;
   }
 }
 

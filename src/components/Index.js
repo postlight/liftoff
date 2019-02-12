@@ -9,12 +9,10 @@ import Row from "./Row";
 const getFieldsToHide = hiddenFields =>
   hiddenFields ? hiddenFields.split(", ") : [];
 
-const Index = ({ rows, metadata, pagination }) => (
+const Index = ({ rows, pagination }) => (
   <div className="index-page">
     {/* this needs to be refactored, shouldn't have check for window here */}
-    {typeof window !== "undefined" && metadata && metadata.HeaderTitle && (
-      <Header title={metadata.HeaderTitle} />
-    )}
+    {process.env.HEADER_TITLE && <Header title={process.env.HEADER_TITLE} />}
     {rows.map(row => {
       const slugField = _.find(row.fields, field => field.name === "_Slug");
       const slug =
@@ -24,7 +22,7 @@ const Index = ({ rows, metadata, pagination }) => (
       return (
         <LinkOrAnchor key={row.id} to={`/${slug}${extension}`}>
           <Row
-            fieldsToHide={getFieldsToHide(metadata.HomepageHiddenFields)}
+            fieldsToHide={getFieldsToHide(process.env.HOMEPAGE_HIDDEN_FIELDS)}
             key={row.id}
             rowData={row}
           />
@@ -59,9 +57,6 @@ Index.propTypes = {
       name: PropTypes.string
     })
   ),
-  metadata: PropTypes.shape({
-    HomepageHiddenFields: PropTypes.string
-  }),
   pagination: PropTypes.shape({
     back: PropTypes.string,
     next: PropTypes.string
@@ -70,7 +65,6 @@ Index.propTypes = {
 
 Index.defaultProps = {
   rows: [],
-  metadata: {},
   pagination: null
 };
 

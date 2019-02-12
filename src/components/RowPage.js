@@ -5,10 +5,10 @@ import Row from "./Row";
 import LinkOrAnchor from "./LinkOrAnchor";
 import Header from "./Header";
 
-const RowPage = ({ rowData, metadata }) => (
+const RowPage = ({ rowData }) => (
   <div>
-    {metadata && metadata.HeaderTitle && (
-      <Header title={metadata.HeaderTitle} />
+    {process.env.HEADER_TITLE && process.env.HEADER_TITLE && (
+      <Header title={process.env.HEADER_TITLE} />
     )}
     <Row rowData={rowData} />
     <LinkOrAnchor to="/">Back</LinkOrAnchor>
@@ -22,14 +22,6 @@ RowPage.propTypes = {
         name: PropTypes.string.isRequired
       })
     )
-  }).isRequired,
-  metadata: PropTypes.shape({
-    HeaderTitle: PropTypes.string
-  })
+  }).isRequired
 };
-
-RowPage.defaultProps = {
-  metadata: {}
-};
-
 export default RowPage;
