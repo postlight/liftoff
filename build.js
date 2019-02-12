@@ -62,7 +62,6 @@ base(TABLE_NAME)
           allRows.push([]);
         }
         const formattedRow = formatAirtableRowData(row);
-        console.log(formattedRow);
 
         const attachmentFields = formattedRow.fields.filter(
           field =>

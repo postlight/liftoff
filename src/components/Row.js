@@ -37,14 +37,11 @@ const getRenderer = field => {
   return <div />;
 };
 
-const Row = ({ rowData, fieldsToHide }) => (
+const Row = ({ rowData, fieldsToDisplay }) => (
   <div className="row">
     {_.chain(rowData.fields)
-      // fields with names starting with "_" are not meant to be displayed
       .map(field =>
-        !field.name.startsWith("_") && !fieldsToHide.includes(field.name)
-          ? getRenderer(field)
-          : null
+        fieldsToDisplay.includes(field.name) ? getRenderer(field) : null
       )
       .filter(renderer => !!renderer)
       .value()}
@@ -53,7 +50,7 @@ const Row = ({ rowData, fieldsToHide }) => (
 
 Row.defaultProps = {
   rowData: {},
-  fieldsToHide: []
+  fieldsToDisplay: []
 };
 
 Row.propTypes = {
@@ -64,7 +61,7 @@ Row.propTypes = {
       })
     )
   }),
-  fieldsToHide: PropTypes.arrayOf(PropTypes.string)
+  fieldsToDisplay: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default Row;

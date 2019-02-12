@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Row from "./Row";
 import LinkOrAnchor from "./LinkOrAnchor";
 import Header from "./Header";
+import getFieldsToDisplay from "../utils/getFieldsToDisplay";
 
 const RowPage = ({ rowData }) => (
   <div>
@@ -11,7 +12,12 @@ const RowPage = ({ rowData }) => (
       <Header title={process.env.HEADER_TITLE} />
     )}
     <LinkOrAnchor to="/">Back</LinkOrAnchor>
-    <Row rowData={rowData} />
+
+    <Row
+      fieldsToDisplay={getFieldsToDisplay(process.env.FIELD_ORDER)}
+      rowData={rowData}
+    />
+    <LinkOrAnchor to="/">Back</LinkOrAnchor>
   </div>
 );
 

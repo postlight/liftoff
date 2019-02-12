@@ -5,9 +5,7 @@ import PropTypes from "prop-types";
 import LinkOrAnchor from "./LinkOrAnchor";
 import Header from "./Header";
 import Row from "./Row";
-
-const getFieldsToHide = hiddenFields =>
-  hiddenFields ? hiddenFields.split(", ") : [];
+import getFieldsToDisplay from "../utils/getFieldsToDisplay";
 
 const Index = ({ rows, pagination }) => (
   <div className="index-page">
@@ -22,7 +20,9 @@ const Index = ({ rows, pagination }) => (
       return (
         <LinkOrAnchor key={row.id} to={`/${slug}${extension}`}>
           <Row
-            fieldsToHide={getFieldsToHide(process.env.HOMEPAGE_HIDDEN_FIELDS)}
+            fieldsToDisplay={getFieldsToDisplay(
+              process.env.HOMEPAGE_FIELD_ORDER
+            )}
             key={row.id}
             rowData={row}
           />
