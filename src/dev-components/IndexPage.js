@@ -74,8 +74,8 @@ export default class IndexPage extends React.Component {
           that.setState({
             rows: allRows,
             pagination: {
-              back: backPage ? `/page/${backPage}` : null,
-              next: nextPage ? `/page/${nextPage}` : null
+              back: backPage ? `/page/${backPage}.html` : null,
+              next: nextPage ? `/page/${nextPage}.html` : null
             }
           });
         }
