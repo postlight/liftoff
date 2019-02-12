@@ -15,7 +15,7 @@ const getRenderer = field => {
   }
 
   if (typeof value === "string" || typeof value === "number") {
-    return <TextField key={name} name={name} data={value} />;
+    return <TextField key={name} fieldName={name} data={value} />;
   }
 
   if (Array.isArray(value)) {
@@ -28,7 +28,7 @@ const getRenderer = field => {
       <div>
         {value.map((string, idx) => (
           // eslint-disable-next-line react/no-array-index-key
-          <TextField key={idx} name={name} data={string} />
+          <TextField key={idx} fieldName={name} data={string} />
         ))}
       </div>
     );
