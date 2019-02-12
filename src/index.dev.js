@@ -14,9 +14,9 @@ ReactDOM.render(
         exact
         component={props => <IndexPage {...props} currentPage={1} />}
       />
-      <Route path="/:slugOrId" exact component={RowPage} />
+      <Route path="/:slugOrId.html" exact component={RowPage} />
       <Route
-        path="/page/:page"
+        path="/page/:page.html"
         render={props => (
           <IndexPage
             {...props}

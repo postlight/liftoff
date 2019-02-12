@@ -16,9 +16,9 @@ const Index = ({ rows, pagination }) => (
       const slug =
         (typeof window === "undefined" && slugField && slugField.value) ||
         row.id;
-      const extension = typeof window !== "undefined" ? "" : ".html";
+
       return (
-        <LinkOrAnchor key={row.id} to={`/${slug}${extension}`}>
+        <LinkOrAnchor key={row.id} to={`/${slug}.html`}>
           <Row
             fieldsToDisplay={getFieldsToDisplay(
               process.env.HOMEPAGE_FIELD_ORDER
