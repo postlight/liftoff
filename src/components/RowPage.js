@@ -10,8 +10,8 @@ const RowPage = ({ rowData }) => (
     {process.env.HEADER_TITLE && process.env.HEADER_TITLE && (
       <Header title={process.env.HEADER_TITLE} />
     )}
-    <Row rowData={rowData} />
     <LinkOrAnchor to="/">Back</LinkOrAnchor>
+    <Row rowData={rowData} />
   </div>
 );
 
