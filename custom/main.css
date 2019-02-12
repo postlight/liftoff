@@ -2,7 +2,8 @@ body {
   padding: 25px;
 }
 
-.row-link {
+.row-link,
+.header-link {
   text-decoration: none;
   color: black;
 }

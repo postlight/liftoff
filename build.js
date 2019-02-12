@@ -52,7 +52,8 @@ let currentPage = 0;
 let recordsOnCurrentPage = 0;
 base(TABLE_NAME)
   .select({
-    view: VIEW
+    view: VIEW,
+    filterByFormula: "{Published}"
   })
   .eachPage(
     function page(records, fetchNextPage) {
@@ -61,6 +62,7 @@ base(TABLE_NAME)
           allRows.push([]);
         }
         const formattedRow = formatAirtableRowData(row);
+        console.log(formattedRow);
 
         const attachmentFields = formattedRow.fields.filter(
           field =>
