@@ -11,6 +11,7 @@ const htmlPlugin = new HtmlWebPackPlugin({
 
 module.exports = {
   output: {
+    publicPath: "/",
     filename: "bundle.js",
     library: ["env"]
   },
@@ -37,5 +38,11 @@ module.exports = {
       "HEADER_TITLE",
       "PAGE_TITLE"
     ])
-  ]
+  ],
+  devServer: {
+    port: 8080,
+    historyApiFallback: {
+      disableDotRule: true
+    }
+  }
 };

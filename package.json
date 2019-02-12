@@ -44,7 +44,7 @@
     "underscore": "^1.9.1"
   },
   "scripts": {
-    "webpack-build": "webpack --config webpack.config.js",
+    "webpack-build": "webpack --config webpack.config.js --port=8080 --history-api-fallback",
     "build": "babel custom/renderers -d dist/custom/renderers && babel src -d dist/src && babel build.js -d dist && node dist/build.js",
     "start": "babel custom/renderers -d dist/custom/renderers && babel src -d dist/src && babel build.js -d dist && nodemon --watch .env --watch src dist/build.js",
     "start:dev": "nodemon --watch .env --exec webpack-dev-server",
