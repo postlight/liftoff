@@ -47,7 +47,6 @@ fs.mkdir(`${currentPath}/assets`, () => {
 // used to make sure multiple pages aren't created for same slug
 const alreadySeenSlugs = {};
 
-// if there's a metatable, it needs to be requested prior to the main table
 let currentPage = 0;
 let recordsOnCurrentPage = 0;
 base(TABLE_NAME)

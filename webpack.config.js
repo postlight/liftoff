@@ -33,7 +33,9 @@ module.exports = {
       "TABLE_NAME",
       "VIEW",
       "FIELD_ORDER",
-      "METATABLE_NAME"
+      "HOMEPAGE_FIELD_ORDER",
+      "HEADER_TITLE",
+      "PAGE_TITLE"
     ])
   ]
 };

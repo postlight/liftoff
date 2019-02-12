@@ -35,6 +35,7 @@
   "dependencies": {
     "airtable": "^0.5.8",
     "dotenv": "^6.2.0",
+    "nodemon": "^1.18.10",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
@@ -44,6 +45,7 @@
   "scripts": {
     "webpack-build": "webpack --config webpack.config.js",
     "build": "babel custom/renderers -d dist/custom/renderers && babel src -d dist/src && babel build.js -d dist && node dist/build.js",
-    "start:dev": "webpack-dev-server"
+    "start": "babel custom/renderers -d dist/custom/renderers && babel src -d dist/src && babel build.js -d dist && nodemon --watch .env dist/build.js",
+    "start:dev": "nodemon --watch .env --exec webpack-dev-server"
   }
 }
