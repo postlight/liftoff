@@ -5,12 +5,11 @@ import { markdown } from "markdown";
 import stripFieldName from "../utils/stripFieldName";
 
 const TextField = ({ fieldName, data }) => {
-  const isMarkdown = !!fieldName.match(/\.md$/);
-  const name = isMarkdown ? fieldName.replace(/\.md$/, "") : fieldName;
+  const isMarkdown = process.env.MARKDOWN_FIELDS.split(",").includes(fieldName);
 
   return (
-    <div className={`${stripFieldName(name)} field`}>
-      <h2 className="field-name">{name}</h2>
+    <div className={`${stripFieldName(fieldName)} field`}>
+      <h2 className="field-name">{fieldName}</h2>
       {isMarkdown ? (
         <span
           className="field-value markdown-field"

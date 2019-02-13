@@ -30,12 +30,12 @@ inquirer
     {
       name: "HOMEPAGE_FIELD_ORDER",
       message:
-        "Please enter the order you'd like a row's fields to appear when displayed on the homepage. Any field not listed here will be hidden."
+        "Please enter the order you'd like a row's fields to appear when displayed on the homepage. Any field not listed here will be hidden. Example: Body,Description,Image,Author"
     },
     {
       name: "FIELD_ORDER",
       message:
-        "Please enter the order you'd like a row's fields to appear when displayed on the row's individual page. Any field not listed here will be hidden."
+        "Please enter the order you'd like a row's fields to appear when displayed on the row's individual page. Any field not listed here will be hidden. Example: Body,Description,Image,Author"
     },
     {
       name: "HEADER_TITLE",
@@ -46,6 +46,11 @@ inquirer
       name: "PAGE_TITLE",
       message:
         "Please enter the title of your website. This will be shown in the browser tab."
+    },
+    {
+      name: "MARKDOWN_FIELDS",
+      message:
+        "Please enter any fields you would like to be rendered in markdown. This is optional. Example: Body,Description"
     }
   ])
   .then(answers => {
