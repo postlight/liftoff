@@ -5,7 +5,9 @@ import { markdown } from "markdown";
 import stripFieldName from "../utils/stripFieldName";
 
 const TextField = ({ fieldName, data }) => {
-  const isMarkdown = process.env.MARKDOWN_FIELDS.split(",").includes(fieldName);
+  const { MARKDOWN_FIELDS } = process.env;
+  const isMarkdown =
+    MARKDOWN_FIELDS && MARKDOWN_FIELDS.split(",").includes(fieldName);
 
   return (
     <div className={`${stripFieldName(fieldName)} field`}>
