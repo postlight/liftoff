@@ -55,8 +55,8 @@ If you don't know what an API key is, it's basically a way to let Airtable know 
 
 ![alt text](./readme-assets/base-id.gif "Finding BASE_ID")
 
-**TABLE_NAME**: This is just the name of the table in your Airtable base that you want to turn into a website. If the name contains multiple words, be sure to surround it in quotation marks (" ") in the `.env` file, so the entry looks like
-`TABLE_NAME="your table name"`
+**TABLE_ID**: This is just the name of the table in your Airtable base that you want to turn into a website. If the name contains multiple words, be sure to surround it in quotation marks (" ") in the `.env` file, so the entry looks like
+`TABLE_ID="your table name"`
 
 **VIEW**: This is just the name of the view in your table that you want to turn into a website. If the name contains multiple words, be sure to surround it in quotation marks (" ") in the `.env` file, so the entry looks like `VIEW="your view name"`. This one's optional! The default view will be used if you don't specify a different one here.
 

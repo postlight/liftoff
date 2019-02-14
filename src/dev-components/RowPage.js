@@ -24,7 +24,7 @@ export default class RowPage extends React.Component {
 
     const that = this;
 
-    base(process.env.TABLE_NAME).find(slugOrId, (err, record) => {
+    base(process.env.TABLE_ID).find(slugOrId, (err, record) => {
       that.setState({
         row: formatAirtableRowData(record)
       });

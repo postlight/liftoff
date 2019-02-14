@@ -14,7 +14,7 @@ const RowPage = require("./src/components/RowPage").default;
 
 const renderAsHTMLPage = require(`./src/utils/renderAsHTMLPage`).default;
 
-const { AIRTABLE_API_KEY, BASE_ID, TABLE_NAME, VIEW } = process.env;
+const { AIRTABLE_API_KEY, BASE_ID, TABLE_ID, VIEW } = process.env;
 
 const base = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(BASE_ID);
 
@@ -49,7 +49,7 @@ const alreadySeenSlugs = {};
 
 let currentPage = 0;
 let recordsOnCurrentPage = 0;
-base(TABLE_NAME)
+base(TABLE_ID)
   .select({
     view: VIEW,
     filterByFormula: "{Published}"

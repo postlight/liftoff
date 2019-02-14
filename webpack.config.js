@@ -31,7 +31,7 @@ module.exports = {
     new webpack.EnvironmentPlugin([
       "AIRTABLE_API_KEY",
       "BASE_ID",
-      "TABLE_NAME",
+      "TABLE_ID",
       "VIEW",
       "FIELD_ORDER",
       "HOMEPAGE_FIELD_ORDER",

@@ -23,7 +23,7 @@ export default class IndexPage extends React.Component {
       apiKey: process.env.AIRTABLE_API_KEY
     }).base(process.env.BASE_ID);
 
-    base(process.env.TABLE_NAME)
+    base(process.env.TABLE_ID)
       .select({
         view: process.env.VIEW,
         filterByFormula: "{Published}"
