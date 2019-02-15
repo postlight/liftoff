@@ -49,7 +49,7 @@
   "scripts": {
     "webpack-build": "webpack --config webpack.config.js --port=8080 --history-api-fallback",
     "build": "mkdir -p dist/ && mkdir -p dist/page/ && mkdir -p dist/assets/ && npx babel-node build.js",
-    "start:dev": "nodemon --watch .env --exec webpack-dev-server",
+    "start:dev": "nodemon --watch .env --exec webpack-dev-server --open",
     "setup": "node setup.js"
   }
 }
