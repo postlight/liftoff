@@ -30,3 +30,9 @@ img {
   text-decoration: none;
   color: black;
 }
+
+@media (max-width: 768px) {
+  body {
+    padding: 12px;
+  }
+}
