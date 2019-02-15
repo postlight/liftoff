@@ -1,3 +1,32 @@
 body {
   padding: 25px;
+  max-width: 900px;
+  margin: auto;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+.header-link,
+.row-link {
+  text-decoration: none;
+  color: black;
+}
+
+.row {
+  margin: 20px 0;
+}
+
+.nav-button {
+  padding: 5px 15px;
+  border: 1px solid black;
+  border-radius: 3px;
+  text-decoration: none;
+  color: black;
 }

@@ -11,13 +11,17 @@ const RowPage = ({ rowData }) => (
     {process.env.HEADER_TITLE && process.env.HEADER_TITLE && (
       <Header title={process.env.HEADER_TITLE} />
     )}
-    <LinkOrAnchor to="/">Back</LinkOrAnchor>
+    <LinkOrAnchor className="nav-button" to="/">
+      Back
+    </LinkOrAnchor>
 
     <Row
       fieldsToDisplay={getFieldsToDisplay(process.env.FIELD_ORDER)}
       rowData={rowData}
     />
-    <LinkOrAnchor to="/">Back</LinkOrAnchor>
+    <LinkOrAnchor className="nav-button" to="/">
+      Back
+    </LinkOrAnchor>
   </div>
 );
 

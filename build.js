@@ -97,8 +97,12 @@ base(TABLE_ID)
         fs.writeFile(
           filepath,
           renderAsHTMLPage(<RowPage rowData={formattedRow} />),
-          () => {
-            console.log(`${filepath} written`);
+          error => {
+            if (error) {
+              console.error(`Error writing ${filepath}`);
+            } else {
+              console.log(`${filepath} written`);
+            }
           }
         );
       });
