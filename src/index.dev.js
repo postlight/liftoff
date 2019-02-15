@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import IndexPage from "./dev-components/IndexPage";
 import RowPage from "./dev-components/RowPage";
-import "../custom/styles.css";
 import "../public/default.css";
+import "../custom/styles.css";
 
 ReactDOM.render(
   <Router>
