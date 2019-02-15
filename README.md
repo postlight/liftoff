@@ -96,7 +96,7 @@ Running `yarn build` in a terminal window will execute a build script that will 
 
 ## Styling
 
-Any CSS put in the `main.css` file at `/custom/main.css` will be injected into your site for styling purposes.
+Any CSS put in the `styles.css` file at `/custom/styles.css` will be injected into your site for styling purposes.
 
 Your field names will always be added as classes in the corresponding HTML. So for example, a field called "Title" will generate an HTML element with the class `.Title`. There are other classes that are put in by default, detailed below. You can make use of these classes to style the site to your liking.
 

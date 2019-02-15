@@ -69,7 +69,8 @@ const getMessage = promptName => {
       : currentEnv[promptName];
 
   const messages = {
-    AIRTABLE_API_KEY: "Please enter your Airtable API key.\n\nEnter here: ",
+    AIRTABLE_API_KEY:
+      "Head to your Airtable account page at https://www.airtable.com/account.\nFrom there, find the 'API' section and click the 'Generate API key' button if you haven't previously generated a key.\nCopy that key and paste it here.\n\nEnter here: ",
     BASE_ID:
       "Go to https://www.airtable.com/api, choose your base from the list, then and copy + paste the URL from your browser's navbar.\nIt should look something like 'https://airtable.com/app0iDXjSahHmCKK/api/docs#curl/introduction'.\n\nEnter here: ",
     TABLE_AND_VIEW_IDS:
@@ -149,7 +150,9 @@ const runPrompts = () =>
         console.log(
           "If you want to change any of your responses, you can either run `yarn setup` again or change them directly in the .env file."
         );
-        // list possible commands to start
+        console.log(
+          "Now you can run `yarn run start:dev in your terminal window to get started developing."
+        );
       });
     });
 
