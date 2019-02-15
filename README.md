@@ -102,14 +102,14 @@ Your field names will always be added as classes in the corresponding HTML. So f
 
 ### Default classes
 
-`.attachments`: placed on attachment-type fields
-`.field-name`: placed on the element containing the name of each field
-`.field-value`: placed on the element containing the value of each field
-`.row-link`: placed on each row on the homepage
-`.row`: placed on each row
-`.header`: placed on the header
-`.index-page` placed on an element that wraps the homepage
-`.nav-button` placed on back/next navigation buttons
+- `.attachments`: placed on attachment-type fields
+- `.field-name`: placed on the element containing the name of each field
+- `.field-value`: placed on the element containing the value of each field
+- `.row-link`: placed on each row on the homepage
+- `.row`: placed on each row
+- `.header`: placed on the header
+- `.index-page` placed on an element that wraps the homepage
+- `.nav-button` placed on back/next navigation buttons
 
 ### Favicon
 
