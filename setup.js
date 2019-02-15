@@ -14,7 +14,7 @@ const getBaseIdFromUrl = url => {
 
 const getTableAndViewIdFromUrl = url => {
   const pattern = new UrlPattern(
-    "(http(s)\\://)(www.)airtable.com/:tableId/:viewId(/*)"
+    "(http(s)\\://)(www.)airtable.com/:tableId/:viewId(/*)(?*)"
   );
   return pattern.match(url);
 };
