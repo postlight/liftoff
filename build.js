@@ -152,3 +152,9 @@ fs.copyFile("public/default.css", "dist/main.css", () =>
     });
   })
 );
+
+fs.copyFile("custom/favicon.ico", "dist/favicon.ico", err => {
+  if (err) {
+    console.log("No favicon.ico file found");
+  }
+});
