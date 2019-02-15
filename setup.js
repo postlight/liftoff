@@ -156,20 +156,19 @@ const runPrompts = () =>
       });
     });
 
-fs.readFile(".env", "utf-8", (err, data) => {
-  if (err) {
-    return;
+const dotenv = ".env";
+if (!fs.existsSync(dotenv)) fs.writeFileSync(".env", "");
+
+const data = fs.readFileSync(dotenv, "utf-8");
+
+const env = data.split("\n");
+env.forEach(entry => {
+  const [variable, value] = entry.split("=");
+  if (variable) {
+    currentEnv[variable] = value
+      ? value.replace(/^"/gi, "").replace(/"$/gi, "")
+      : "";
   }
-
-  const env = data.split("\n");
-  env.forEach(entry => {
-    const [variable, value] = entry.split("=");
-    if (variable) {
-      currentEnv[variable] = value
-        ? value.replace(/^"/gi, "").replace(/"$/gi, "")
-        : "";
-    }
-  });
-
-  runPrompts();
 });
+
+runPrompts();
