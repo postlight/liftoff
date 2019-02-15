@@ -38,6 +38,8 @@ const downloadFile = (url, filepath, onSuccess, onError) => {
 // used to make sure multiple pages aren't created for same slug
 const alreadySeenSlugs = {};
 
+const alreadyDownloadedAttachments = {};
+
 let currentPage = 0;
 let recordsOnCurrentPage = 0;
 base(TABLE_ID)
@@ -60,9 +62,12 @@ base(TABLE_ID)
 
         attachmentFields.forEach(attachmentField => {
           attachmentField.value.forEach(attachment => {
-            const newUrl = `/assets/${attachment.id}-${attachment.filename}`;
-            downloadFile(attachment.url, `dist${newUrl}`);
-            attachment.url = newUrl;
+            if (!alreadyDownloadedAttachments[attachment.url]) {
+              const newUrl = `/assets/${attachment.id}-${attachment.filename}`;
+              downloadFile(attachment.url, `dist${newUrl}`);
+              alreadyDownloadedAttachments[attachment.url] = true;
+              attachment.url = newUrl;
+            }
           });
         });
 
