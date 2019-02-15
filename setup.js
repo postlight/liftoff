@@ -151,7 +151,7 @@ const runPrompts = () =>
           "If you want to change any of your responses, you can either run `yarn setup` again or change them directly in the .env file."
         );
         console.log(
-          "Now you can run `yarn run start:dev in your terminal window to get started developing."
+          "Now you can run `yarn run start:dev` in your terminal window to get started developing."
         );
       });
     });
