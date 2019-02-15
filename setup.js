@@ -144,17 +144,25 @@ const runPrompts = () =>
       }
     ])
     .then(answers => {
-      fs.writeFile(`.env`, formatAnswers(answers), () => {
-        console.log("Thanks for your answers!");
-        console.log("A .env file has been written using your responses.");
-        console.log(
-          "If you want to change any of your responses, you can either run `yarn setup` again or change them directly in the .env file."
-        );
-        console.log(
-          "Now you can run `yarn run start:dev` in your terminal window to get started developing."
-        );
-      });
+      fs.writeFileSync(`.env`, formatAnswers(answers));
+
+      console.log("\n\n-------------");
+      console.log("\n\nThanks for your answers!\n");
+      console.log("Your responses have been written to a file in this directory called .env.\n");
+      console.log(
+        "If you want to change any of your responses, you can either run `yarn setup` again\nor edit them directly in the .env file.\n"
+      );
+      console.log(
+        "To get started developing, open your terminal window and run:\n\n    yarn run start:dev\n\nYou're probably going to want to start styling your web site. Here's how:\n\n    https://github.com/postlight/airtable-as-cms/#styling\n"
+      );
+      console.log(
+        "When you're ready to build your site, simply run:\n\n    yarn build\n"
+      );
+      console.log(
+        "Happy developing!\n"
+      );
     });
+}
 
 const dotenv = ".env";
 if (!fs.existsSync(dotenv)) fs.writeFileSync(".env", "");
