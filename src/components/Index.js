@@ -23,7 +23,6 @@ const Index = ({ rows, pagination }) => (
             fieldsToDisplay={getFieldsToDisplay(
               process.env.HOMEPAGE_FIELD_ORDER
             )}
-            key={row.id}
             rowData={row}
           />
         </LinkOrAnchor>

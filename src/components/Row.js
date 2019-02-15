@@ -11,7 +11,7 @@ const getRenderer = field => {
   const customRendererName = name.replace(/\s/g, "");
   if (customRenderers[customRendererName]) {
     const Component = customRenderers[customRendererName];
-    return <Component name={name} value={value} />;
+    return <Component key={name} name={name} value={value} />;
   }
 
   if (typeof value === "string" || typeof value === "number") {
@@ -25,7 +25,7 @@ const getRenderer = field => {
     }
 
     return (
-      <div>
+      <div key={name}>
         {value.map((string, idx) => (
           // eslint-disable-next-line react/no-array-index-key
           <TextField key={idx} fieldName={name} data={string} />
