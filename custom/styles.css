@@ -4,6 +4,11 @@
   color: black;
 }
 
+.header + .nav-button {
+  display: none;
+  visibility: hidden;
+}
+
 img {
   max-width: 100%;
 }
