@@ -146,6 +146,9 @@ const runPrompts = () =>
       fs.writeFile(`.env`, formatAnswers(answers), () => {
         console.log("Thanks for your answers!");
         console.log("A .env file has been written using your responses.");
+        console.log(
+          "If you want to change any of your responses, you can either run `yarn setup` again or change them directly in the .env file."
+        );
         // list possible commands to start
       });
     });

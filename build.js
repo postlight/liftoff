@@ -117,8 +117,10 @@ base(TABLE_ID)
           renderAsHTMLPage(
             <Index rows={allRows[idx]} pagination={pagination} />
           ),
-          () => {
-            console.log(`${filepath} written`);
+          error => {
+            if (error) {
+              console.error(`Error writing ${filepath}`);
+            }
           }
         );
 
@@ -139,6 +141,16 @@ base(TABLE_ID)
     }
   );
 
-fs.copyFile("custom/main.css", "dist/main.css", () =>
-  console.log("CSS has been copied")
+fs.copyFile("public/default.css", "dist/main.css", () =>
+  console.log("default css copied to /dist")
 );
+
+fs.readFile("custom/styles.css", "utf-8", (err, data) => {
+  fs.writeFile("dist/main.css", data, { flag: "a" }, error => {
+    if (error) {
+      console.error("Error writing custom CSS to dist/main.css");
+    } else {
+      console.log("custom CSS appended to /dist/main.css");
+    }
+  });
+});
