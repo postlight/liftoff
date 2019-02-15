@@ -33,6 +33,7 @@
     }
   },
   "dependencies": {
+    "@babel/node": "^7.2.2",
     "airtable": "^0.5.8",
     "dotenv": "^6.2.0",
     "inquirer": "^6.2.2",
@@ -47,8 +48,7 @@
   },
   "scripts": {
     "webpack-build": "webpack --config webpack.config.js --port=8080 --history-api-fallback",
-    "build": "babel custom/renderers -d dist/custom/renderers && babel src -d dist/src && babel build.js -d dist && node dist/build.js",
-    "start": "babel custom/renderers -d dist/custom/renderers && babel src -d dist/src && babel build.js -d dist && nodemon --watch .env --watch src dist/build.js",
+    "build": "mkdir -p dist/ && mkdir -p dist/page/ && mkdir -p dist/assets/ && npx babel-node build.js",
     "start:dev": "nodemon --watch .env --exec webpack-dev-server",
     "setup": "node setup.js"
   }

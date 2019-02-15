@@ -7,7 +7,6 @@ const React = require("react");
 const fs = require("fs");
 const Airtable = require("airtable");
 const https = require("https");
-const path = require("path");
 
 const Index = require("./src/components/Index").default;
 const RowPage = require("./src/components/RowPage").default;
@@ -35,14 +34,6 @@ const downloadFile = (url, filepath, onSuccess, onError) => {
       fs.unlink(filepath, error => onError && onError(error));
     });
 };
-
-const currentPath = path.basename(__dirname);
-fs.mkdir(`${currentPath}/page`, () => {
-  console.log("/page directory created.");
-});
-fs.mkdir(`${currentPath}/assets`, () => {
-  console.log("/assets directory created.");
-});
 
 // used to make sure multiple pages aren't created for same slug
 const alreadySeenSlugs = {};
@@ -146,15 +137,13 @@ base(TABLE_ID)
   );
 
 fs.copyFile("public/default.css", "dist/main.css", () =>
-  console.log("default css copied to /dist")
+  fs.readFile("custom/styles.css", "utf-8", (err, data) => {
+    fs.writeFile("dist/main.css", data, { flag: "a" }, error => {
+      if (error) {
+        console.error("Error writing custom CSS to dist/main.css");
+      } else {
+        console.log("custom CSS appended to /dist/main.css");
+      }
+    });
+  })
 );
-
-fs.readFile("custom/styles.css", "utf-8", (err, data) => {
-  fs.writeFile("dist/main.css", data, { flag: "a" }, error => {
-    if (error) {
-      console.error("Error writing custom CSS to dist/main.css");
-    } else {
-      console.log("custom CSS appended to /dist/main.css");
-    }
-  });
-});
