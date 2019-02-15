@@ -43,7 +43,6 @@ const formatAnswers = answers =>
     }
 
     const formattedAnswer = addQuotes(answer);
-    console.log(formattedAnswer);
     return `${key}=${formattedAnswer}`;
   }).join("\n");
 
@@ -70,28 +69,29 @@ const getMessage = promptName => {
 
   const messages = {
     AIRTABLE_API_KEY:
-      "Head to your Airtable account page at https://www.airtable.com/account.\nFrom there, find the 'API' section and click the 'Generate API key' button if you haven't previously generated a key.\nCopy that key and paste it here.\n\nEnter here: ",
+      "Head to your Airtable account page at https://www.airtable.com/account.\nOn that page, find the 'API' section and click the 'Generate API key' button\nif you haven't previously generated a key.\n\nCopy and paste your API key here: ",
     BASE_ID:
-      "Go to https://www.airtable.com/api, choose your base from the list, then and copy + paste the URL from your browser's navbar.\nIt should look something like 'https://airtable.com/app0iDXjSahHmCKK/api/docs#curl/introduction'.\n\nEnter here: ",
+      "Go to https://www.airtable.com/api, click on the base you want to use as\nyour CMS, then and copy + paste the URL from your browser's navbar.\n\nIt should look something like:\n\n    https://airtable.com/app0iDXjSahHmCKK/api/docs#curl/introduction\n\nEnter here: ",
     TABLE_AND_VIEW_IDS:
-      "Navigate to the table and view you would like to use and copy + paste the URL from your browser's navbar.\nIt should look something like 'https://airtable.com/tblUqMBOHEpQeIZ6w/viwmobeZBHQeAIcQK'.\n\nEnter here: ",
+      "Navigate to the table and view you would like to use and copy + paste the\nURL from your browser's navbar.\n\nIt should look something like:\n\n    https://airtable.com/tblUqMBOHEpQeIZ6w/viwmobeZBHQeAIcQK\n\nEnter here: ",
+    // TODO: What happens if the column has a space in it? Do I need to surround it in quotes? Just type it as is? Should include this in the example.
     HOMEPAGE_FIELD_ORDER:
-      "Enter the order you'd like a row's fields to appear when displayed on the homepage.\nAny field not listed here will be hidden. Example: Body,Description,Image,Author\n\nEnter here: ",
+      "The front page of your site will show a list of each of your entries — sort\nof like the homepage of a blog. Enter the order you'd like your row's fields to\nappear when displayed on the homepage.\n\nAny field not listed here will be hidden. \n\n    Example: Body,Description,Image,Author\n\nEnter here: ",
     FIELD_ORDER:
-      "Enter the order you'd like a row's fields to appear when displayed on the row's individual page.\nAny field not listed here will be hidden.\nExample: Body,Description,Image,Author\n\nEnter here: ",
+      "Enter the order you'd like a row's fields to appear when displayed on\nthe row's individual page. Any field not listed here will be hidden.\n\n    Example: Body,Description,Image,Author\n\nEnter here: ",
     HEADER_TITLE:
-      "Enter the title you'd like your website to display in the header on each page.\nIf blank, there will be no header.\n\nEnter here: ",
+      "Enter the title you'd like your website to display in the header on each\npage. If blank, there will be no header.\n\nEnter here: ",
     PAGE_TITLE:
       "Enter the title of your website. This will be shown in the browser tab.\n\nEnter here: ",
     MARKDOWN_FIELDS:
-      "Enter any fields you would like to be rendered in markdown. This is optional.\nExample: Body,Description\n\nEnter here: "
+      "Enter any fields you would like to be rendered in markdown. This is optional.\nIf you don't use markdown, or don't know what it is, just press 'Enter'.\n\n    Example: Body,Description\n\nEnter here: "
   };
 
   if (isAlreadyPopulated) {
     if (promptName === "TABLE_AND_VIEW_IDS") {
       return `You previously entered ${currentEnv.TABLE_ID ||
         "nothing"} for your Table ID and ${currentEnv.VIEW ||
-        "nothing"} for your View Id.\nIf you'd like to keep those values, simply press enter. Otherwise, please follow the instructions below to enter a new value.\n\n${
+        "nothing"} for your View Id. If you'd like to keep those values, simply press enter. Otherwise, please follow the instructions below to enter a new value.\n\n${
         messages[promptName]
       }`;
     }
@@ -99,7 +99,7 @@ const getMessage = promptName => {
       currentEnv[promptName]
     } for ${getPrettyVarName(
       promptName
-    )}.\nIf you'd like to keep that value, simply press enter. Otherwise, please follow the instructions below to enter a new value.\n\n${
+    )}. If you'd like to keep that value, simply press enter. Otherwise, please follow the instructions below to enter a new value.\n\n${
       messages[promptName]
     }`;
   }
@@ -107,40 +107,42 @@ const getMessage = promptName => {
   return messages[promptName];
 };
 
-const runPrompts = () =>
+const runPrompts = () => {
+  // TODO console.log some intro text?
+  console.log("\n");
   inquirer
     .prompt([
       {
         name: "AIRTABLE_API_KEY",
-        message: `\n\n1. ${getMessage("AIRTABLE_API_KEY")}`
+        message: `1. ${getMessage("AIRTABLE_API_KEY")}`
       },
       {
         name: "BASE_ID",
-        message: `\n\n2. ${getMessage("BASE_ID")}`
+        message: `2. ${getMessage("BASE_ID")}`
       },
       {
         name: "TABLE_AND_VIEW_IDS",
-        message: `\n\n3. ${getMessage("TABLE_AND_VIEW_IDS")}`
+        message: `3. ${getMessage("TABLE_AND_VIEW_IDS")}`
       },
       {
         name: "HOMEPAGE_FIELD_ORDER",
-        message: `\n\n4. ${getMessage("HOMEPAGE_FIELD_ORDER")}`
+        message: `4. ${getMessage("HOMEPAGE_FIELD_ORDER")}`
       },
       {
         name: "FIELD_ORDER",
-        message: `\n\n5. ${getMessage("FIELD_ORDER")}`
+        message: `5. ${getMessage("FIELD_ORDER")}`
       },
       {
         name: "HEADER_TITLE",
-        message: `\n\n6. ${getMessage("HEADER_TITLE")}`
+        message: `6. ${getMessage("HEADER_TITLE")}`
       },
       {
         name: "PAGE_TITLE",
-        message: `\n\n7. ${getMessage("PAGE_TITLE")}`
+        message: `7. ${getMessage("PAGE_TITLE")}`
       },
       {
         name: "MARKDOWN_FIELDS",
-        message: `\n\n8. ${getMessage("MARKDOWN_FIELDS")}`
+        message: `8. ${getMessage("MARKDOWN_FIELDS")}`
       }
     ])
     .then(answers => {
@@ -148,21 +150,21 @@ const runPrompts = () =>
 
       console.log("\n\n-------------");
       console.log("\n\nThanks for your answers!\n");
-      console.log("Your responses have been written to a file in this directory called .env.\n");
+      console.log(
+        "Your responses have been written to a file in this directory called .env.\n"
+      );
       console.log(
         "If you want to change any of your responses, you can either run `yarn setup` again\nor edit them directly in the .env file.\n"
       );
       console.log(
-        "To get started developing, open your terminal window and run:\n\n    yarn run start:dev\n\nYou're probably going to want to start styling your web site. Here's how:\n\n    https://github.com/postlight/airtable-as-cms/#styling\n"
+        "To get started developing, open your terminal window and run:\n\n    yarn start:dev\n\nYou're probably going to want to start styling your web site. Here's how:\n\n    https://github.com/postlight/airtable-as-cms/#styling\n"
       );
       console.log(
         "When you're ready to build your site, simply run:\n\n    yarn build\n"
       );
-      console.log(
-        "Happy developing!\n"
-      );
+      console.log("Happy developing!\n");
     });
-}
+};
 
 const dotenv = ".env";
 if (!fs.existsSync(dotenv)) fs.writeFileSync(".env", "");
