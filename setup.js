@@ -19,7 +19,8 @@ const getTableAndViewIdFromUrl = url => {
   return pattern.match(url);
 };
 
-const addQuotes = answer => (!answer.match(/^".*"$/) ? `"${answer}"` : answer);
+const addQuotes = answer =>
+  answer && !answer.match(/^".*"$/) ? `"${answer}"` : answer || '""';
 
 const formatAnswers = answers =>
   _.map(answers, (answer, key) => {
