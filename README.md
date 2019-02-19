@@ -86,6 +86,10 @@ This project currently supports most but not all Airtable field types. The only 
 
 You have two options for determining which rows are published. By default, all rows visible to an Airtable view will be published. If you want, however, you can add a Published checkbox column to your table. Any row that doesn't have a checkmark in that field will not be displayed on your site. This makes it easy to create drafts of your rows before publishing. Remember: If you don't include this field, every row will be displayed by default.
 
+### Slugs
+
+A slug is a unique ID that represents a resource in a URL. If you have a website called `website.com` with an article on it called "What Is a Website?", for instance, you might want that article's page to look something like `website.com/what-is-a-website.html` to make it readable and easy to remember. You can specify slugs in your site by adding a `Slug` column to your Airtable table and populating it in each row with your desired slug. Note that slugs cannot contain spaces, so you must use `-` or `_` to separate words. You don't need to include `.html` in your slug—that will be handled automatically.
+
 ## Development
 
 Entering `yarn run start:dev` into a terminal window will fire up a server that will allow you to view your site and style it in real time. Each time you save after editing CSS or custom renderers (more on these below), your work will be automatically reflected in the browser.
