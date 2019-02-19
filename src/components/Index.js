@@ -12,7 +12,7 @@ const Index = ({ rows, pagination }) => (
     {/* this needs to be refactored, shouldn't have check for window here */}
     {process.env.HEADER_TITLE && <Header title={process.env.HEADER_TITLE} />}
     {rows.map(row => {
-      const slugField = _.find(row.fields, field => field.name === "_Slug");
+      const slugField = _.find(row.fields, field => field.name === "Slug");
       const slug =
         (typeof window === "undefined" && slugField && slugField.value) ||
         row.id;

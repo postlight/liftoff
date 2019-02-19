@@ -78,12 +78,11 @@ tableHasPublishedColumn(base, includePublished =>
             });
           });
 
-          const slugFieldValue = row.fields._Slug;
+          const slugFieldValue = row.fields.Slug;
           const slug =
-            (!!slugFieldValue &&
-              !alreadySeenSlugs[slugFieldValue] &&
-              slugFieldValue) ||
-            formattedRow.id;
+            slugFieldValue !== undefined && !alreadySeenSlugs[slugFieldValue]
+              ? slugFieldValue
+              : formattedRow.id;
           alreadySeenSlugs[slug] = true;
 
           const pageTitle = row.fields[process.env.PAGE_TITLE_COLUMN];
