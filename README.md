@@ -149,3 +149,7 @@ Running `yarn build` in a terminal window will execute a build script that will 
 After you build your site, you can deploy it anywhere that you can serve static HTML.
 
 One service we often use at Postlight is [Netlify](https://netlify.com). You can follow instructions on their site to get your site up and running—the main things you need to remember for this process are that the folder you want to deploy is `/dist` and the command you need to run to build the site is `yarn build`.
+
+To set your environment variables on Netlify, you will have to input them manually by going to the Setting tabs from the Netlify page for your website and clicking on "Build & deploy" in the sidebar. Now scroll down a little to the "Build environment variables" section and copy in your environment variables from your `.env` file [as set up above](#setting-up-your-environment-variables). When you've finished, it should look something like the following:
+
+![Netlify environment variables](/readme-assets/netlify-config.png)
