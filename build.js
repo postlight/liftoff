@@ -80,7 +80,7 @@ tableHasPublishedColumn(base, includePublished =>
 
           const slugFieldValue = row.fields._Slug;
           const slug =
-            (slugFieldValue &&
+            (!!slugFieldValue &&
               !alreadySeenSlugs[slugFieldValue] &&
               slugFieldValue) ||
             formattedRow.id;
