@@ -58,7 +58,9 @@ const getPrettyVarName = variable =>
     FIELD_ORDER:
       "the order a row's fields will appear in on its own individual page",
     HEADER_TITLE: "your header title",
-    PAGE_TITLE: "your page title",
+    SITE_TITLE: "your site title",
+    PAGE_TITLE_COLUMN:
+      "the column whose values will populate each row's page title",
     MARKDOWN_FIELDS: "fields that will be displayed in markdown"
   }[variable]);
 
@@ -82,8 +84,10 @@ const getMessage = promptName => {
       "Enter the order you'd like a row's fields to appear when displayed on\nthe row's individual page. Any field not listed here will be hidden.\n\n    Example: Body,Description,Image,Author\n\nEnter here: ",
     HEADER_TITLE:
       "Enter the title you'd like your website to display in the header on each\npage. If blank, there will be no header.\n\nEnter here: ",
-    PAGE_TITLE:
+    SITE_TITLE:
       "Enter the title of your website. This will be shown in the browser tab.\n\nEnter here: ",
+    PAGE_TITLE_COLUMN:
+      "Enter the column in your table that corresponds to the name or title of each row.\nThis will be shown in the browser tab in the format 'Site Title – Page Title'.\nIf left blank, there will be no row-specific page titles set.\n\nEnter here: ",
     MARKDOWN_FIELDS:
       "Enter any fields you would like to be rendered in markdown. This is optional.\nIf you don't use markdown, or don't know what it is, just press 'Enter'.\n\n    Example: Body,Description\n\nEnter here: "
   };
@@ -138,12 +142,16 @@ const runPrompts = () => {
         message: `6. ${getMessage("HEADER_TITLE")}`
       },
       {
-        name: "PAGE_TITLE",
-        message: `7. ${getMessage("PAGE_TITLE")}`
+        name: "SITE_TITLE",
+        message: `7. ${getMessage("SITE_TITLE")}`
+      },
+      {
+        name: "PAGE_TITLE_COLUMN",
+        message: `8. ${getMessage("PAGE_TITLE_COLUMN")}`
       },
       {
         name: "MARKDOWN_FIELDS",
-        message: `8. ${getMessage("MARKDOWN_FIELDS")}`
+        message: `9. ${getMessage("MARKDOWN_FIELDS")}`
       }
     ])
     .then(answers => {

@@ -36,7 +36,8 @@ module.exports = {
       "FIELD_ORDER",
       "HOMEPAGE_FIELD_ORDER",
       "HEADER_TITLE",
-      "PAGE_TITLE",
+      "SITE_TITLE",
+      "PAGE_TITLE_COLUMN",
       "MARKDOWN_FIELDS"
     ])
   ],
