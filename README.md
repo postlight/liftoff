@@ -86,6 +86,10 @@ This project currently supports most but not all Airtable field types. The only 
 
 You have two options for determining which rows are published. By default, all rows visible to an Airtable view will be published. If you want, however, you can add a Published checkbox column to your table. Any row that doesn't have a checkmark in that field will not be displayed on your site. This makes it easy to create drafts of your rows before publishing. Remember: If you don't include this field, every row will be displayed by default.
 
+### Slugs
+
+A slug is a unique ID that represents a resource in a URL. If you have a website called `website.com` with an article on it called "What Is a Website?", for instance, you might want that article's page to look something like `website.com/what-is-a-website.html` to make it readable and easy to remember. You can specify slugs in your site by adding a `Slug` column to your Airtable table and populating it in each row with your desired slug. Note that slugs cannot contain spaces, so you must use `-` or `_` to separate words. You don't need to include `.html` in your slug—that will be handled automatically.
+
 ## Development
 
 Entering `yarn run start:dev` into a terminal window will fire up a server that will allow you to view your site and style it in real time. Each time you save after editing CSS or custom renderers (more on these below), your work will be automatically reflected in the browser.
@@ -145,3 +149,7 @@ Running `yarn build` in a terminal window will execute a build script that will 
 After you build your site, you can deploy it anywhere that you can serve static HTML.
 
 One service we often use at Postlight is [Netlify](https://netlify.com). You can follow instructions on their site to get your site up and running—the main things you need to remember for this process are that the folder you want to deploy is `/dist` and the command you need to run to build the site is `yarn build`.
+
+To set your environment variables on Netlify, you will have to input them manually by going to the Setting tabs from the Netlify page for your website and clicking on "Build & deploy" in the sidebar. Now scroll down a little to the "Build environment variables" section and copy in your environment variables from your `.env` file [as set up above](#setting-up-your-environment-variables). When you've finished, it should look something like the following:
+
+![Netlify environment variables](/readme-assets/netlify-config.png)

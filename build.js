@@ -78,15 +78,14 @@ tableHasPublishedColumn(base, includePublished =>
             });
           });
 
-          const slugField = formattedRow.fields.find(
-            field => field.name === "_Slug"
-          );
+          const slugFieldValue = row.fields.Slug;
           const slug =
-            (slugField &&
-              !alreadySeenSlugs[slugField.value] &&
-              slugField.value) ||
-            formattedRow.id;
+            slugFieldValue !== undefined && !alreadySeenSlugs[slugFieldValue]
+              ? slugFieldValue
+              : formattedRow.id;
           alreadySeenSlugs[slug] = true;
+
+          const pageTitle = row.fields[process.env.PAGE_TITLE_COLUMN];
 
           const filepath = `dist/${slug}.html`;
           allRows[currentPage].push(formattedRow);
@@ -99,7 +98,7 @@ tableHasPublishedColumn(base, includePublished =>
           // write individual resource page files
           fs.writeFile(
             filepath,
-            renderAsHTMLPage(<RowPage rowData={formattedRow} />),
+            renderAsHTMLPage(<RowPage rowData={formattedRow} />, pageTitle),
             error => {
               if (error) {
                 console.error(`Error writing ${filepath}`);
