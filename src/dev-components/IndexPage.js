@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import _ from "underscore";
 
 import Index from "../components/Index";
+import tableHasPublishedColumn from "../utils/tableHasPublishedColumn";
 
 export default class IndexPage extends React.Component {
   constructor(props) {
@@ -23,63 +24,65 @@ export default class IndexPage extends React.Component {
       apiKey: process.env.AIRTABLE_API_KEY
     }).base(process.env.BASE_ID);
 
-    base(process.env.TABLE_ID)
-      .select({
-        view: process.env.VIEW,
-        filterByFormula: "{Published}"
-      })
-      .eachPage(
-        function page(records, fetchNextPage) {
-          records.forEach(row => {
-            if (currentRow > 10) {
-              currentRow = 1;
-              allRows.push([]);
-            }
-            const fieldsArray = _.map(row.fields, (value, name) => ({
-              name,
-              value
-            }));
+    tableHasPublishedColumn(base, includePublished =>
+      base(process.env.TABLE_ID)
+        .select({
+          view: process.env.VIEW,
+          ...(includePublished ? { filterByFormula: "{Published}" } : {})
+        })
+        .eachPage(
+          function page(records, fetchNextPage) {
+            records.forEach(row => {
+              if (currentRow > 10) {
+                currentRow = 1;
+                allRows.push([]);
+              }
+              const fieldsArray = _.map(row.fields, (value, name) => ({
+                name,
+                value
+              }));
 
-            const fieldOrderMapped = process.env.FIELD_ORDER
-              ? _.object(
-                  process.env.FIELD_ORDER.split(",").map((field, idx) => [
-                    field,
-                    idx
-                  ])
-                )
-              : null;
-            const fields = fieldOrderMapped
-              ? _.sortBy(fieldsArray, field => fieldOrderMapped[field.name])
-              : fieldsArray;
+              const fieldOrderMapped = process.env.FIELD_ORDER
+                ? _.object(
+                    process.env.FIELD_ORDER.split(",").map((field, idx) => [
+                      field,
+                      idx
+                    ])
+                  )
+                : null;
+              const fields = fieldOrderMapped
+                ? _.sortBy(fieldsArray, field => fieldOrderMapped[field.name])
+                : fieldsArray;
 
-            allRows[allRows.length - 1].push({
-              ...row,
-              fields
+              allRows[allRows.length - 1].push({
+                ...row,
+                fields
+              });
+              currentRow += 1;
             });
-            currentRow += 1;
-          });
 
-          // calls page function again while there are still pages left
-          fetchNextPage();
-        },
-        err => {
-          if (err) {
-            // eslint-disable-next-line no-console
-            console.error(err);
-          }
-          const backPage = currentPage > 1 ? currentPage - 1 : null;
-          const nextPage =
-            currentPage < allRows.length ? currentPage + 1 : null;
-
-          that.setState({
-            rows: allRows,
-            pagination: {
-              back: backPage ? `/page/${backPage}.html` : null,
-              next: nextPage ? `/page/${nextPage}.html` : null
+            // calls page function again while there are still pages left
+            fetchNextPage();
+          },
+          err => {
+            if (err) {
+              // eslint-disable-next-line no-console
+              console.error(err);
             }
-          });
-        }
-      );
+            const backPage = currentPage > 1 ? currentPage - 1 : null;
+            const nextPage =
+              currentPage < allRows.length ? currentPage + 1 : null;
+
+            that.setState({
+              rows: allRows,
+              pagination: {
+                back: backPage ? `/page/${backPage}.html` : null,
+                next: nextPage ? `/page/${nextPage}.html` : null
+              }
+            });
+          }
+        )
+    );
   }
 
   componentWillReceiveProps(nextProps) {
