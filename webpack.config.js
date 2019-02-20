@@ -2,7 +2,13 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 const dotenv = require("dotenv");
 
+const trimFieldOrder = require("./src/utils/trimFieldOrder");
+
 dotenv.config();
+process.env.FIELD_ORDER = trimFieldOrder(process.env.FIELD_ORDER);
+process.env.HOMEPAGE_FIELD_ORDER = trimFieldOrder(
+  process.env.HOMEPAGE_FIELD_ORDER
+);
 
 const htmlPlugin = new HtmlWebPackPlugin({
   template: "./public/index.html",
