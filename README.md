@@ -29,10 +29,11 @@ This README goes pretty in depth with how to set up this project on your compute
 4. [Styling](#styling)
    - [Default classes](#default-classes)
    - [Favicon](#favicon)
-5. [Custom renderers](#custom-renderers)
-6. [Build](#build)
-7. [Deploying your site](#deploying-your-site)
-8. [Example sites](#example-sites)
+5. [Pagination](#pagination)
+6. [Custom renderers](#custom-renderers)
+7. [Build](#build)
+8. [Deploying your site](#deploying-your-site)
+9. [Example sites](#example-sites)
 
 ## Getting Started
 
@@ -101,6 +102,10 @@ Any CSS put in the `styles.css` file at `/custom/styles.css` will be injected in
 
 Your field names will always be added as classes in the corresponding HTML. So for example, a field called "Title" will generate an HTML element with the class `.Title`. There are other classes that are put in by default, detailed below. You can make use of these classes to style the site to your liking.
 
+## Pagination
+
+Pagination is automatically implemented on any site with more than 10 posts. This makes back + next buttons available on the homepage of your site for navigating between different pages of posts.
+
 ### Default classes
 
 - `.attachments`: placed on attachment-type fields
@@ -157,6 +162,6 @@ To set your environment variables on Netlify, you will have to input them manual
 
 ## Example sites
 
-We've prepared two example sites for you to get an idea of what this tool makes possible. The first is a reimagining of Postlight's blog site, [Track Changes](https://postlight.com/trackchanges/articles), which you can see at https://track-changes-demo.netlify.com. This site showcases a lot of custom CSS as well as markdown support, as you can see in the body of some of the articles. The second site is a fake blog for pizza enthusiasts, located at https://roni-rony-rone.netlify.com. This site highlights more custom CSS as well as custom React renderers, including one that lets you copy and paste a Google Maps embed code into your Airtable row and see it on your webpage, and another that does the same for Spotify playlist links.
+We've prepared two example sites for you to get an idea of what this tool makes possible. The first is a reimagining of Postlight's blog site, [Track Changes](https://postlight.com/trackchanges/articles), which you can see at https://track-changes-demo.netlify.com. This site showcases pagination, a lot of custom CSS, and markdown support, as you can see in the body of some of the articles. The second site is a fake blog for pizza enthusiasts, located at https://roni-rony-rone.netlify.com. This site highlights more custom CSS as well as custom React renderers, including one that lets you copy and paste a Google Maps embed code into your Airtable row and see it on your webpage, and another that does the same for Spotify playlist links.
 
 You can see the custom CSS and React components we wrote for the Track Changes site [here](https://github.com/postlight/airtable-as-cms/tree/track-changes-example-site/custom), and you can see the custom CSS and React components we wrote for the pizza blog site [here](https://github.com/postlight/airtable-as-cms/tree/roni-rony-rone-example-site/custom).
