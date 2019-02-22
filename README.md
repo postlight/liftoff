@@ -32,6 +32,7 @@ This README goes pretty in depth with how to set up this project on your compute
 5. [Custom renderers](#custom-renderers)
 6. [Build](#build)
 7. [Deploying your site](#deploying-your-site)
+8. [Example sites](#example-sites)
 
 ## Getting Started
 
@@ -153,3 +154,7 @@ One service we often use at Postlight is [Netlify](https://netlify.com). You can
 To set your environment variables on Netlify, you will have to input them manually by going to the Setting tabs from the Netlify page for your website and clicking on "Build & deploy" in the sidebar. Now scroll down a little to the "Build environment variables" section and copy in your environment variables from your `.env` file [as set up above](#setting-up-your-environment-variables). When you've finished, it should look something like the following:
 
 ![Netlify environment variables](/readme-assets/netlify-config.png)
+
+## Example sites
+
+We've prepared two example sites for you to get an idea of what this tool makes possible. The first is a reimagining of Postlight's blog site, [Track Changes](https://postlight.com/trackchanges/articles), which you can see at https://track-changes-demo.netlify.com. This site showcases a lot of custom CSS as well as markdown support, as you can see in the body of some of the articles. The second site is a fake blog for pizza enthusiasts, located at https://roni-rony-rone.netlify.com. This site highlights more custom CSS as well as custom React renderers, including one that lets you copy and paste a Google Maps embed code into your Airtable row and see it on your webpage, and another that does the same for Spotify playlist links.
