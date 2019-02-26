@@ -1,6 +1,6 @@
-# Airtable-as-CMS
+# Liftoff – The Airtable CMS
 
-Airtable-as-CMS is a nifty tool that lets you create a static website from an Airtable table and style it with custom CSS.
+Liftoff is a nifty tool that lets you create a static website from an Airtable table and style it with custom CSS.
 
 ## Quick Start
 
