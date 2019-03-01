@@ -166,7 +166,7 @@ const runPrompts = () => {
         "If you want to change any of your responses, you can either run `yarn setup` again\nor edit them directly in the .env file.\n"
       );
       console.log(
-        "To get started developing, open your terminal window and run:\n\n    yarn start:dev\n\nYou're probably going to want to start styling your web site. Here's how:\n\n    https://github.com/postlight/airtable-as-cms/#styling\n"
+        "To get started developing, open your terminal window and run:\n\n    yarn start:dev\n\nYou're probably going to want to start styling your web site. Here's how:\n\n    https://github.com/postlight/liftoff/#styling\n"
       );
       console.log(
         "When you're ready to build your site, simply run:\n\n    yarn build\n"

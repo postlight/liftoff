@@ -7,7 +7,7 @@ Liftoff is a nifty tool that lets you create a static website from an Airtable t
 This README goes pretty in depth with how to set up this project on your computer. Here are the basics in case you want to jump right in. You'll likely want to skim through other parts of this document as you go, but this will get you started!
 
 1. Create an [Airtable](https://www.airtable.com) base if you haven't already
-2. Clone this repo: `git clone git@github.com:postlight/airtable-as-cms.git`
+2. Clone this repo: `git clone git@github.com:postlight/liftoff.git`
 3. Run `yarn install` to install dependencies
 4. Run `yarn setup` for a walkthrough on setting environment variables
 5. Run `yarn run start:dev` to start up the webpack dev server
