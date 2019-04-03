@@ -1,19 +1,19 @@
 # Liftoff – The Airtable CMS
 
-Liftoff is a nifty tool that lets you create a static website from an Airtable table and style it with custom CSS.
+Liftoff is a nifty tool that lets you create a static website from an Airtable base and style it with custom CSS. Read all about it in [this handy introduction](https://postlight.com/trackchanges/introducing-liftoff-easily-create-a-static-website-powered-by-airtable).
 
 ## Quick Start
 
 This README goes pretty in depth with how to set up this project on your computer. Here are the basics in case you want to jump right in. You'll likely want to skim through other parts of this document as you go, but this will get you started!
 
-1. Create an [Airtable](https://www.airtable.com) base if you haven't already
-2. Clone this repo: `git clone git@github.com:postlight/liftoff.git`
-3. Run `yarn install` to install dependencies
-4. Run `yarn setup` for a walkthrough on setting environment variables
-5. Run `yarn run start:dev` to start up the webpack dev server
-6. [Make changes to your Airtable base](#setting-up-your-airtable-base)
-7. [Style your site](#styling)
-8. [Deploy your site](#deploying-your-site)
+1. Create an [Airtable](https://www.airtable.com) base if you haven't already.
+2. Clone this repo: `git clone git@github.com:postlight/liftoff.git`.
+3. Run `yarn install` to install dependencies.
+4. Run `yarn setup` for a walkthrough on setting environment variables.
+5. Run `yarn run start:dev` to start up the webpack dev server.
+6. [Make changes to your Airtable base](#setting-up-your-airtable-base).
+7. [Style your site](#styling).
+8. [Deploy your site](#deploying-your-site).
 
 ## Table of Contents
 
@@ -165,3 +165,7 @@ To set your environment variables on Netlify, you will have to input them manual
 We've prepared two example sites for you to get an idea of what this tool makes possible. The first is a reimagining of Postlight's blog site, [Track Changes](https://postlight.com/trackchanges/articles), which you can see at https://track-changes-demo.netlify.com. This site showcases pagination, a lot of custom CSS, and markdown support, as you can see in the body of some of the articles. The second site is a fake blog for pizza enthusiasts, located at https://roni-rony-rone.netlify.com. This site highlights more custom CSS as well as custom React renderers, including one that lets you copy and paste a Google Maps embed code into your Airtable row and see it on your webpage, and another that does the same for Spotify playlist links.
 
 You can see the code we wrote for the Track Changes site [here](https://github.com/fdsimms/tc-demo-liftoff/tree/master/), and you can see the code we wrote for the pizza blog site [here](https://github.com/fdsimms/roni-rony-rone-liftoff-demo/tree/roni-rony-rone-example-site/).
+
+---
+
+🔬 A Labs project from your friends at [Postlight](https://postlight.com/labs)
