@@ -168,4 +168,4 @@ You can see the code we wrote for the Track Changes site [here](https://github.c
 
 ---
 
-🔬 A Labs project from your friends at [Postlight](https://postlight.com/labs)
+🔬 A Labs project from your friends at [Postlight](https://postlight.com/labs). Happy coding!
