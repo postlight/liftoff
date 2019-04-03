@@ -9,7 +9,7 @@
   sexual orientation, disability, personal appearance, body size, race, ethnicity,
   age, religion, nationality, or other similar characteristic.
 
-- Please avoid avoid using racist, sexually explicit or otherwise hostile
+- Please avoid using racist, sexually explicit or otherwise hostile
   nicknames that might detract from a friendly, safe and welcoming environment for
   all.
 
