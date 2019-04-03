@@ -166,6 +166,23 @@ We've prepared two example sites for you to get an idea of what this tool makes 
 
 You can see the code we wrote for the Track Changes site [here](https://github.com/fdsimms/tc-demo-liftoff/tree/master/), and you can see the code we wrote for the pizza blog site [here](https://github.com/fdsimms/roni-rony-rone-liftoff-demo/tree/roni-rony-rone-example-site/).
 
+## License
+
+Licensed under either of the below, at your preference:
+
+- Apache License, Version 2.0
+  ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
+- MIT license
+  ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+
+## Contributing
+
+For details on how to contribute, see [CONTRIBUTING.md](./CONTRIBUTING.md)
+
+Unless it is explicitly stated otherwise, any contribution intentionally
+submitted for inclusion in the work, as defined in the Apache-2.0 license,
+shall be dual licensed as above without any additional terms or conditions.
+
 ---
 
 🔬 A Labs project from your friends at [Postlight](https://postlight.com/labs). Happy coding!
