@@ -1,6 +1,6 @@
 # Liftoff – The Airtable CMS
 
-Liftoff is a nifty tool that lets you create a static website from an Airtable base and style it with custom CSS. Read all about it in [this handy introduction](https://postlight.com/trackchanges/introducing-liftoff-easily-create-a-static-website-powered-by-airtable).
+[Postlight](https://postlight.com)'s Liftoff is a nifty tool that lets you easily create a static website that displays content in Airtable base and style it with custom CSS. Read all about it in [this handy introduction](https://postlight.com/trackchanges/introducing-liftoff-easily-create-a-static-website-powered-by-airtable).
 
 ## Quick Start
 
@@ -185,4 +185,4 @@ shall be dual licensed as above without any additional terms or conditions.
 
 ---
 
-🔬 A Labs project from your friends at [Postlight](https://postlight.com/labs). Happy coding!
+🔬 A Labs project from your friends at [Postlight](https://postlight.com). Happy coding!
