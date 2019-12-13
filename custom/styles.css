@@ -2,3 +2,91 @@
   display: none;
   visibility: hidden;
 }
+
+html {
+  font-family: "SF Pro Text";
+  color: #141414;
+  background-color: #fafafa;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 44px;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 32px;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 28px;
+}
+
+h4 {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+h5 {
+  font-size: 18px;
+  line-height: 20px;
+}
+
+h6 {
+  font-size: 18px;
+  line-height: 20px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+blockquote {
+  margin: 0;
+  padding-left: 24px;
+  border-left: solid 8px #141414;
+}
+
+pre {
+  background-color: #ebeae8;
+  padding: 32px;
+}
+
+.field {
+  max-width: 704px;
+  margin: auto;
+}
+
+.attachments.field {
+  max-width: 944px;
+}
+
+#root {
+  max-width: 940px;
+  margin: auto;
+}
+
+.header::after {
+  content: "";
+  width: 72px;
+  height: 8px;
+  background-color: #141414;
+  display: block;
+}
+
+footer {
+  background-color: #141414;
+  width: 100%;
+}

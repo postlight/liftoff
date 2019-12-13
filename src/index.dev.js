@@ -25,6 +25,9 @@ ReactDOM.render(
           />
         )}
       />
+      <footer>
+        <h5>A Labs project from your friends at Postlight!</h5>
+      </footer>
     </div>
   </Router>,
   document.getElementById("root")
