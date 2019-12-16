@@ -1,11 +1,111 @@
 body {
-  padding: 25px;
   margin: auto;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 44px;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 32px;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 28px;
+}
+
+h4 {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+h5 {
+  font-size: 18px;
+  line-height: 20px;
+}
+
+h6 {
+  font-size: 18px;
+  line-height: 20px;
+  color: #807d70;
+}
+
+p {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+blockquote {
+  margin: 0;
+  padding-left: 24px;
+  border-left: solid 8px #141414;
+}
+
+.field,
+.header {
+  max-width: 704px;
+  margin: auto;
+}
+
+.attachments.field {
+  max-width: 944px;
+}
+
+#container {
+  max-width: 940px;
+  margin: auto;
+}
+
+.header::after {
+  content: "";
+  width: 72px;
+  height: 8px;
+  background-color: #141414;
+  display: block;
 }
 
 ul {
   padding: 0;
   list-style: none;
+}
+
+.markdown-field > ul {
+  list-style: initial;
+}
+
+.markdown-field > ol,
+.markdown-field > ul {
+  padding: 0;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+/*
+  NOTE: Chrome does not currently support the ::marker selector
+        There's sort of a way to get the same effect with setting
+        rules on li:before, but multi-line list items look awkward
+*/
+.markdown-field > ol li::marker {
+  font-weight: bold;
+}
+
+hr {
+  background-color: #141414;
+  height: 4px;
 }
 
 img {
@@ -15,23 +115,91 @@ img {
 .header-link,
 .row-link {
   text-decoration: none;
-  color: black;
+  color: #141414;
 }
 
 .row {
   margin: 20px 0;
 }
-
+/* 
 .nav-button {
   padding: 5px 15px;
   border: 1px solid black;
   border-radius: 3px;
   text-decoration: none;
   color: black;
-}
+} */
 
 @media (max-width: 768px) {
   body {
     padding: 12px;
   }
+}
+
+body::before {
+  content: "Congrats! This is a boilerplate Liftoff installation. To remove this text and modify the theme CSS, go to /custom/styles.css";
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 28px;
+  color: #141414;
+  padding: 16px;
+  width: 645px;
+  margin: 0 auto;
+  position: relative;
+  left: 35px;
+}
+
+#root::before {
+  content: url("/public/shuttle.svg");
+  display: block;
+  font-size: 18px;
+  line-height: 28px;
+  padding: 16px;
+  width: 720px;
+  margin: 0 auto;
+  position: relative;
+  top: -100px;
+}
+
+pre {
+  background-color: #ebeae8;
+  padding: 32px;
+}
+
+code {
+  font-family: "SF Pro Text";
+}
+
+.field.page-link {
+  margin-top: 32px;
+  font-weight: bold;
+}
+
+.row-link:last-of-type > .row::after {
+  background-color: #141414;
+  height: 4px;
+  margin: 24px auto 96px auto;
+}
+
+.index-page .row::after {
+  margin: 64px auto;
+  width: 720px;
+  content: "";
+  background-color: #ebeae8;
+  height: 8px;
+  display: block;
+}
+
+.index-page > div:last-child {
+  width: 720px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-button {
+  text-decoration: none;
+  color: #141414;
+  font-weight: bold;
 }

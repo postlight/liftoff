@@ -32,12 +32,12 @@ const Index = ({ rows, pagination }) => (
       <div>
         {pagination.back && (
           <LinkOrAnchor className="nav-button" to={pagination.back}>
-            <span>Back</span>
+            <span>← Previous</span>
           </LinkOrAnchor>
         )}
         {pagination.next && (
           <LinkOrAnchor className="nav-button" to={pagination.next}>
-            <span>Next</span>
+            <span>Next →</span>
           </LinkOrAnchor>
         )}
       </div>
