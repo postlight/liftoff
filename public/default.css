@@ -66,6 +66,18 @@ blockquote {
 
 @media (min-width: 777px) {
   /* desktop */
+  .markdown-field > ol,
+  .markdown-field > ul {
+    padding-left: 20px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .markdown-field ol li,
+  .markdown-field ul li {
+    padding-top: 18px;
+  }
+
   p {
     font-size: 18px;
     line-height: 28px;
@@ -139,8 +151,8 @@ ul {
 .markdown-field > ol,
 .markdown-field > ul {
   padding-left: 20px;
-  font-size: 18px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .markdown-field ol li,
@@ -225,6 +237,8 @@ pre {
 
 code {
   font-family: "SF Pro Text";
+  font-size: 16px;
+  line-height: 18px;
 }
 
 .field.page-link {
@@ -256,4 +270,8 @@ code {
   text-decoration: none;
   color: #141414;
   font-weight: bold;
+}
+
+.nav-button.hidden {
+  visibility: hidden;
 }
