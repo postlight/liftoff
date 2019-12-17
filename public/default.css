@@ -1,3 +1,7 @@
+html {
+  font-family: "SF Pro Text", sans-serif;
+}
+
 body {
   margin: 24px;
   font-size: 18px;
@@ -128,7 +132,7 @@ img {
 }
 
 body::before {
-  content: url("/public/shuttle-mobile.svg");
+  content: url(/assets/shuttle-mobile.svg);
   display: inline;
   text-align: center;
   display: block;
@@ -203,7 +207,7 @@ code {
 
 @media (min-width: 426px) {
   body::before {
-    content: url(/public/shuttle.svg);
+    content: url(/assets/shuttle.svg);
     width: 50px;
     height: 88px;
     display: block;
