@@ -50,8 +50,8 @@ p {
 
 blockquote {
   margin: 0;
-  padding-left: 24px;
-  border-left: solid 8px #141414;
+  padding-left: 18px;
+  border-left: solid 6px #141414;
 }
 
 .field,
@@ -62,10 +62,26 @@ blockquote {
 
 @media (min-width: 376px) and (max-width: 768px) {
   /* tablet */
+
+  /* body::before {
+    
+  }
+  
+  */
+
+  body > div::before {
+    content: url(/public/shuttle.svg);
+  }
 }
 
 @media (min-width: 777px) {
   /* desktop */
+
+  blockquote {
+    padding-left: 24px;
+    border-left-width: 8px;
+  }
+
   .markdown-field > ol,
   .markdown-field > ul {
     padding-left: 20px;
@@ -200,29 +216,27 @@ img {
 } */
 
 body::before {
-  content: "Congrats! This is a boilerplate Liftoff installation. To remove this text and modify the theme CSS, go to /custom/styles.css";
+  content: url("/public/shuttle-mobile.svg");
+  display: inline;
+  text-align: center;
   display: block;
+  /* top: 125px; */
+  margin: 0 auto;
+  /* position: relative; */
+}
+
+body > div::before {
   line-height: 24px;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
+  content: "Congrats! This is a boilerplate Liftoff installation. To remove this text and modify the theme CSS, go to /custom/styles.css";
   color: #141414;
-  /* padding: 16px; */
-  /* width: 645px; */
-  top: 125px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.index-page::before {
-  content: url("/public/shuttle-mobile.svg");
   display: block;
-  /* padding: 16px; */
-  /* width: 720px; */
   margin: 0 auto;
-  position: relative;
-  top: -115px;
-  left: 115px;
+  /* position: relative; */
+  /* top: -115px; */
+  /* left: 115px; */
 }
 
 pre {
