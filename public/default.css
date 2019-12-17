@@ -1,5 +1,5 @@
 body {
-  margin: auto;
+  margin: 24px;
   font-size: 18px;
   line-height: 28px;
 }
@@ -14,39 +14,38 @@ h6 {
 }
 
 h1 {
-  font-size: 40px;
-  line-height: 44px;
-}
-
-h2 {
   font-size: 28px;
   line-height: 32px;
 }
 
-h3 {
+h2 {
   font-size: 24px;
   line-height: 28px;
 }
 
-h4 {
+h3 {
   font-size: 20px;
   line-height: 24px;
 }
 
-h5 {
+h4 {
   font-size: 18px;
   line-height: 20px;
 }
 
+h5,
 h6 {
-  font-size: 18px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+h6 {
   color: #807d70;
 }
 
 p {
-  font-size: 18px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 blockquote {
@@ -57,20 +56,70 @@ blockquote {
 
 .field,
 .header {
-  max-width: 704px;
+  /* max-width: 704px; */
   margin: auto;
 }
 
-.attachments.field {
-  max-width: 944px;
+@media (min-width: 376px) and (max-width: 768px) {
+  /* tablet */
 }
 
-#container {
-  max-width: 940px;
-  margin: auto;
+@media (min-width: 777px) {
+  /* desktop */
+  p {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  h1 {
+    font-size: 40px;
+    line-height: 44px;
+  }
+
+  h2 {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  h3 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  h4 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  h5,
+  h6 {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  body {
+    max-width: 720px;
+  }
+
+  .attachments.field,
+  .markdown-image {
+    max-width: 917px;
+  }
+
+  .index-page .row::after {
+    width: 720px;
+  }
+
+  .index-page > div:last-child {
+    max-width: 720px;
+  }
 }
 
-.header::after {
+.row > div {
+  margin-top: 48px;
+}
+
+.markdown-header::before {
   content: "";
   width: 72px;
   height: 8px;
@@ -89,9 +138,20 @@ ul {
 
 .markdown-field > ol,
 .markdown-field > ul {
-  padding: 0;
+  padding-left: 20px;
   font-size: 18px;
   line-height: 28px;
+}
+
+.markdown-field ol li,
+.markdown-field ul li {
+  padding-top: 18px;
+}
+
+.markdown-inline-link a {
+  text-decoration: underline;
+  color: #141414;
+  font-weight: bold;
 }
 
 /*
@@ -105,7 +165,6 @@ ul {
 
 hr {
   background-color: #141414;
-  height: 4px;
 }
 
 img {
@@ -122,49 +181,46 @@ img {
   margin: 20px 0;
 }
 /* 
-.nav-button {
-  padding: 5px 15px;
-  border: 1px solid black;
-  border-radius: 3px;
-  text-decoration: none;
-  color: black;
-} */
-
 @media (max-width: 768px) {
   body {
     padding: 12px;
   }
-}
+} */
 
 body::before {
   content: "Congrats! This is a boilerplate Liftoff installation. To remove this text and modify the theme CSS, go to /custom/styles.css";
   display: block;
-  font-size: 18px;
+  line-height: 24px;
+  font-size: 16px;
   font-weight: bold;
-  line-height: 28px;
+  text-align: center;
   color: #141414;
-  padding: 16px;
-  width: 645px;
+  /* padding: 16px; */
+  /* width: 645px; */
+  top: 125px;
   margin: 0 auto;
   position: relative;
-  left: 35px;
 }
 
-#root::before {
-  content: url("/public/shuttle.svg");
+.index-page::before {
+  content: url("/public/shuttle-mobile.svg");
   display: block;
-  font-size: 18px;
-  line-height: 28px;
-  padding: 16px;
-  width: 720px;
+  /* padding: 16px; */
+  /* width: 720px; */
   margin: 0 auto;
   position: relative;
-  top: -100px;
+  top: -115px;
+  left: 115px;
 }
 
 pre {
   background-color: #ebeae8;
   padding: 32px;
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
 }
 
 code {
@@ -184,7 +240,6 @@ code {
 
 .index-page .row::after {
   margin: 64px auto;
-  width: 720px;
   content: "";
   background-color: #ebeae8;
   height: 8px;
@@ -192,7 +247,6 @@ code {
 }
 
 .index-page > div:last-child {
-  width: 720px;
   margin: auto;
   display: flex;
   justify-content: space-between;
