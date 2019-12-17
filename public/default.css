@@ -56,94 +56,10 @@ blockquote {
 
 .field,
 .header {
-  /* max-width: 704px; */
-  margin: auto;
+  margin: 24px auto;
 }
 
-@media (min-width: 376px) and (max-width: 768px) {
-  /* tablet */
-
-  /* body::before {
-    
-  }
-  
-  */
-
-  body > div::before {
-    content: url(/public/shuttle.svg);
-  }
-}
-
-@media (min-width: 777px) {
-  /* desktop */
-
-  blockquote {
-    padding-left: 24px;
-    border-left-width: 8px;
-  }
-
-  .markdown-field > ol,
-  .markdown-field > ul {
-    padding-left: 20px;
-    font-size: 18px;
-    line-height: 28px;
-  }
-
-  .markdown-field ol li,
-  .markdown-field ul li {
-    padding-top: 18px;
-  }
-
-  p {
-    font-size: 18px;
-    line-height: 28px;
-  }
-
-  h1 {
-    font-size: 40px;
-    line-height: 44px;
-  }
-
-  h2 {
-    font-size: 28px;
-    line-height: 32px;
-  }
-
-  h3 {
-    font-size: 24px;
-    line-height: 28px;
-  }
-
-  h4 {
-    font-size: 20px;
-    line-height: 24px;
-  }
-
-  h5,
-  h6 {
-    font-size: 18px;
-    line-height: 20px;
-  }
-
-  body {
-    max-width: 720px;
-  }
-
-  .attachments.field,
-  .markdown-image {
-    max-width: 917px;
-  }
-
-  .index-page .row::after {
-    width: 720px;
-  }
-
-  .index-page > div:last-child {
-    max-width: 720px;
-  }
-}
-
-.row > div {
+.header {
   margin-top: 48px;
 }
 
@@ -193,6 +109,8 @@ ul {
 
 hr {
   background-color: #141414;
+  border: none;
+  height: 1px;
 }
 
 img {
@@ -208,35 +126,28 @@ img {
 .row {
   margin: 20px 0;
 }
-/* 
-@media (max-width: 768px) {
-  body {
-    padding: 12px;
-  }
-} */
 
 body::before {
   content: url("/public/shuttle-mobile.svg");
   display: inline;
   text-align: center;
   display: block;
-  /* top: 125px; */
-  margin: 0 auto;
-  /* position: relative; */
+}
+
+@media screen and (max-width: 375px) {
+  body > div::before {
+    font-size: 16px;
+  }
 }
 
 body > div::before {
   line-height: 24px;
-  font-size: 16px;
   font-weight: bold;
   text-align: center;
   content: "Congrats! This is a boilerplate Liftoff installation. To remove this text and modify the theme CSS, go to /custom/styles.css";
   color: #141414;
   display: block;
   margin: 0 auto;
-  /* position: relative; */
-  /* top: -115px; */
-  /* left: 115px; */
 }
 
 pre {
@@ -288,4 +199,105 @@ code {
 
 .nav-button.hidden {
   visibility: hidden;
+}
+
+@media (min-width: 426px) {
+  body::before {
+    content: url(/public/shuttle.svg);
+    width: 50px;
+    height: 88px;
+    display: block;
+    margin: 0 0 0 40px;
+  }
+
+  body > div::before {
+    font-size: 18px;
+    line-height: 28px;
+    position: absolute;
+    top: 40px;
+    margin-right: 64px;
+    max-width: 566px;
+    right: 0;
+    text-align: left;
+  }
+
+  h1 {
+    font-size: 40px;
+    line-height: 44px;
+  }
+
+  h2 {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  h3 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  h4 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  h5,
+  h6 {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .markdown-field > ol,
+  .markdown-field > ul {
+    padding-left: 20px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .markdown-field ol li,
+  .markdown-field ul li {
+    padding-top: 18px;
+  }
+}
+
+@media (min-width: 777px) {
+  /* desktop */
+
+  blockquote {
+    padding-left: 24px;
+    border-left-width: 8px;
+  }
+
+  body::before {
+    margin-left: 0;
+  }
+
+  body > div::before {
+    position: relative;
+    top: -75px;
+    right: 15px;
+  }
+
+  body {
+    max-width: 720px;
+    margin: 24px auto;
+  }
+
+  .attachments.field,
+  .markdown-image {
+    max-width: 917px;
+  }
+
+  .index-page .row::after {
+    width: 720px;
+  }
+
+  .index-page > div:last-child {
+    max-width: 720px;
+  }
 }
