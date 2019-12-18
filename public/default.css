@@ -3,9 +3,10 @@ html {
 }
 
 body {
-  margin: 24px;
+  margin: 24px auto;
   font-size: 18px;
   line-height: 28px;
+  max-width: 85%;
 }
 
 h1,
@@ -67,17 +68,17 @@ blockquote {
   margin-top: 48px;
 }
 
+ul {
+  padding: 0;
+  list-style: none;
+}
+
 .markdown-header::before {
   content: "";
   width: 72px;
   height: 8px;
   background-color: #141414;
   display: block;
-}
-
-ul {
-  padding: 0;
-  list-style: none;
 }
 
 .markdown-field > ul {
@@ -96,12 +97,22 @@ ul {
   padding-top: 18px;
 }
 
-.markdown-inline-link a {
+.markdown-field a {
   text-decoration: underline;
   color: #141414;
   font-weight: bold;
 }
 
+.markdown-field img,
+img.attachment-image {
+  left: 55%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  max-width: 95vw;
+  position: relative;
+  right: 50%;
+  width: 95vw;
+}
 /*
   NOTE: Chrome does not currently support the ::marker selector
         There's sort of a way to get the same effect with setting
@@ -138,7 +149,7 @@ body::before {
   display: block;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 425px) {
   body > div::before {
     font-size: 16px;
   }
@@ -206,19 +217,22 @@ code {
 }
 
 @media (min-width: 426px) {
+  body {
+    margin: 64px;
+  }
+
   body::before {
     content: url(/assets/shuttle.svg);
     width: 50px;
     height: 88px;
     display: block;
-    margin: 0 0 0 40px;
   }
 
   body > div::before {
     font-size: 18px;
     line-height: 28px;
     position: absolute;
-    top: 40px;
+    top: 80px;
     margin-right: 64px;
     max-width: 566px;
     right: 0;
