@@ -1,12 +1,12 @@
 html {
-  font-family: "SF Pro Text", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+    helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
 }
 
 body {
-  margin: 24px auto;
+  margin: 24px 24px 96px 24px;
   font-size: 18px;
   line-height: 28px;
-  max-width: 85%;
 }
 
 h1,
@@ -21,27 +21,37 @@ h6 {
 h1 {
   font-size: 28px;
   line-height: 32px;
+  margin-top: 28px;
+  margin-bottom: 24px;
 }
 
 h2 {
   font-size: 24px;
   line-height: 28px;
+  margin-top: 24px;
+  margin-bottom: 20px;
 }
 
 h3 {
   font-size: 20px;
   line-height: 24px;
+  margin-top: 20px;
+  margin-bottom: 18px;
 }
 
 h4 {
   font-size: 18px;
   line-height: 20px;
+  margin-top: 18px;
+  margin-bottom: 16px;
 }
 
 h5,
 h6 {
   font-size: 16px;
   line-height: 18px;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 h6 {
@@ -61,7 +71,7 @@ blockquote {
 
 .field,
 .header {
-  margin: 24px auto;
+  margin: 32px auto;
 }
 
 .header {
@@ -73,12 +83,20 @@ ul {
   list-style: none;
 }
 
-.markdown-header::before {
+.header::after {
   content: "";
   width: 72px;
-  height: 8px;
+  height: 6px;
   background-color: #141414;
   display: block;
+}
+
+.row-page .nav-button::before {
+  content: "← ";
+}
+
+.row-page .row:last-of-type {
+  margin-bottom: 64px;
 }
 
 .markdown-field > ul {
@@ -87,7 +105,7 @@ ul {
 
 .markdown-field > ol,
 .markdown-field > ul {
-  padding-left: 20px;
+  padding-left: 24px;
   font-size: 16px;
   line-height: 24px;
 }
@@ -103,21 +121,21 @@ ul {
   font-weight: bold;
 }
 
-.markdown-field img,
 img.attachment-image {
-  left: 55%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  max-width: 95vw;
-  position: relative;
-  right: 50%;
-  width: 95vw;
+  width: calc(100vw - 16px);
+  margin-left: -16px;
 }
+
+.field + .field img {
+  margin-top: 8px;
+}
+
 /*
   NOTE: Chrome does not currently support the ::marker selector
         There's sort of a way to get the same effect with setting
         rules on li:before, but multi-line list items look awkward
 */
+
 .markdown-field > ol li::marker {
   font-weight: bold;
 }
@@ -126,10 +144,13 @@ hr {
   background-color: #141414;
   border: none;
   height: 1px;
+  margin-top: 32px;
+  margin-bottom: 32px;
 }
 
 img {
   width: 100%;
+  display: block;
 }
 
 .header-link,
@@ -143,31 +164,23 @@ img {
 }
 
 body::before {
-  content: url(/assets/shuttle-mobile.svg);
-  display: inline;
+  background-image: url(/assets/shuttle-mobile.svg);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  content: "Congrats! This is a boilerplate Liftoff installation. To remove this text and modify the theme CSS, go to /custom/styles.css";
   text-align: center;
-  display: block;
-}
-
-@media screen and (max-width: 425px) {
-  body > div::before {
-    font-size: 16px;
-  }
-}
-
-body > div::before {
+  padding-top: 152px;
+  font-size: 16px;
   line-height: 24px;
   font-weight: bold;
   text-align: center;
-  content: "Congrats! This is a boilerplate Liftoff installation. To remove this text and modify the theme CSS, go to /custom/styles.css";
   color: #141414;
   display: block;
-  margin: 0 auto;
 }
 
 pre {
   background-color: #ebeae8;
-  padding: 32px;
+  padding: 24px;
   white-space: pre-wrap; /* css-3 */
   white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
   white-space: -pre-wrap; /* Opera 4-6 */
@@ -176,20 +189,18 @@ pre {
 }
 
 code {
-  font-family: "SF Pro Text";
   font-size: 16px;
-  line-height: 18px;
-}
-
-.field.page-link {
-  margin-top: 32px;
-  font-weight: bold;
+  line-height: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+    helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
 }
 
 .row-link:last-of-type > .row::after {
-  background-color: #141414;
-  height: 4px;
-  margin: 24px auto 96px auto;
+  display: none;
+}
+
+.row-link:last-of-type .row {
+  margin-bottom: 64px;
 }
 
 .index-page .row::after {
@@ -201,9 +212,10 @@ code {
 }
 
 .index-page > div:last-child {
-  margin: auto;
   display: flex;
   justify-content: space-between;
+  padding-top: 30px;
+  border-top: 4px solid #141414;
 }
 
 .nav-button {
@@ -212,57 +224,64 @@ code {
   font-weight: bold;
 }
 
-.nav-button.hidden {
-  visibility: hidden;
-}
-
-@media (min-width: 426px) {
+@media (min-width: 768px) {
   body {
-    margin: 64px;
+    margin: 64px auto 128px auto;
+    max-width: 85%;
+  }
+
+  pre {
+    padding: 32px;
+  }
+
+  hr {
+    margin-top: 48px;
+    margin-bottom: 48px;
   }
 
   body::before {
-    content: url(/assets/shuttle.svg);
-    width: 50px;
-    height: 88px;
-    display: block;
-  }
-
-  body > div::before {
-    font-size: 18px;
-    line-height: 28px;
-    position: absolute;
-    top: 80px;
-    margin-right: 64px;
-    max-width: 566px;
-    right: 0;
+    background-position-x: left;
+    background-image: url(/assets/shuttle.svg);
+    padding-left: 74px;
+    padding-top: 20px;
     text-align: left;
+    height: 68px;
   }
 
   h1 {
     font-size: 40px;
     line-height: 44px;
+    margin-top: 40px;
+    margin-bottom: 28px;
   }
 
   h2 {
     font-size: 28px;
     line-height: 32px;
+    margin-top: 28px;
+    margin-bottom: 24px;
   }
 
   h3 {
     font-size: 24px;
     line-height: 28px;
+    margin-top: 24px;
+    margin-bottom: 20px;
   }
 
   h4 {
     font-size: 20px;
     line-height: 24px;
+    margin-top: 20px;
+    margin-bottom: 18px;
   }
 
   h5,
   h6 {
     font-size: 18px;
     line-height: 20px;
+    margin-top: 18px;
+    margin-bottom: 18px;
   }
 
   p {
@@ -272,7 +291,7 @@ code {
 
   .markdown-field > ol,
   .markdown-field > ul {
-    padding-left: 20px;
+    padding-left: 32px;
     font-size: 18px;
     line-height: 28px;
   }
@@ -281,10 +300,23 @@ code {
   .markdown-field ul li {
     padding-top: 18px;
   }
+
+  img.attachment-image {
+    width: calc(100% + 48px);
+    margin-left: -24px;
+  }
+
+  .field,
+  .header {
+    margin: 48px auto;
+  }
 }
 
-@media (min-width: 777px) {
+@media (min-width: 1024px) {
   /* desktop */
+  body {
+    max-width: 720px;
+  }
 
   blockquote {
     padding-left: 24px;
@@ -301,21 +333,16 @@ code {
     right: 15px;
   }
 
-  body {
-    max-width: 720px;
-    margin: 24px auto;
-  }
-
-  .attachments.field,
-  .markdown-image {
-    max-width: 917px;
-  }
-
   .index-page .row::after {
     width: 720px;
   }
 
   .index-page > div:last-child {
     max-width: 720px;
+  }
+
+  img.attachment-image {
+    width: calc(100% + 192px);
+    margin-left: -96px;
   }
 }
