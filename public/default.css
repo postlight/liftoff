@@ -13,21 +13,6 @@ body {
   line-height: 24px;
 }
 
-body::before {
-  background-image: url(/assets/shuttle-mobile.svg);
-  background-repeat: no-repeat;
-  background-position-x: center;
-  content: "Congrats! This is a boilerplate Liftoff installation. To remove this text and modify the theme CSS, go to /custom/styles.css";
-  text-align: center;
-  padding-top: 152px;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: bold;
-  text-align: center;
-  color: #141414;
-  display: block;
-}
-
 h1,
 h2,
 h3,
@@ -144,15 +129,6 @@ p {
   margin-top: 48px;
 }
 
-.header::after {
-  content: "";
-  width: 72px;
-  height: 6px;
-  background-color: #141414;
-  margin-top: 24px;
-  display: block;
-}
-
 .markdown-field > ul {
   list-style: initial;
 }
@@ -175,7 +151,7 @@ p {
   font-weight: bold;
 }
 
-img.attachment-image {
+.attachment-image {
   width: calc(100vw - 16px);
   margin-left: -16px;
 }
@@ -231,10 +207,6 @@ span.field-value:not(.markdown-field) {
 }
 
 /* Detail/Row Page */
-.row-page .nav-button {
-  margin: 12px 0;
-  display: inline-block;
-}
 
 .row-page .nav-button::before {
   content: "← ";
