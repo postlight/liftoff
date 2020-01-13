@@ -4,6 +4,253 @@
 }
 
 html {
-  color: #141414;
+  color: #252b4d;
+  background-color: #f54600;
+  font-family: "Barlow Condensed";
+  font-weight: bold;
+}
+
+body {
   background-color: #fafafa;
+  margin: 12px 12px 96px 12px;
+}
+
+.header h1 {
+  text-align: center;
+  line-height: 40px;
+  font-size: 40px;
+}
+
+.row-page .header {
+  background-color: #f54600;
+  font-size: 32px;
+}
+
+.header-link {
+  color: #fafafa;
+}
+
+img.attachment-image::before {
+  padding-top: 100%;
+  content: "";
+  width: 100%;
+  display: block;
+}
+
+img.attachment-image {
+  position: absolute;
+  top: 0;
+  left: -65px;
+  bottom: 0;
+  right: 0;
+  width: calc(100% * 1.5);
+  opacity: 0.5;
+  margin: 0;
+}
+
+.LedeImage ul {
+  background-color: black;
+  height: 328px;
+  margin-top: 0;
+}
+
+/* .row .field {
+  position: absolute;
+} */
+
+.lede {
+  height: 50px;
+  background-color: #f54600;
+  color: #fafafa;
+  font-size: 20px;
+  line-height: 20px;
+  display: flex;
+  justify-content: left;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.LedeImage {
+  margin: 0 12px;
+  overflow: hidden;
+}
+
+.row-link {
+  display: block;
+  margin-top: 6px;
+}
+
+.Name {
+  font-size: 40px;
+  line-height: 40px;
+}
+
+.index-page .Name,
+.index-page .Author,
+.index-page .lede {
+  max-width: 250px;
+}
+
+.index-page .row > div:not(.LedeImage) {
+  position: relative;
+  left: 24px;
+  bottom: 200px;
+  color: white;
+  display: inline-block;
+}
+
+.index-page .LedeImage {
+  position: relative;
+  width: 327px;
+  height: 327px;
+}
+
+.row-page {
+  display: grid;
+  grid-template-row: 64px auto;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.row-page > * {
+  grid-column: 1 / 7;
+}
+
+.row-page .header {
+  margin: 0;
+  grid-area: 1 / span 6;
+  font-size: 24px;
+}
+.row-page .header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.row-page .LedeImage ul {
+  background-color: unset;
+  height: 169px;
+}
+
+.row-page .LedeImage {
+  margin: 6px;
+}
+
+.row-page img.attachment-image {
+  opacity: 1;
+  position: unset;
+  margin: auto;
+}
+
+.row-page .Name,
+.row-page .Author,
+.TheRRReview,
+.Rating,
+.RRRSoundtrack {
+  text-align: center;
+}
+
+.row-page .Name {
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 48px;
+  text-transform: uppercase;
+}
+
+.TheRRReview,
+.Rating,
+.RRRSoundtrack {
+  margin: 24px;
+}
+
+.Rating h1 {
+  font-size: 32px;
+}
+
+.Rating .star-rating {
+  margin: 24px 10px 0 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.GoogleMap {
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 48px;
+}
+
+.GoogleMap iframe {
+  max-width: 100%;
+}
+
+.SpotifyPlaylist {
+  margin: 48px 12px 0 12px;
+}
+
+.SpotifyPlaylist iframe {
+  width: 100%;
+  height: 410px;
+}
+
+.Rating span,
+.RRRSoundtrack span {
+  color: #f54600;
+}
+
+.row-page .nav-button:first-of-type {
+  grid-area: 1 / 1;
+}
+
+.row-page .nav-button {
+  background-color: #f54600;
+  color: #fafafa;
+  margin: 0;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row-page .nav-button:last-of-type {
+  grid-column: 1 / span 2;
+  margin-bottom: 72px;
+  margin-left: 12px;
+  margin-top: 32px;
+  padding: 10px 12px;
+}
+
+.row-page .nav-button::before {
+  display: none;
+}
+
+.row-page .row:last-of-type {
+  margin: unset;
+}
+
+.row-page .nav-button:last-of-type::before {
+  display: none;
+}
+
+.row-page .Author,
+.TheRRReview .review-text,
+.RRRSoundtrack p {
+  font-family: "Courier New";
+  font-weight: bold;
+}
+
+.row-page .Author p {
+  margin-top: 8px;
+}
+
+.index-page .row {
+  height: 327px;
+}
+
+.index-page .row::after {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .TheRRReview,
+  .Rating,
+  .RRRSoundtrack {
+    margin: 96px;
+  }
 }
