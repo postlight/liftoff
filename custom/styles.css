@@ -7,3 +7,24 @@ html {
   color: #141414;
   background-color: #fafafa;
 }
+
+body {
+  background-color: #312459;
+  margin: 0;
+}
+
+.index-page,
+.row-page {
+  margin-left: 10px;
+  margin-right: 10px;
+  color: white;
+}
+
+.index-page .header,
+.index-page .header h1 {
+  margin-top: 0;
+}
+
+.index-page .row {
+  color: white;
+}

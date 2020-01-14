@@ -13,21 +13,6 @@ body {
   line-height: 24px;
 }
 
-body::before {
-  background-image: url(/assets/shuttle-mobile.svg);
-  background-repeat: no-repeat;
-  background-position-x: center;
-  content: "Congrats! This is a boilerplate Liftoff installation. To remove this text and modify the theme CSS, go to /custom/styles.css";
-  text-align: center;
-  padding-top: 152px;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: bold;
-  text-align: center;
-  color: #141414;
-  display: block;
-}
-
 h1,
 h2,
 h3,
