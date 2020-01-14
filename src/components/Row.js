@@ -7,6 +7,7 @@ import Attachments from "./Attachments";
 import * as customRenderers from "../../custom/renderers";
 
 const getRenderer = field => {
+  console.log(field);
   const { value, name } = field;
   const customRendererName = name.replace(/\s/g, "");
   if (customRenderers[customRendererName]) {
@@ -37,16 +38,23 @@ const getRenderer = field => {
   return <div />;
 };
 
-const Row = ({ rowData, fieldsToDisplay }) => (
-  <div className="row">
-    {_.chain(rowData.fields)
-      .map(field =>
-        fieldsToDisplay.includes(field.name) ? getRenderer(field) : null
-      )
-      .filter(renderer => !!renderer)
-      .value()}
-  </div>
-);
+const Row = ({ rowData, fieldsToDisplay }) => {
+  return (
+    <div className="row">
+      {_.chain(fieldsToDisplay)
+        .map(fieldName => {
+          const fieldValue = rowData.fields.find(
+            field => field.name === fieldName
+          );
+          if (fieldValue) return getRenderer(fieldValue);
+
+          return fieldValue;
+        })
+        .filter(renderer => !!renderer)
+        .value()}
+    </div>
+  );
+};
 
 Row.defaultProps = {
   rowData: {},

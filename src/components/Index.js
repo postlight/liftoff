@@ -6,7 +6,7 @@ import LinkOrAnchor from "./LinkOrAnchor";
 import Header from "./Header";
 import Row from "./Row";
 import getFieldsToDisplay from "../utils/getFieldsToDisplay";
-import CustomRenderers from "../../custom/renderers";
+import * as CustomRenderers from "../../custom/renderers";
 import Hero from "./Hero";
 
 const Index = ({ rows, pagination }) => {
@@ -17,7 +17,6 @@ const Index = ({ rows, pagination }) => {
   } else {
     hero = <CustomRenderers.LiftoffHero />;
   }
-
   return (
     <div className="index-page">
       {/* this needs to be refactored, shouldn't have check for window here */}
@@ -30,7 +29,6 @@ const Index = ({ rows, pagination }) => {
         const slug =
           (typeof window === "undefined" && slugField && slugField.value) ||
           row.id;
-
         return (
           <LinkOrAnchor key={row.id} to={`/${slug}.html`}>
             <Row

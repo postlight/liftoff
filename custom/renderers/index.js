@@ -4,7 +4,7 @@ import LiftoffHero from "./LiftoffHero";
 import ReviewCard from "./ReviewCard";
 import Author from "./Author";
 import LedeImage from "./LedeImage";
-import LedeThumb from "./LedeThumb";
+// import LedeThumb from "./LedeThumb";
 import TheRRReview from "./TheRRReview";
 import Rating from "./Rating";
 import GoogleMap from "./GoogleMap";
@@ -19,7 +19,7 @@ export {
   Rating,
   GoogleMap,
   //  LedeImage,
-  LedeThumb,
+  // LedeThumb,
   RRRSoundtrack,
   SpotifyPlaylist
 };

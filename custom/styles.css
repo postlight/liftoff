@@ -21,82 +21,120 @@ body {
   font-size: 40px;
 }
 
+.index-page .header {
+  background-color: #f54600;
+  margin: 0 -12px 0 -12px;
+}
+
+.index-page .header h1 {
+  color: #fafafa;
+  width: 100%;
+  margin-top: 0;
+  padding-bottom: 14px;
+}
+
+.index-page .title {
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  margin-top: 64px;
+}
+
+.index-page .title h1 {
+  color: #252b4d;
+  font-size: 48px;
+  line-height: 48px;
+  text-shadow: 1px 1px #fffdfa, 3px 3px rgba(245, 70, 0, 0.43);
+  font-family: "Barlow Condensed";
+}
+
+.index-page .title p {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.index-page a {
+  color: #252b4d;
+}
+
+.index-page .title h3 {
+  color: #f54600;
+  line-height: 20px;
+  margin-top: 16px;
+}
+
+.pizza-box {
+  width: 134px;
+  margin: 16px auto 0 auto;
+}
+
 .header-link {
   color: #fafafa;
 }
 
-img.attachment-image::before {
-  padding-top: 100%;
-  content: "";
-  width: 100%;
-  display: block;
+.index-page {
+  margin-left: 12px;
+  margin-right: 12px;
 }
 
-img.attachment-image {
-  position: absolute;
-  top: 0;
-  left: -65px;
-  bottom: 0;
-  right: 0;
-  width: calc(100% * 1.5);
-  opacity: 0.5;
+.index-page .row {
+  height: 306px;
+  margin-top: 32px;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+}
+
+.index-page ul {
+  margin-top: 0;
+  height: 164px;
+  overflow: hidden;
+  border-bottom: 6px solid #252b4d;
+}
+
+.index-page img.attachment-image {
+  width: 100%;
   margin: 0;
 }
 
-.LedeImage ul {
-  background-color: black;
-  height: 328px;
+.index-page .Name {
+  margin-top: 8px;
+}
+
+.index-page span.field-value:not(.markdown-field) {
+  display: block;
   margin-top: 0;
 }
 
-/* .row .field {
-  position: absolute;
-} */
+.index-page .Author {
+  font-size: 14px;
+  line-height: 16px;
+  font-style: italic;
+  font-family: "Courier";
+  font-weight: bold;
+}
 
-.lede {
-  height: 50px;
+.index-page .Author p {
+  margin-top: 8px;
+}
+
+.index-page .lede {
+  margin-top: 16px;
+  padding: 15px 17px;
+  line-height: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-block;
   background-color: #f54600;
   color: #fafafa;
-  font-size: 20px;
-  line-height: 20px;
-  display: flex;
-  justify-content: left;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-.LedeImage {
-  margin: 0 12px;
-  overflow: hidden;
 }
 
-.row-link {
-  display: block;
-  margin-top: 6px;
+.index-page > div:last-child {
+  border-top: none;
 }
 
 .Name {
   font-size: 40px;
   line-height: 40px;
-}
-
-.index-page .Name,
-.index-page .Author,
-.index-page .lede {
-  max-width: 250px;
-}
-
-.index-page .row > div:not(.LedeImage) {
-  position: relative;
-  left: 24px;
-  bottom: 200px;
-  color: white;
-  display: inline-block;
-}
-
-.index-page .LedeImage {
-  position: relative;
-  width: 327px;
-  height: 327px;
 }
 
 .row-page {
@@ -126,7 +164,6 @@ img.attachment-image {
   margin: 0;
   font-size: 32px;
   width: 100%;
-  margin-left: calc(100% / 6);
 }
 
 .row-page .LedeImage ul {
@@ -162,17 +199,25 @@ img.attachment-image {
 .TheRRReview,
 .Rating,
 .RRRSoundtrack {
-  margin: 24px;
+  margin-left: 24px;
+  margin-right: 24px;
+  margin-top: 24px;
 }
 
 .Rating h1 {
   font-size: 32px;
+  margin-top: 8px;
 }
 
 .Rating .star-rating {
   margin: 24px 10px 0 10px;
   display: flex;
   justify-content: space-around;
+}
+
+.star-rating .star {
+  width: 50px;
+  height: 48px;
 }
 
 .GoogleMap {
@@ -253,10 +298,6 @@ img.attachment-image {
   margin-top: 8px;
 }
 
-.index-page .row {
-  height: 327px;
-}
-
 .index-page .row::after {
   display: none;
 }
@@ -265,6 +306,54 @@ img.attachment-image {
   body {
     max-width: unset;
     margin: 24px 24px 24px 24px;
+  }
+
+  .index-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 24px;
+    margin-right: 24px;
+    margin-left: 24px;
+  }
+
+  .index-page .title,
+  .index-page .header {
+    grid-column: span 2;
+  }
+
+  .index-page .row {
+    height: 348px;
+  }
+
+  .index-page .header {
+    margin: 0 -24px 0 -24px;
+  }
+
+  .index-page .title {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+
+  .index-page .title p {
+    margin-top: 16px;
+  }
+
+  .index-page h1.index-page__title {
+    font-size: 112px;
+    line-height: 112px;
+    text-shadow: 2px 2px #fffdfa, 6px 6px rgba(245, 70, 0, 0.43);
+    margin-top: 0;
+  }
+
+  .pizza-box {
+    width: 170px;
+    height: 51px;
+  }
+
+  .index-page .title h3 {
+    font-size: 32px;
+    line-height: 32px;
+    margin-top: 32px;
   }
 
   .TheRRReview,
@@ -364,5 +453,19 @@ img.attachment-image {
     grid-column: 1;
     margin-left: 24px;
     margin-top: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .row-page .row .RRRSoundtrack h1 {
+    font-size: 48px;
+  }
+
+  .title {
+    margin-bottom: 62px;
+  }
+
+  .index-page .row {
+    height: 372px;
   }
 }
