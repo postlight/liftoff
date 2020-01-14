@@ -21,11 +21,6 @@ body {
   font-size: 40px;
 }
 
-.row-page .header {
-  background-color: #f54600;
-  font-size: 32px;
-}
-
 .header-link {
   color: #fafafa;
 }
@@ -115,13 +110,23 @@ img.attachment-image {
 }
 
 .row-page .header {
-  margin: 0;
-  grid-area: 1 / span 6;
+  /* grid-area: 1 / span 6; */
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row: 1;
   font-size: 24px;
+  background-color: #f54600;
+  font-size: 32px;
+  padding: 0 0 14px 0;
+  margin: 0;
+  text-align: left;
 }
+
 .row-page .header h1 {
   margin: 0;
   font-size: 32px;
+  width: 100%;
+  margin-left: calc(100% / 6);
 }
 
 .row-page .LedeImage ul {
@@ -177,7 +182,7 @@ img.attachment-image {
 }
 
 .GoogleMap iframe {
-  max-width: 100%;
+  width: 100%;
 }
 
 .SpotifyPlaylist {
@@ -196,6 +201,7 @@ img.attachment-image {
 
 .row-page .nav-button:first-of-type {
   grid-area: 1 / 1;
+  padding-bottom: 14px;
 }
 
 .row-page .nav-button {
@@ -206,6 +212,7 @@ img.attachment-image {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-transform: uppercase;
 }
 
 .row-page .nav-button:last-of-type {
@@ -222,6 +229,13 @@ img.attachment-image {
 
 .row-page .row:last-of-type {
   margin: unset;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.row-page .row > * {
+  grid-column: 1 / span 2;
 }
 
 .row-page .nav-button:last-of-type::before {
@@ -248,9 +262,107 @@ img.attachment-image {
 }
 
 @media (min-width: 768px) {
+  body {
+    max-width: unset;
+    margin: 24px 24px 24px 24px;
+  }
+
   .TheRRReview,
   .Rating,
   .RRRSoundtrack {
-    margin: 96px;
+    margin-left: 72px;
+    margin-right: 72px;
+    margin-bottom: 0;
+  }
+
+  .GoogleMap {
+    margin-top: 64px;
+  }
+
+  .star-rating {
+    width: 350px;
+  }
+
+  .Rating .star-rating {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 32px;
+  }
+
+  .TheRRReview h1 {
+    font-size: 48px;
+  }
+
+  .TheRRReview {
+    margin-top: 32px;
+  }
+
+  .star-rating .star {
+    height: 58px;
+    width: 61px;
+  }
+
+  .row-page .LedeImage {
+    margin-top: 12px;
+    margin-left: 12px;
+    margin-right: 12px;
+    max-height: 464px;
+  }
+
+  .row-page .LedeImage ul {
+    height: unset;
+  }
+
+  .row-page .review-text {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  .Rating h1 {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  .row-page .row {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+
+  .RRRSoundtrack {
+    margin: 0;
+    text-align: left;
+  }
+
+  .row-page .row .RRRSoundtrack {
+    grid-column: 2;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    margin-right: 24px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .row-page .row .RRRSoundtrack h1 {
+    margin-top: 0;
+    font-size: 32px;
+    line-height: 48px;
+  }
+
+  .row-page .row .SpotifyPlaylist {
+    grid-column: 1;
+    grid-row: 7;
+    margin: 24px;
+  }
+
+  .GoogleMap {
+    margin-right: 24px;
+    margin-left: 24px;
+  }
+
+  .row-page .nav-button:last-of-type {
+    grid-column: 1;
+    margin-left: 24px;
+    margin-top: 0;
   }
 }

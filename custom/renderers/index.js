@@ -11,7 +11,7 @@ import GoogleMap from "./GoogleMap";
 import RRRSoundtrack from "./RRRSoundtrack";
 import SpotifyPlaylist from "./SpotifyPlaylist";
 
-export default {
+export {
   LiftoffHero,
   ReviewCard,
   Author,
