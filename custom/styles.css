@@ -12,7 +12,23 @@ html {
 
 body {
   background-color: #fafafa;
-  margin: 12px 12px 96px 12px;
+  margin: 12px 12px 12px 12px;
+}
+
+body::after {
+  display: block;
+  background-image: url(/assets/white.svg);
+  background-repeat: no-repeat;
+  content: "A Labs project from your friends at";
+  color: #fafafa;
+  text-align: center;
+  background-color: #f54600;
+  height: 100px;
+  width: 100%;
+  font-family: "Courier New", Courier, monospace;
+  background-position: center;
+  padding-top: 89px;
+  padding-bottom: 100px;
 }
 
 .header h1 {
@@ -150,7 +166,7 @@ body {
 .row-page .header {
   /* grid-area: 1 / span 6; */
   grid-column-start: 1;
-  grid-column-end: 7;
+  grid-column-end: 8;
   grid-row: 1;
   font-size: 24px;
   background-color: #f54600;
@@ -168,11 +184,12 @@ body {
 
 .row-page .LedeImage ul {
   background-color: unset;
-  height: 169px;
+  max-height: 169px;
 }
 
 .row-page .LedeImage {
-  margin: 6px;
+  margin: 6px 6px 0 6px;
+  overflow: hidden;
 }
 
 .row-page img.attachment-image {
@@ -252,20 +269,18 @@ body {
 .row-page .nav-button {
   background-color: #f54600;
   color: #fafafa;
-  margin: 0;
   font-size: 20px;
   display: flex;
-  justify-content: center;
   align-items: center;
   text-transform: uppercase;
+  margin: 0 0 0 12px;
 }
 
 .row-page .nav-button:last-of-type {
   grid-column: 1 / span 2;
-  margin-bottom: 72px;
-  margin-left: 12px;
-  margin-top: 32px;
+  margin: 32px 0 72px 12px;
   padding: 10px 12px;
+  justify-content: center;
 }
 
 .row-page .nav-button::before {
@@ -274,9 +289,13 @@ body {
 
 .row-page .row:last-of-type {
   margin: unset;
-  overflow: hidden;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr min-content min-content auto;
+}
+
+.Name span {
+  text-transform: uppercase;
 }
 
 .row-page .row > * {
@@ -296,6 +315,7 @@ body {
 
 .row-page .Author p {
   margin-top: 8px;
+  font-style: italic;
 }
 
 .index-page .row::after {
@@ -304,8 +324,18 @@ body {
 
 @media (min-width: 768px) {
   body {
-    max-width: unset;
-    margin: 24px 24px 24px 24px;
+    margin: 10px auto 24px auto;
+    font-size: 16px;
+    line-height: 24px;
+    max-width: 744px;
+  }
+
+  .row-page .Name span {
+    display: inline-block;
+    padding: 16px 24px;
+    font-size: 64px;
+    line-height: 64px;
+    margin-top: 0;
   }
 
   .index-page {
@@ -314,6 +344,19 @@ body {
     grid-column-gap: 24px;
     margin-right: 24px;
     margin-left: 24px;
+  }
+
+  .row-page .Author p {
+    margin-top: 16px;
+  }
+
+  .Rating h1 {
+    margin-top: 0;
+  }
+
+  .row-page .header h1 {
+    font-size: 40px;
+    line-height: 40px;
   }
 
   .index-page .title,
@@ -399,12 +442,13 @@ body {
   }
 
   .row-page .LedeImage ul {
-    height: unset;
+    max-height: 350px;
   }
 
   .row-page .review-text {
     font-size: 20px;
     line-height: 30px;
+    margin-top: 0;
   }
 
   .Rating h1 {
@@ -414,7 +458,11 @@ body {
 
   .row-page .row {
     display: grid;
-    grid-template-columns: 50% 50%;
+    /* grid-template-rows: 1fr 1fr 1fr auto; */
+  }
+
+  .row-page .LedeImage {
+    grid-row: 1 / span 3;
   }
 
   .RRRSoundtrack {
@@ -428,8 +476,6 @@ body {
     flex-flow: column;
     justify-content: center;
     margin-right: 24px;
-    font-size: 16px;
-    line-height: 24px;
   }
 
   .row-page .row .RRRSoundtrack h1 {
@@ -440,7 +486,7 @@ body {
 
   .row-page .row .SpotifyPlaylist {
     grid-column: 1;
-    grid-row: 7;
+    grid-row: 8;
     margin: 24px;
   }
 
@@ -454,9 +500,36 @@ body {
     margin-left: 24px;
     margin-top: 0;
   }
+
+  .row-page .row:last-of-type {
+    grid-template-rows: 1fr 1fr 128px auto;
+  }
+
+  .row-page .Name {
+    grid-row: 3;
+  }
+
+  .row-page .Name span {
+    background-color: rgba(255, 253, 250, 0.85);
+  }
 }
 
 @media (min-width: 1024px) {
+  body {
+    max-width: 976px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .index-page .Name {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  .index-page ul {
+    height: 224px;
+  }
+
   .row-page .row .RRRSoundtrack h1 {
     font-size: 48px;
   }
@@ -467,5 +540,19 @@ body {
 
   .index-page .row {
     height: 372px;
+  }
+
+  .row-page .LedeImage ul {
+    max-height: 476px;
+  }
+
+  .row-page .Name span {
+    padding: 32px 48px;
+    font-size: 72px;
+    line-height: 72px;
+  }
+
+  .row-page .row:last-of-type {
+    grid-template-rows: 1fr 1fr 184px auto;
   }
 }
