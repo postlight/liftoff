@@ -1,7 +1,104 @@
+/* 
+  Default CSS & Mobile Styling
+*/
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+    helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+}
+
 body {
-  padding: 25px;
-  max-width: 900px;
-  margin: auto;
+  margin: 24px 24px 96px 24px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+body::before {
+  background-image: url(/assets/shuttle-mobile.svg);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  content: "Congrats! This is a boilerplate Liftoff installation. To remove this text and modify the theme CSS, go to /custom/styles.css";
+  text-align: center;
+  padding-top: 152px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: #141414;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 32px;
+  margin-top: 28px;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 28px;
+  margin-top: 24px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 24px;
+  margin-top: 20px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 20px;
+  margin-top: 18px;
+}
+
+h5,
+h6 {
+  font-size: 16px;
+  line-height: 18px;
+  margin-top: 16px;
+}
+
+h6 {
+  color: #807d70;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul {
+  margin-bottom: 0;
+}
+
+blockquote,
+img,
+pre,
+hr {
+  margin: 32px 0;
+}
+
+blockquote {
+  padding-left: 18px;
+  border-left: solid 6px #141414;
+}
+
+ul,
+ol {
+  margin-top: 32px;
 }
 
 ul {
@@ -9,30 +106,272 @@ ul {
   list-style: none;
 }
 
+hr {
+  background-color: #141414;
+  border: none;
+  height: 1px;
+}
+
 img {
   width: 100%;
+  display: block;
+}
+
+pre {
+  background-color: #ebeae8;
+  padding: 24px;
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+code {
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+    helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+}
+
+p {
+  margin-top: 16px;
+}
+
+.field-value img + img {
+  margin-top: -24px;
+}
+
+.header {
+  margin-top: 48px;
+}
+
+.header::after {
+  content: "";
+  width: 72px;
+  height: 6px;
+  background-color: #141414;
+  margin-top: 24px;
+  display: block;
+}
+
+.markdown-field > ul {
+  list-style: initial;
+}
+
+.markdown-field > ol,
+.markdown-field > ul {
+  padding-left: 24px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.markdown-field ol li,
+.markdown-field ul li {
+  margin-top: 18px;
+}
+
+.markdown-field a {
+  text-decoration: underline;
+  color: #141414;
+  font-weight: bold;
+}
+
+img.attachment-image {
+  width: calc(100vw - 16px);
+  margin-left: -16px;
+}
+
+/*
+  NOTE: Chrome does not currently support the ::marker selector
+        There's sort of a way to get the same effect with setting
+        rules on li:before, but multi-line list items look awkward
+*/
+
+.markdown-field > ol li::marker {
+  font-weight: bold;
 }
 
 .header-link,
 .row-link {
   text-decoration: none;
-  color: black;
+  color: #141414;
 }
 
-.row {
-  margin: 20px 0;
+.row-link:last-of-type > .row::after {
+  display: none;
+}
+
+.row-link:last-of-type .row {
+  margin-bottom: 64px;
+}
+
+.index-page .row::after {
+  margin: 64px auto;
+  content: "";
+  background-color: #ebeae8;
+  height: 8px;
+  display: block;
+}
+
+.index-page > div:last-child {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  border-top: 4px solid #141414;
 }
 
 .nav-button {
-  padding: 5px 15px;
-  border: 1px solid black;
-  border-radius: 3px;
   text-decoration: none;
-  color: black;
+  color: #141414;
+  font-weight: bold;
 }
 
-@media (max-width: 768px) {
+span.field-value:not(.markdown-field) {
+  display: block;
+  margin-top: 16px;
+}
+
+/* Detail/Row Page */
+.row-page .nav-button {
+  margin: 12px 0;
+  display: inline-block;
+}
+
+.row-page .nav-button::before {
+  content: "← ";
+}
+
+.row-page .row:last-of-type {
+  margin-bottom: 64px;
+}
+
+.row-page .attachments:first-child img {
+  margin-top: 0;
+}
+
+.row-page .attachments ul {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
   body {
-    padding: 12px;
+    margin: 64px auto 128px auto;
+    max-width: 640px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  body::before {
+    background-position-x: left;
+    background-image: url(/assets/shuttle.svg);
+    padding-left: 74px;
+    padding-top: 20px;
+    text-align: left;
+    height: 68px;
+  }
+
+  h1 {
+    font-size: 40px;
+    line-height: 44px;
+    margin-top: 40px;
+  }
+
+  h2 {
+    font-size: 28px;
+    line-height: 32px;
+    margin-top: 28px;
+  }
+
+  h3 {
+    font-size: 24px;
+    line-height: 28px;
+    margin-top: 24px;
+  }
+
+  h4 {
+    font-size: 20px;
+    line-height: 24px;
+    margin-top: 20px;
+  }
+
+  h5,
+  h6 {
+    font-size: 18px;
+    line-height: 20px;
+    margin-top: 18px;
+  }
+
+  blockquote,
+  pre,
+  hr,
+  img {
+    margin: 48px 0;
+  }
+
+  pre {
+    padding: 32px;
+  }
+
+  p {
+    margin-top: 18px;
+  }
+
+  img.attachment-image {
+    width: calc(100% + 80px);
+    margin-left: -40px;
+  }
+
+  .row-page .nav-button {
+    margin: 18px 0;
+  }
+
+  .markdown-field > ol,
+  .markdown-field > ul {
+    padding-left: 32px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  span.field-value:not(.markdown-field) {
+    margin-top: 18px;
+  }
+
+  .field-value img + img {
+    margin-top: -32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* desktop */
+  body {
+    max-width: 720px;
+  }
+
+  body::before {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  blockquote {
+    padding-left: 24px;
+    border-left-width: 8px;
+  }
+
+  body::before {
+    margin-left: 0;
+  }
+
+  img.attachment-image {
+    width: calc(100% + 192px);
+    margin-left: -96px;
+  }
+
+  ol,
+  ul {
+    margin-top: 48px;
+  }
+
+  code {
+    font-size: 18px;
+    line-height: 28px;
   }
 }

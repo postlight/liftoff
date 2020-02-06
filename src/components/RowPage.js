@@ -7,7 +7,7 @@ import Header from "./Header";
 import getFieldsToDisplay from "../utils/getFieldsToDisplay";
 
 const RowPage = ({ rowData }) => (
-  <div>
+  <div className="row-page">
     {process.env.HEADER_TITLE && process.env.HEADER_TITLE && (
       <Header title={process.env.HEADER_TITLE} />
     )}

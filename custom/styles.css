@@ -2,3 +2,8 @@
   display: none;
   visibility: hidden;
 }
+
+html {
+  color: #141414;
+  background-color: #fafafa;
+}

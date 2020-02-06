@@ -44,7 +44,8 @@ module.exports = {
       "HEADER_TITLE",
       "SITE_TITLE",
       "PAGE_TITLE_COLUMN",
-      "MARKDOWN_FIELDS"
+      "MARKDOWN_FIELDS",
+      "SITE_DESCRIPTION"
     ])
   ],
   devServer: {
