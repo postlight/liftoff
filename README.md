@@ -102,6 +102,8 @@ Any CSS put in the `styles.css` file at `/custom/styles.css` will be injected in
 
 Your field names will always be added as classes in the corresponding HTML. So for example, a field called "Title" will generate an HTML element with the class `.Title`. There are other classes that are put in by default, detailed below. You can make use of these classes to style the site to your liking.
 
+Out of the box, we've provided some boilerplate styling that we hope will help ease the styling process - to remove, simply remove the unwanted css from `/public/default.css`. To view the boilerplate designs, click [here](https://liftoff-boilerplate.netlify.com).
+
 ## Pagination
 
 Pagination is automatically implemented on any site with more than 10 posts. This makes back + next buttons available on the homepage of your site for navigating between different pages of posts.
