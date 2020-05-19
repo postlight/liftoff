@@ -1,0 +1,56 @@
+{
+  "name": "liftoff",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Frankie Simms <fdsimms@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/node": "^7.6.1",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "dotenv": "^8.1.0",
+    "eslint": "^6.3.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "1.7.0",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.0.5",
+    "inquirer": "^7.0.0",
+    "nodemon": "^1.19.2",
+    "prettier": "1.18.2",
+    "pretty-quick": "^1.11.1",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8",
+    "webpack-dev-server": "^3.8.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "dependencies": {
+    "airtable": "^0.7.1",
+    "markdown": "^0.5.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-router-dom": "^5.0.1",
+    "underscore": "^1.9.1",
+    "url-pattern": "^1.0.3"
+  },
+  "scripts": {
+    "webpack-build": "webpack --config webpack.config.js --port=8080 --history-api-fallback",
+    "build": "mkdir -p dist/ && mkdir -p dist/page/ && mkdir -p dist/assets/ && npx babel-node build.js",
+    "start:dev": "nodemon --watch .env --exec webpack-dev-server --open",
+    "setup": "node setup.js"
+  }
+}
