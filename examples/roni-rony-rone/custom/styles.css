@@ -17,7 +17,7 @@ body {
 
 body::after {
   display: block;
-  background-image: url(/public/white.svg);
+  background-image: url(/assets/white.svg);
   background-repeat: no-repeat;
   content: "A Labs project from your friends at";
   color: #fafafa;
