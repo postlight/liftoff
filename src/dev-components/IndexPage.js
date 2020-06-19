@@ -33,7 +33,7 @@ export default class IndexPage extends React.Component {
         .eachPage(
           function page(records, fetchNextPage) {
             records.forEach(row => {
-              if (currentRow > 10) {
+              if (currentRow > 3) {
                 currentRow = 1;
                 allRows.push([]);
               }

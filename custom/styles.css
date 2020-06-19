@@ -5,12 +5,28 @@
 
 html {
   color: #141414;
-  background-color: #fafafa;
+  background-color: #312459;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 body {
-  background-color: #312459;
-  margin: 0;
+  margin: 0 auto;
+}
+
+body::after {
+  display: block;
+  background-image: url(/assets/color.svg);
+  background-repeat: no-repeat;
+  content: "A Labs project from your friends at";
+  color: #fafafa;
+  text-align: center;
+  height: 100px;
+  width: 100%;
+  font-style: italic;
+  font-family: "Bitter", monospace;
+  background-position: center;
+  padding-top: 89px;
+  padding-bottom: 100px;
 }
 
 .index-page,
@@ -25,6 +41,448 @@ body {
   margin-top: 0;
 }
 
-.index-page .row {
-  color: white;
+.row {
+  color: #312459;
+  margin-bottom: 10px;
+  background-color: #fafafa;
+  display: flex;
+  flex-flow: column;
+  overflow: hidden;
+}
+
+.row-page {
+  background-color: #fafafa;
+}
+
+.row-page .row {
+  display: grid;
+  grid-template-rows: 189px auto;
+}
+
+.row-page .row .Name h1 {
+  margin-top: 24px;
+  text-align: center;
+}
+
+img {
+  margin: 0;
+}
+
+.row-page .row .Dek {
+  font-family: "Bitter", sans-serif;
+  font-style: italic;
+  text-align: center;
+}
+
+.row-page .row .Author {
+  text-align: center;
+  font-weight: bold;
+}
+
+.row-page .row .Author span::before {
+  content: "By ";
+  display: inline;
+}
+
+.row-page .row .Author::after {
+  content: "";
+  background-color: #11a691;
+  width: 48px;
+  height: 6px;
+  margin: 24px auto 12px auto;
+  display: block;
+}
+
+.row-page {
+  display: grid;
+  grid-template-columns: min-content;
+}
+
+.row-page .nav-button:first-of-type::before,
+.row-page .nav-button:last-of-type::before {
+  display: none;
+}
+
+.row-page .nav-button {
+  color: #fafafa;
+}
+
+.row-page .nav-button:first-of-type {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 10px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.row-page .nav-button:last-of-type {
+  border-radius: 24px;
+  background-color: #11a691;
+  grid-column: 1;
+  margin-left: 30px;
+  margin-bottom: 96px;
+  margin-right: auto;
+}
+
+.row-page .row:last-of-type {
+  margin-bottom: 48px;
+}
+
+.row-page > * {
+  grid-column: 1 / span 5;
+}
+
+.row-page .header {
+  grid-row: 1;
+  margin-top: 0;
+}
+
+.row-page .header h1 {
+  margin-top: 0;
+  background-color: #312459;
+  padding-bottom: 12px;
+}
+
+.row-page .row > * {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.row-page .row .Body {
+  margin-left: 30px;
+  margin-right: 30px;
+  font-family: "Bitter", sans-serif;
+}
+
+.row-page div.LedeImage {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.index-page .LedeImage {
+  margin: 10px;
+  min-height: 189px;
+}
+
+.index-page img.attachment-image {
+  margin: 10px 0 0 0;
+}
+
+.index-page .LedeImage ul {
+  margin: 0;
+}
+
+.index-page .row > *:not(.LedeImage) {
+  margin-left: 10px;
+  margin-right: 24px;
+}
+
+.index-page .row h1 {
+  margin-top: 12px;
+  font-size: 32px;
+}
+
+.index-page .row .Dek span {
+  margin-top: 8px;
+}
+
+.index-page .Author span::before {
+  display: inline;
+  content: "By ";
+  font-weight: bold;
+}
+
+.index-page .Author {
+  font-weight: bold;
+  margin-bottom: 32px;
+}
+
+.Category {
+  color: #11a691;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.index-page .Dek {
+  font-style: italic;
+  font-family: "Bitter", sans-serif;
+}
+
+.row-link:last-of-type .row {
+  margin-bottom: 0;
+}
+
+.index-page .nav-button {
+  background-color: #13b49d;
+  width: calc(50% - 5px);
+  text-align: center;
+  color: #fafafa;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.index-page > div:last-child {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: none;
+}
+
+.index-page > h1 {
+  text-align: center;
+  background-color: #180f33;
+  color: #fafafa;
+  padding: 32px;
+  border-bottom: 10px solid #11a691;
+  margin-bottom: 10px;
+  font-size: 20px;
+  line-height: 30px;
+  margin-top: 17px;
+  font-family: "Bitter", sans-serif;
+}
+
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  color: #fafafa;
+  padding-top: 12px;
+  font-size: 24px;
+  line-height: 35px;
+}
+
+@media (min-width: 768px) {
+  .index-page > h1 {
+    font-size: 24px;
+    line-height: 32px;
+    padding: 48px;
+  }
+
+  .index-page .Category span {
+    margin-top: 32px;
+  }
+
+  .row-page .row {
+    grid-template-rows: 334px auto;
+  }
+
+  .row-page .nav-button {
+    border-radius: 24px;
+    background-color: #11a691;
+    padding: 10px 24px;
+  }
+
+  .row-page .nav-button:first-of-type {
+    margin: auto auto auto 10px;
+  }
+
+  .row-page .nav-button:last-of-type {
+    grid-column: 1;
+    margin-left: 58px;
+    margin-bottom: 96px;
+  }
+
+  .row-page .header h1 {
+    font-size: 32px;
+    line-height: 46px;
+    padding-bottom: 16px;
+    padding-top: 16px;
+  }
+
+  .row-page .row .Author {
+    line-height: 24px;
+    margin-top: 24px;
+  }
+
+  .row-page .row > * {
+    margin-left: 34px;
+    margin-right: 34px;
+  }
+
+  .row-page .row .LedeImage {
+    margin: 10px 10px 0 10px;
+    height: unset;
+  }
+
+  .row-page .row .Name h1 {
+    font-size: 48px;
+    line-height: 48px;
+    margin-top: 48px;
+  }
+
+  .row-page .row .Author::after {
+    width: 72px;
+    height: 10px;
+    margin: 32px auto 14px auto;
+  }
+
+  .row-page .row .Body {
+    font-size: 18px;
+    line-height: 28px;
+    margin-left: 58px;
+    margin-right: 58px;
+  }
+
+  html::-webkit-scrollbar {
+    background-color: #180f33;
+    display: block;
+    width: 40px;
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background-color: #845cff;
+    height: 200px;
+    width: 40px;
+    border-radius: 20px;
+  }
+
+  .index-page,
+  .row-page {
+    margin: 0 40px 12px 40px;
+  }
+
+  .index-page .row {
+    flex-flow: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, min-content);
+  }
+
+  .index-page .row .LedeImage {
+    grid-column: 1;
+    grid-row: 1 / span 5;
+    margin-right: 12px;
+  }
+
+  .index-page .row .Name h1 {
+    font-size: 32px;
+    line-height: 32px;
+    margin-top: 16px;
+  }
+
+  .index-page .row .Dek,
+  .index-page .row .Author {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .index-page .row img.attachment-image {
+    margin-bottom: 10px;
+  }
+
+  .index-page .header h1 {
+    font-size: 32px;
+    line-height: 46px;
+  }
+
+  .row-page .row .Dek {
+    font-size: 24px;
+    line-height: 36px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .row-page .row .Body {
+    font-size: 20px;
+    line-height: 30px;
+    margin-left: 106px;
+    margin-right: 106px;
+  }
+
+  body {
+    max-width: 1024px;
+  }
+
+  .row-page .row .Name h1 {
+    font-size: 64px;
+    line-height: 64px;
+  }
+
+  .row-page .row .Dek {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .row-page .row > * {
+    margin-left: 58px;
+    margin-right: 58px;
+  }
+
+  .row-page .row {
+    grid-template-rows: 442px auto;
+  }
+
+  .row-page .row .Author::after {
+    width: 72px;
+    margin: 40px auto 22px auto;
+  }
+
+  .row-page .nav-button:last-of-type {
+    margin-left: 106px;
+    margin-bottom: 96px;
+  }
+
+  .index-page .row > *:not(.LedeImage) {
+    margin-right: 0;
+  }
+
+  .index-page > h1 {
+    padding: 72px;
+  }
+
+  .index-page .row::before {
+    content: "READ MORE";
+    background-color: #11a691;
+    writing-mode: vertical-lr;
+    width: 48px;
+    height: 100%;
+    color: #fafafa;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    grid-row: 1 / span 4;
+    grid-column: last;
+    grid-area: read;
+    margin-left: 8px;
+  }
+
+  .index-page .row {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 0;
+    overflow-y: hidden;
+    grid-template-areas:
+      "pic category ."
+      "pic name     ."
+      "pic dek      ."
+      "pic author   .";
+  }
+
+  .index-page .row:hover {
+    grid-template-areas:
+      "pic category read"
+      "pic name     read"
+      "pic dek      read"
+      "pic author   read";
+  }
+
+  .index-page .row::hover .index-page .row .LedeImage {
+    grid-area: pic;
+  }
+
+  .index-page .row > div:last-of-type {
+    grid-area: author;
+  }
+
+  .index-page .row .Dek {
+    grid-area: dek;
+  }
+
+  .index-page .row .Name {
+    grid-area: name;
+  }
 }

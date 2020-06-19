@@ -6,7 +6,7 @@ import LinkOrAnchor from "./LinkOrAnchor";
 import Header from "./Header";
 import Row from "./Row";
 import getFieldsToDisplay from "../utils/getFieldsToDisplay";
-import CustomRenderers from "../../custom/renderers";
+import * as CustomRenderers from "../../custom/renderers";
 import Hero from "./Hero";
 
 const Index = ({ rows, pagination }) => {
@@ -46,14 +46,14 @@ const Index = ({ rows, pagination }) => {
         <div>
           {pagination.back ? (
             <LinkOrAnchor className="nav-button" to={pagination.back}>
-              <span>← Previous</span>
+              <span>Previous</span>
             </LinkOrAnchor>
           ) : (
             <div />
           )}
           {pagination.next ? (
             <LinkOrAnchor className="nav-button" to={pagination.next}>
-              <span>Next →</span>
+              <span>Next</span>
             </LinkOrAnchor>
           ) : (
             <div />

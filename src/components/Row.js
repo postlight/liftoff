@@ -37,16 +37,22 @@ const getRenderer = field => {
   return <div />;
 };
 
-const Row = ({ rowData, fieldsToDisplay }) => (
-  <div className="row">
-    {_.chain(rowData.fields)
-      .map(field =>
-        fieldsToDisplay.includes(field.name) ? getRenderer(field) : null
-      )
-      .filter(renderer => !!renderer)
-      .value()}
-  </div>
-);
+const Row = ({ rowData, fieldsToDisplay }) => {
+  const mapFields = name => {
+    const field = rowData.fields.find(field => field.name === name);
+    if (field) return getRenderer(field);
+
+    return field;
+  };
+  return (
+    <div className="row">
+      {_.chain(fieldsToDisplay)
+        .map(mapFields)
+        .filter(renderer => !!renderer)
+        .value()}
+    </div>
+  );
+};
 
 Row.defaultProps = {
   rowData: {},

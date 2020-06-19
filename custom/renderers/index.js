@@ -1,3 +1,4 @@
 // import Foo from "./Foo";
+import LedeImage from "./LedeImage";
 
-export default {};
+export { LedeImage };
