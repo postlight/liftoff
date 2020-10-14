@@ -49,7 +49,7 @@ If not, you can download a Zip file of this repo by clicking on the button shown
 
 This project uses [Yarn](https://yarnpkg.com) to download and manage copies of the third party code we used to build it. If you already have Yarn installed, you can skip to the next section. Otherwise, you can follow the instructions [here](https://yarnpkg.com/lang/en/docs/install/#mac-stable) to install it for macOS or [here](https://yarnpkg.com/lang/en/docs/install/#windows-stable) to install it for Windows.
 
-If you're a Mac user, you may want to install Homebrew if you haven't already. Homebrew is a package manager that will allow you to easily download, install, and manage software such as Yarn. You can follow the instructions on [the Homebrew website]((https://brew.sh/) or you can install it from the command line by:
+If you're a Mac user, you may want to install Homebrew if you haven't already. Homebrew is a package manager that will allow you to easily download, install, and manage software such as Yarn. You can follow the instructions on [the Homebrew website](https://brew.sh/) or you can install it from the command line by:
 
 1. Opening up a terminal window via the "Terminal" application
 2. Copy and pasting the following into the terminal window and hitting Enter/Return
