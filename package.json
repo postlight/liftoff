@@ -44,7 +44,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
-    "underscore": "^1.9.1",
+    "underscore": "^1.12.1",
     "url-pattern": "^1.0.3"
   },
   "scripts": {
